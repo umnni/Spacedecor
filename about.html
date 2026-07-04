@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us | Space Decor Belle</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            customRed: '#c12323',
+            customGold: '#cfa63a',
+            customDark: '#1a1a1a',
+            customLightGray: '#f8f8f8',
+          },
+          fontFamily: {
+            sans: ['Montserrat', 'sans-serif'],
+            serif: ['Playfair Display', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Phosphor Icons -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: #1a1a1a;
+      overflow-x: hidden;
+      background: #ffffff;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    section,
+    footer,
+    div[id="contact"] {
+      scroll-margin-top: 110px;
+    }
+
+    .font-serif-chic {
+      font-family: 'Playfair Display', serif;
+    }
+
+    .cormorant-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-link {
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: #c12323;
+    }
+
+    #mobileMenu {
+      transition: all 0.35s ease;
+    }
+
+    .line-center-grow {
+      transform: scaleX(0);
+      transform-origin: center;
+      opacity: 0.6;
+      transition: transform 1.6s cubic-bezier(0.22, 1, 0.36, 1),
+                  opacity 1.6s ease;
+    }
+
+    .line-center-grow.in-view {
+      transform: scaleX(1);
+      opacity: 1;
+    }
+
+    .footer-line {
+      transform: scaleX(0);
+      transform-origin: center;
+      opacity: 0.6;
+      transition: transform 1.6s cubic-bezier(0.22, 1, 0.36, 1),
+                  opacity 1.6s ease;
+    }
+
+    .footer-line.in-view {
+      transform: scaleX(1);
+      opacity: 1;
+    }
+
+    .footer-line-vertical {
+      transform: scaleY(0);
+      transform-origin: center;
+      opacity: 0.6;
+      transition: transform 1.6s cubic-bezier(0.22, 1, 0.36, 1),
+                  opacity 1.6s ease;
+    }
+
+    .footer-line-vertical.in-view {
+      transform: scaleY(1);
+      opacity: 1;
+    }
+
+    .footer-drop {
+      opacity: 0;
+      transform: translateY(-26px);
+      transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+                  opacity 0.9s ease;
+    }
+
+    .footer-drop.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .footer-delay-1 { transition-delay: 0.08s; }
+    .footer-delay-2 { transition-delay: 0.18s; }
+    .footer-delay-3 { transition-delay: 0.28s; }
+    .footer-delay-4 { transition-delay: 0.38s; }
+    .footer-delay-5 { transition-delay: 0.48s; }
+    .footer-delay-6 { transition-delay: 0.58s; }
+
+    .social-bar-wrap {
+      overflow: hidden;
+    }
+
+    .social-bar-drop {
+      transform: translateY(-100%);
+      opacity: 0;
+      animation: socialBarDrop 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    .social-gold-line {
+      transform: scaleY(0);
+      transform-origin: top;
+      opacity: 0.6;
+      transition: transform 1.6s cubic-bezier(0.22, 1, 0.36, 1),
+                  opacity 1.6s ease;
+    }
+
+    .social-gold-line.in-view {
+      transform: scaleY(1);
+      opacity: 1;
+    }
+
+    .social-icon {
+      opacity: 0;
+      transform: translateY(-14px) scale(0.92);
+      display: inline-flex;
+      animation: socialIconReveal 0.45s ease forwards;
+    }
+
+    .social-icon:nth-child(1) { animation-delay: 1.05s; }
+    .social-icon:nth-child(2) { animation-delay: 1.18s; }
+    .social-icon:nth-child(3) { animation-delay: 1.31s; }
+    .social-icon:nth-child(4) { animation-delay: 1.44s; }
+
+    .header-logo-drop {
+      opacity: 0;
+      transform: translateY(-26px);
+      animation: headerDropIn 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      animation-delay: 0.28s;
+    }
+
+    .nav-drop {
+      opacity: 0;
+      transform: translateY(-18px);
+      animation: navDropIn 0.5s ease forwards;
+      animation-delay: var(--delay, 0s);
+    }
+
+    .mobile-menu-drop {
+      opacity: 0;
+      transform: translateY(-18px);
+      animation: headerDropIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      animation-delay: 0.38s;
+    }
+
+    @keyframes socialBarDrop {
+      0% {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+      70% {
+        transform: translateY(18px);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes socialIconReveal {
+      0% {
+        opacity: 0;
+        transform: translateY(-14px) scale(0.92);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes headerDropIn {
+      0% {
+        opacity: 0;
+        transform: translateY(-26px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes navDropIn {
+      0% {
+        opacity: 0;
+        transform: translateY(-18px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .about-reveal {
+      opacity: 0;
+      transform: translateY(45px);
+      transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1),
+                  opacity 1s ease;
+    }
+
+    .about-reveal.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .about-delay-1 { transition-delay: 0.1s; }
+    .about-delay-2 { transition-delay: 0.22s; }
+    .about-delay-3 { transition-delay: 0.34s; }
+    .about-delay-4 { transition-delay: 0.46s; }
+
+    .glass-float-btn {
+      width: 66px;
+      height: 58px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.92);
+      text-decoration: none;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      background: rgba(40, 40, 40, 0.55);
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.14);
+      transition: all 0.28s ease;
+    }
+
+    .glass-float-btn:hover {
+      transform: translateX(-4px);
+      border-color: rgba(255, 255, 255, 0.4);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
+    }
+
+    @media (max-width: 767px) {
+      .glass-float-btn {
+        width: 82px;
+        height: 52px;
+        border-radius: 10px;
+      }
+    }
+    /* ABOUT PAGE IMAGE FIX */
+.about-img-box {
+  width: 100%;
+  overflow: hidden;
+  background: #f3f3f3;
+}
+
+.about-img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+  </style>
+</head>
+
+<body>
+
+  <!-- LEFT RED SOCIAL BAR -->
+  <div class="hidden lg:flex absolute left-0 top-0 z-50 social-bar-wrap">
+    <div class="w-[44px] h-[760px] bg-[#c61f1f] flex flex-col items-center pt-10 pb-10 social-bar-drop">
+
+      <div class="w-px h-80 bg-[#cfa63a] mb-16 mt-4 social-gold-line origin-top"></div>
+
+      <div class="flex flex-col items-center gap-7 text-white text-[19px] mt-14">
+        <a href="#" target="_blank" class="social-icon hover:text-[#cfa63a] transition-colors duration-300">
+          <i class="ph ph-whatsapp-logo"></i>
+        </a>
+
+        <a href="#" target="_blank" class="social-icon hover:text-[#cfa63a] transition-colors duration-300">
+          <i class="ph ph-facebook-logo"></i>
+        </a>
+
+        <a href="#" target="_blank" class="social-icon hover:text-[#cfa63a] transition-colors duration-300">
+          <i class="ph ph-linkedin-logo"></i>
+        </a>
+
+        <a href="#" target="_blank" class="social-icon hover:text-[#cfa63a] transition-colors duration-300">
+          <i class="ph ph-instagram-logo"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="w-full relative z-40 bg-white py-6">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center">
+
+      <!-- Logo -->
+      <a href="index.html" class="flex items-center overflow-hidden header-logo-drop">
+        <img
+          src="assets/images/logo.png"
+          alt="Space Decor Belle Logo"
+          class="h-[92px] w-auto object-contain scale-[1] origin-left"
+        >
+      </a>
+
+      <!-- Navigation -->
+      <nav class="hidden md:flex gap-7 text-sm font-medium text-gray-700 tracking-widest">
+        <a href="index.html" class="nav-link nav-drop" style="--delay: 0.56s;">home</a>
+        <a href="about.html" class="nav-link nav-drop text-customRed" style="--delay: 0.68s;">about us</a>
+        <a href="interior.html" class="nav-link nav-drop" style="--delay: 0.80s;">interior</a>
+        <a href="vastu.html" class="nav-link nav-drop" style="--delay: 0.92s;">vastu</a>
+        <a href="decor.html" class="nav-link nav-drop" style="--delay: 1.04s;">decor</a>
+        <a href="portfolio.html" class="nav-link nav-drop" style="--delay: 1.16s;">portfolio</a>
+        <a href="contact.html" class="nav-link nav-drop" style="--delay: 1.28s;">contact</a>
+      </nav>
+
+      <!-- Mobile Menu Button -->
+      <button id="menuBtn" class="md:hidden text-2xl text-[#1a1a1a] mobile-menu-drop" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileMenu" type="button">
+        <i id="menuIcon" class="ph ph-list"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden md:hidden px-6 lg:px-12 pt-4 pb-6 bg-white border-t border-gray-200 shadow-sm">
+      <nav class="flex flex-col gap-5 text-sm font-medium text-gray-700 tracking-widest uppercase">
+        <a href="index.html" class="nav-link">home</a>
+        <a href="about.html" class="nav-link text-customRed">about us</a>
+        <a href="interior.html" class="nav-link">interior</a>
+        <a href="vastu.html" class="nav-link">vastu</a>
+        <a href="decor.html" class="nav-link">decor</a>
+        <a href="portfolio.html" class="nav-link">portfolio</a>
+        <a href="contact.html" class="nav-link">contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MAIN ABOUT PAGE -->
+  <main>
+
+    <!-- TOP HERO IMAGE -->
+<section class="w-full max-w-7xl mx-auto px-6 lg:px-12 pt-3">
+  <div class="w-full overflow-hidden about-reveal about-img-box">
+    <img
+      src="assets/images/KJ about 2.png"
+      alt="Space Decor Belle About Hero"
+      class="w-full h-auto block"
+    >
+  </div>
+</section>
+
+    <!-- QUOTE -->
+    <section class="w-full bg-white pt-12 pb-12 px-6">
+      <div class="max-w-4xl mx-auto text-center about-reveal about-delay-1">
+
+        <p class="text-customRed text-[10px] uppercase tracking-[0.7em] font-bold mb-4">
+          About Us
+        </p>
+
+<div class="max-w-[620px] mx-auto">
+
+  <h1 class="font-serif-chic text-[#2a2a2a] text-center leading-[0.98]">
+
+    <!-- UPPER LINE -->
+    <span class="block text-[42px] md:text-[46px] font-semibold not-italic">
+      “A space is only as beautiful
+    </span>
+
+    <!-- LOWER LINE -->
+    <span class="block text-[52px] md:text-[56px] italic font-bold mt-1">
+      as the peace it provides”
+    </span>
+
+  </h1>
+
+  <!-- RED LINE -->
+  <div class="line-center-grow w-full h-[3px] bg-customRed mx-auto mt-7"></div>
+
+</div>
+
+        <p class="mt-5 text-[10px] tracking-[0.45em] uppercase text-black font-semibold">
+          Kanchan Jain - Founder
+        </p>
+
+      </div>
+    </section>
+
+    <!-- OUR STORY -->
+    <section id="about-story" class="w-full bg-white py-12 px-6 lg:px-12">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+        <!-- Text -->
+        <div class="about-reveal about-delay-1">
+<p class="text-customRed not-italic text-[12px] font-bold uppercase tracking-[0.35em] mb-3 font-sans">
+  Who we are?
+</p>
+<h2 class="font-serif-chic italic font-bold text-[42px] md:text-[58px] leading-none text-[#6a6763] mb-6">
+  Our Story.
+</h2>
+
+          <div class="line-center-grow w-full max-w-[460px] h-[2px] bg-customRed mb-8"></div>
+
+          <div class="space-y-5 text-[15px] md:text-[16px] leading-[1.75] text-[#333] text-gray-900 font-semibold max-w-xl">
+            <p>
+              Every beautiful space begins with a feeling — a dream of comfort, harmony, elegance, and belonging.
+            </p>
+
+            <p>
+              That very belief became the foundation of Space Decor Belle, a design studio envisioned and led by
+              <strong class="font-semibold text-customRed">Kanchan Jain</strong>.
+              What started as a passion for transforming ordinary corners into meaningful experiences gradually evolved
+              into a creative destination where interiors are not just designed, but thoughtfully curated with emotion,
+              energy, and purpose.
+            </p>
+
+            <p>
+              At Space Decor Belle, we believe your home should tell your story — beautifully, consciously, and personally.
+              We combine the precision of architectural innovation with the ancient science of Vastu and Vedic design
+              to create spaces that breathe.
+            </p>
+          </div>
+        </div>
+
+        <!-- Image -->
+<div class="about-reveal about-delay-2">
+  <div class="rounded-[26px] overflow-hidden aspect-[4/5] bg-[#f3f3f3] about-img-box">
+    <img
+      src="assets/images/KJ our story 2.png"
+      alt="Founder Story"
+      class="w-full h-full object-cover object-center grayscale"
+    >
+  </div>
+</div>
+      </div>
+    </section>
+
+    <!-- TWO IMAGE STRIP -->
+    <section class="w-full py-8">
+      <div class="grid grid-cols-1 md:grid-cols-2">
+<div class="aspect-[16/7] overflow-hidden about-reveal about-delay-1 about-img-box">
+  <img
+    src="assets/images/craft.png"
+    alt="Craft Detail"
+    class="w-full h-full object-cover object-center"
+  >
+</div>
+
+<div class="aspect-[16/7] overflow-hidden about-reveal about-delay-2 about-img-box">
+  <img
+    src="assets/images/nails.png"
+    alt="Material Selection"
+    class="w-full h-full object-cover object-center"
+  >
+</div>
+      </div>
+    </section>
+
+<!-- FOUNDER FEATURE SECTION -->
+<section class="w-full bg-white py-16 px-6 lg:px-12">
+
+  <div class="max-w-7xl mx-auto">
+
+    <!-- MAIN IMAGE BG -->
+    <div class="relative overflow-hidden rounded-[34px] h-[520px] md:h-[620px] about-reveal about-delay-1">
+
+      <!-- BACKGROUND IMAGE -->
+      <img
+        src="assets/images/KJ experience 2.png"
+        alt="Kanchan Jain Founder"
+        class="absolute inset-0 w-full h-full object-cover object-center"
+      >
+
+      <!-- DARK OVERLAY -->
+      <div class="absolute inset-0 bg-black/45"></div>
+
+      <!-- RIGHT CONTENT CARD -->
+      <div class="absolute right-0 top-0 h-full w-full md:w-[44%] bg-[#111111]/88 backdrop-blur-[2px] px-8 md:px-12 py-12 md:py-16 flex flex-col justify-center">
+
+        <!-- TOP QUOTE -->
+        <div class="flex items-center gap-4 mb-10">
+
+          <div class="w-14 md:w-20 h-[2px] bg-customGold"></div>
+
+          <span class="font-serif-chic text-customRed text-[70px] md:text-[88px] leading-none">
+            “
+          </span>
+
+          <div class="w-14 md:w-20 h-[2px] bg-customGold"></div>
+
+        </div>
+
+        <!-- TEXT -->
+        <p class="text-[18px] md:text-[24px] leading-[1.6] font-light text-gray-200">
+          At Space Decor Belle we design spaces that inspire better living every single day.
+          We don’t just decorate interiors — we design experiences, emotions, and stories
+          that stay for years to come.
+        </p>
+
+        <!-- NAME -->
+        <div class="mt-10">
+
+          <h3 class="font-serif-chic text-customGold text-[34px] md:text-[42px] leading-none">
+            Kanchan Jain
+          </h3>
+
+          <p class="text-[11px] uppercase tracking-[0.30em] text-gray-400 mt-3">
+            Founder & Director
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+    <!-- EXCELLENCE SECTION -->
+    <section class="w-full bg-white pt-8 pb-20 px-6 lg:px-12">
+      <div class="max-w-7xl mx-auto about-reveal about-delay-1">
+
+        <h2 class="font-serif-chic font-bold text-[44px] md:text-[58px] leading-[1]">
+  <span class="text-[#4b5558]">25 Years of</span>
+  <span class="italic text-customRed">Excellence.</span>
+</h2>
+
+        <p class="font-serif-chic italic text-[28px] md:text-[40px] text-[#1a1a1a] mt-1">
+          One Visionary Touch
+        </p>
+
+        <div class="line-center-grow w-full max-w-[520px] h-[2px] bg-customRed mt-8 mb-10"></div>
+
+        <div class="space-y-6 text-[15px] md:text-[16px] leading-[1.85] text-[#333] font-semibold max-w-6xl">
+          <p>
+            With over 25 years of diverse experience in redefining real estate, Kanchan Jain brings a unique
+            philosophy to interior design — one that merges ancient Vedic sciences with modern aesthetic innovation.
+            Known for shaping landmark projects and creating purposeful spaces, her work reflects a rare balance
+            of elegance, energy, and emotional comfort.
+          </p>
+
+          <p>
+            As the founder of Space Decor Belle, she believes a home is more than just walls; it is a sanctuary
+            for well-being. Kanchan creates spaces that foster positivity, balance, and luxury, ensuring every
+            project she touches reflects trust, transparency, and long-term value.
+          </p>
+        </div>
+
+        <div class="mt-12">
+<h2 class="font-serif-chic font-bold text-[44px] md:text-[38px] leading-[1] mb-8">
+  <span class="text-[#50575b]">Kanchan Jain</span>
+  <span class="italic text-customRed">Philosophy</span>
+</h2>
+
+          <p class="text-[16px] md:text-[18px] leading-[1.8] text-[#333] font-semibold max-w-5xl">
+            “I believe that true luxury isn’t found in expensive materials, but in how a room makes you feel.
+            A space is only as beautiful as the peace it provides. My mission at Space Decor Belle is to ensure
+            every corner of your home resonates with that inner stillness.”
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer id="clients" class="w-full bg-[#151515] relative pt-6 pb-2 z-10 border-t border-gray-800 overflow-hidden">
+
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 relative">
+
+      <div class="footer-line-vertical hidden md:block absolute top-[38px] bottom-[118px] left-[28%] w-px bg-[#cfa63a]"></div>
+      <div class="footer-line-vertical hidden md:block absolute top-[38px] bottom-[118px] right-[28%] w-px bg-[#cfa63a]"></div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 relative z-10">
+
+        <!-- Left Column -->
+        <div class="flex flex-col justify-start pt-12 pb-16 md:pb-0 pl-0 md:pl-10">
+          <nav class="flex flex-col gap-6 text-xs font-sans font-bold tracking-widest uppercase text-white">
+            <a href="index.html" class="footer-drop footer-delay-1 hover:text-customGold transition-colors duration-300">home</a>
+            <a href="about.html" class="footer-drop footer-delay-2 hover:text-customGold transition-colors duration-300">about us</a>
+            <a href="index.html#interior" class="footer-drop footer-delay-3 hover:text-customGold transition-colors duration-300">interior</a>
+            <a href="index.html#vastu" class="footer-drop footer-delay-4 hover:text-customGold transition-colors duration-300">vastu</a>
+            <a href="index.html#decor" class="footer-drop footer-delay-5 hover:text-customGold transition-colors duration-300">decor</a>
+            <a href="#contact" class="footer-drop footer-delay-6 hover:text-customGold transition-colors duration-300">contact</a>
+          </nav>
+        </div>
+
+        <!-- Center Column -->
+        <div id="contact" class="flex flex-col items-center text-center pt-8 pb-[118px] px-4 h-full">
+          <h4 class="text-customGold font-sans font-bold text-s uppercase tracking-[0.3em] mb-8">
+            RECENT WORKS
+          </h4>
+
+          <div class="grid grid-cols-3 gap-2 mb-6 w-full max-w-xs">
+            <img src="assets/images/11.jpg" class="w-full h-20 object-cover" alt="Recent work 1">
+            <img src="assets/images/12.jpg" class="w-full h-20 object-cover" alt="Recent work 2">
+            <img src="assets/images/13.jpg" class="w-full h-20 object-cover" alt="Recent work 3">
+            <img src="assets/images/14.jpg" class="w-full h-20 object-cover" alt="Recent work 4">
+            <img src="assets/images/15.jpg" class="w-full h-20 object-cover" alt="Recent work 5">
+            <img src="assets/images/16.jpg" class="w-full h-20 object-cover" alt="Recent work 6">
+          </div>
+
+          <div class="flex flex-col items-center text-center mt-auto pt-8">
+            <h4 class="text-white text-[12px] tracking-[0.35em] uppercase mb-4">
+              TALK TO THE TEAM
+            </h4>
+
+            <p class="text-customGold font-serif-chic text-[24px] md:text-[24px] font-light tracking-[0.04em]">
+              (+91) 96542 32327
+            </p>
+
+            <p class="text-customGold text-[18px] md:text-[24px] font-light">
+              info@spacedecorbelle.com
+            </p>
+          </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="flex flex-col items-end md:items-center justify-end pt-8 pb-16 md:pb-[118px] pr-0 md:pr-10 h-full">
+          <div class="flex md:flex-col items-center gap-4 md:gap-3 md:pt-0 mt-auto">
+
+            <div class="footer-drop footer-delay-1 mb-0 md:mb-6">
+              <span class="text-white font-sans font-bold text-[8px] tracking-[0.3em] uppercase md:rotate-90 md:origin-center whitespace-nowrap inline-block">
+                FOLLOW US
+              </span>
+            </div>
+
+            <div class="footer-drop footer-delay-2 w-px h-16 bg-customGold hidden md:block mt-1 mb-3"></div>
+
+            <a href="#" class="footer-drop footer-delay-3 text-customGold border border-customGold rounded-full p-2 hover:bg-customGold hover:text-black transition-colors duration-300">
+              <i class="ph ph-whatsapp-logo text-sm"></i>
+            </a>
+
+            <a href="#" class="footer-drop footer-delay-4 text-customGold border border-customGold rounded-full p-2 hover:bg-customGold hover:text-black transition-colors duration-300">
+              <i class="ph ph-facebook-logo text-sm"></i>
+            </a>
+
+            <a href="#" class="footer-drop footer-delay-5 text-customGold border border-customGold rounded-full p-2 hover:bg-customGold hover:text-black transition-colors duration-300">
+              <i class="ph ph-linkedin-logo text-sm"></i>
+            </a>
+
+            <a href="#" class="footer-drop footer-delay-6 text-customGold border border-customGold rounded-full p-2 hover:bg-customGold hover:text-black transition-colors duration-300">
+              <i class="ph ph-instagram-logo text-sm"></i>
+            </a>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-line absolute bottom-16 left-10 lg:left-24 right-10 lg:right-24 mb-12 h-px bg-[#cfa63a]"></div>
+
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 mb-8 flex flex-col md:flex-row justify-between items-center text-[10px] text-gray-400 font-sans tracking-widest uppercase mt-4 relative z-10">
+      <p>PRIVACY POLICY</p>
+      <p>&copy; SPACEDECORBELLE ALL RIGHTS RESERVED</p>
+    </div>
+  </footer>
+
+  <!-- RIGHT SIDE GLASS ACTION BUTTONS -->
+  <div class="fixed right-4 top-1/2 -translate-y-1/2 z-50 hidden md:flex flex-col gap-5">
+
+    <a href="contact.html" class="glass-float-btn" aria-label="Fill Form">
+      <i class="ph ph-note-pencil text-[28px]"></i>
+    </a>
+
+    <a href="https://wa.me/919654232327" target="_blank" class="glass-float-btn" aria-label="WhatsApp">
+      <i class="ph ph-whatsapp-logo text-[28px]"></i>
+    </a>
+
+  </div>
+
+  <!-- JS -->
+  <script>
+    const menuBtn = document.getElementById("menuBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
+    const menuIcon = document.getElementById("menuIcon");
+    const mobileLinks = mobileMenu.querySelectorAll("a");
+
+    menuBtn.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+
+      if (mobileMenu.classList.contains("hidden")) {
+        menuIcon.classList.remove("ph-x");
+        menuIcon.classList.add("ph-list");
+      } else {
+        menuIcon.classList.remove("ph-list");
+        menuIcon.classList.add("ph-x");
+      }
+    });
+
+    mobileLinks.forEach(link => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.add("hidden");
+        menuIcon.classList.remove("ph-x");
+        menuIcon.classList.add("ph-list");
+      });
+    });
+
+    const lines = document.querySelectorAll(
+      '.line-center-grow, .footer-line, .footer-line-vertical, .social-gold-line'
+    );
+
+    const lineObserver = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.35
+    });
+
+    lines.forEach(line => {
+      lineObserver.observe(line);
+    });
+
+    const footerDrops = document.querySelectorAll('.footer-drop');
+
+    const footerDropObserver = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.2
+    });
+
+    footerDrops.forEach(item => {
+      footerDropObserver.observe(item);
+    });
+
+    const aboutReveals = document.querySelectorAll('.about-reveal');
+
+    const aboutObserver = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.18
+    });
+
+    aboutReveals.forEach(item => {
+      aboutObserver.observe(item);
+    });
+  </script>
+
+</body>
+</html>

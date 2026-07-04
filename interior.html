@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interior Design | Space Decor Belle</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS Script -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        customRed: '#c12323',
+                        customGold: '#cfa63a',
+                        customDark: '#1a1a1a',
+                        customLightGray: '#f8f8f8',
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        /* Base Styles */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #1a1a1a;
+            overflow-x: hidden;
+        }
+        .red-line {
+    width: 240px;
+    height: 3px;
+    background-color: #c12323;
+    margin-top: 24px;
+
+    transform: scaleX(0);
+    transform-origin: center;
+    opacity: 0.6;
+
+    transition: transform 1.6s cubic-bezier(0.22, 1, 0.36, 1),
+                opacity 1.6s ease;
+}
+
+@media (min-width: 768px) {
+    .red-line {
+        width: 320px;
+    }
+}
+
+.line-center-grow {
+    transform: scaleX(0);
+    transform-origin: center;
+    opacity: 0.6;
+
+    transition: transform 1.6s cubic-bezier(0.22, 1, 0.36, 1),
+                opacity 1.6s ease;
+}
+/* FEATURE ARROW ROTATION */
+/* #featureArrow {
+    transition: transform 0.12s linear;
+    transform: rotate(0deg);
+} */
+
+/* STATS */
+.stat-number {
+    will-change: contents;
+}
+
+/* ACTIVE STATE */
+.red-line.in-view,
+.line-center-grow.in-view {
+    transform: scaleX(1);
+    opacity: 1;
+}
+
+@media (min-width: 768px) {
+    .red-line {
+        width: 320px;
+    }
+}
+
+@media (min-width: 768px) {
+    .red-line {
+        width: 320px;
+    }
+}
+.luxury-heading {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+}
+.cormorant-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+}
+/* FOOTER HORIZONTAL LINES */
+.footer-line {
+    transform: scaleX(0);
+    transform-origin: center;
+    opacity: 0.6;
+
+    transition: transform 1.6s cubic-bezier(0.22, 1, 0.36, 1),
+                opacity 1.6s ease;
+}
+
+.footer-line.in-view {
+    transform: scaleX(1);
+    opacity: 1;
+}
+
+/* FOOTER VERTICAL LINES */
+.footer-line-vertical {
+    transform: scaleY(0);
+    transform-origin: center;
+    opacity: 0.6;
+
+    transition: transform 1.6s cubic-bezier(0.22, 1, 0.36, 1),
+                opacity 1.6s ease;
+}
+
+.footer-line-vertical.in-view {
+    transform: scaleY(1);
+    opacity: 1;
+}
+.footer-drop {
+    opacity: 0;
+    transform: translateY(-26px);
+    transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+                opacity 0.9s ease;
+}
+
+.footer-drop.in-view {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.footer-delay-1 { transition-delay: 0.08s; }
+.footer-delay-2 { transition-delay: 0.18s; }
+.footer-delay-3 { transition-delay: 0.28s; }
+.footer-delay-4 { transition-delay: 0.38s; }
+.footer-delay-5 { transition-delay: 0.48s; }
+.footer-delay-6 { transition-delay: 0.58s; }
+
+        /* Typography Utilities */
+        .font-serif-chic {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Hero Text Outline Effect */
+        .text-outline {
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Nav Link Hover Red Dot */
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .nav-link:hover {
+            color: #c12323;
+        }
+
+        /* Red Accent Bar on Left */
+        .red-accent-bar {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4rem;
+            background-color: #c12323;
+            z-index: -1;
+        }
+
+        /* Ensure images scale correctly */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Mobile menu animation */
+        #mobileMenu {
+            transition: all 0.35s ease;
+        }
+
+        /* Scroll offset for fixed header */
+        section,
+        footer,
+        div[id="contact"] {
+            scroll-margin-top: 110px;
+        }
+        /* LEFT SOCIAL BAR ANIMATIONS */
+        /* LEFT SOCIAL BAR ANIMATIONS */
+.social-bar-wrap {
+    overflow: hidden;
+}
+
+.social-bar-drop {
+    transform: translateY(-100%);
+    opacity: 0;
+    animation: socialBarDrop 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.social-gold-line {
+    transform: scaleY(0);
+    transform-origin: top;
+    opacity: 0.6;
+
+    transition: transform 1.6s cubic-bezier(0.22, 1, 0.36, 1),
+                opacity 1.6s ease;
+}
+
+.social-gold-line.in-view {
+    transform: scaleY(1);
+    opacity: 1;
+}
+
+.social-icon {
+    opacity: 0;
+    transform: translateY(-14px) scale(0.92);
+    display: inline-flex;
+    animation: socialIconReveal 0.45s ease forwards;
+}
+
+.social-icon:nth-child(1) { animation-delay: 1.05s; }
+.social-icon:nth-child(2) { animation-delay: 1.18s; }
+.social-icon:nth-child(3) { animation-delay: 1.31s; }
+.social-icon:nth-child(4) { animation-delay: 1.44s; }
+
+/* LOGO */
+.header-logo-drop {
+    opacity: 0;
+    transform: translateY(-26px);
+    animation: headerDropIn 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: 0.28s;
+}
+
+/* DESKTOP NAV LINKS */
+.nav-drop {
+    opacity: 0;
+    transform: translateY(-18px);
+    animation: navDropIn 0.5s ease forwards;
+    animation-delay: var(--delay, 0s);
+}
+
+/* MOBILE MENU BUTTON */
+.mobile-menu-drop {
+    opacity: 0;
+    transform: translateY(-18px);
+    animation: headerDropIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: 0.38s;
+}
+
+@keyframes socialBarDrop {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    70% {
+        transform: translateY(18px);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes socialIconReveal {
+    0% {
+        opacity: 0;
+        transform: translateY(-14px) scale(0.92);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes headerDropIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-26px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes navDropIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-18px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.best-words {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.22em;
+}
+
+.best-word {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(-80px);
+
+    transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1),
+                opacity 1s ease;
+
+    will-change: transform, opacity;
+}
+
+.best-word.in-view {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* GLOBAL DELAY (important) */
+.best-delay-1 { transition-delay: 0.6s; }
+.best-delay-2 { transition-delay: 0.7s; }
+.best-delay-3 { transition-delay: 0.8s; }
+.best-delay-4 { transition-delay: 0.9s; }
+/* SERVICES SECTION ANIMATION */
+.services-item {
+    opacity: 0;
+    transform: translateY(80px);
+    transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1),
+                opacity 1s ease;
+    will-change: transform, opacity;
+}
+
+.services-item.in-view {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.services-delay-1 { transition-delay: 0.10s; }
+.services-delay-2 { transition-delay: 0.22s; }
+.services-delay-3 { transition-delay: 0.34s; }
+.services-delay-4 { transition-delay: 0.46s; }
+.services-delay-5 { transition-delay: 0.58s; }
+.services-delay-6 { transition-delay: 0.70s; }
+
+/* TEXT INSIDE LEFT BLOCK */
+.services-text-part {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                opacity 0.8s ease;
+}
+
+.services-text.in-view .services-text-part {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.services-text-delay-1 { transition-delay: 0.35s; }
+.services-text-delay-2 { transition-delay: 0.52s; }
+/* CTA CARD SLIDE FROM LEFT */
+.cta-card-slide {
+    opacity: 0;
+    transform: translateX(-140px);
+    transition: transform 1.1s cubic-bezier(0.22, 1, 0.36, 1),
+                opacity 1.1s ease;
+    will-change: transform, opacity;
+}
+
+.cta-card-slide.in-view {
+    opacity: 1;
+    transform: translateX(0);
+}
+#featureArrow {
+    cursor: pointer;
+    transform: rotate(0deg);
+}
+.cta-card-slide h2 {
+    overflow-wrap: break-word;
+}
+/* GLASS FLOATING BUTTONS */
+.glass-float-btn {
+    width: 66px;
+    height: 58px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.92);
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    background: rgba(40, 40, 40, 0.55);  /* dark grey + opacity */
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.14);
+    transition: all 0.28s ease;
+}
+
+.glass-float-btn:hover {
+    transform: translateX(-4px);
+    /* background: rgba(255, 255, 255, 0.12); */
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
+}
+
+.glass-float-btn i {
+    line-height: 1;
+}
+
+@media (max-width: 767px) {
+    .glass-float-btn {
+        width: 82px;
+        height: 52px;
+        border-radius: 10px;
+    }
+
+    .glass-float-btn i {
+        font-size: 24px !important;
+    }
+}
+    
+/* INTERIOR DESIGN PAGE CUSTOM STYLES */
+.interior-reveal {
+    opacity: 0;
+    transform: translateY(58px);
+    transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1), opacity 1s ease;
+    will-change: transform, opacity;
+}
+.interior-reveal.in-view {
+    opacity: 1;
+    transform: translateY(0);
+}
+.interior-delay-1 { transition-delay: 0.10s; }
+.interior-delay-2 { transition-delay: 0.22s; }
+.interior-delay-3 { transition-delay: 0.34s; }
+.interior-delay-4 { transition-delay: 0.46s; }
+.interior-card-shadow {
+    box-shadow: 0 28px 70px rgba(0,0,0,0.10);
+}
+.interior-img-zoom {
+    transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.group:hover .interior-img-zoom {
+    transform: scale(1.07);
+}
+.interior-soft-grid {
+    background-image: linear-gradient(rgba(193,35,35,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(193,35,35,.06) 1px, transparent 1px);
+    background-size: 44px 44px;
+}
+
+    </style>
+</head>
+<!-- LEFT RED SOCIAL BAR -->
+<div class="hidden lg:flex absolute left-0 top-0 z-50 social-bar-wrap">
+  <div class="w-[44px] h-[760px] bg-[#c61f1f] flex flex-col items-center pt-10 pb-10 social-bar-drop">
+    
+    <div class="w-px h-80 bg-[#cfa63a] mb-16 mt-4 social-gold-line origin-top"></div>
+
+    <div class="flex flex-col items-center gap-7 text-white text-[19px] mt-14">
+      
+      <a href="#" target="_blank" class="social-icon hover:text-[#cfa63a] transition-colors duration-300">
+        <i class="ph ph-whatsapp-logo"></i>
+      </a>
+
+      <a href="#" target="_blank" class="social-icon hover:text-[#cfa63a] transition-colors duration-300">
+        <i class="ph ph-facebook-logo"></i>
+      </a>
+
+      <a href="#" target="_blank" class="social-icon hover:text-[#cfa63a] transition-colors duration-300">
+        <i class="ph ph-linkedin-logo"></i>
+      </a>
+
+      <a href="#" target="_blank" class="social-icon hover:text-[#cfa63a] transition-colors duration-300">
+        <i class="ph ph-instagram-logo"></i>
+      </a>
+
+    </div>
+  </div>
+</div>
+
+<header class="w-full relative z-40 bg-white py-6">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center">
+
+        <!-- Logo -->
+        <a href="#home" class="flex items-center overflow-hidden header-logo-drop">
+          <img 
+            src="assets/images/logo.png" 
+            alt="Space Decor Belle Logo"
+            class="h-[92px] w-auto object-contain scale-[1] origin-left"
+          >
+        </a>
+
+        <!-- Navigation -->
+<nav class="hidden md:flex gap-7 text-sm font-medium text-gray-700 tracking-widest">
+    <a href="index.html" class="nav-link nav-drop" style="--delay: 0.56s;">home</a>
+    <a href="about.html" class="nav-link nav-drop" style="--delay: 0.68s;">about us</a>
+    <a href="interior.html" class="nav-link nav-drop" style="--delay: 0.80s;">interior</a>
+    <a href="vastu.html" class="nav-link nav-drop" style="--delay: 0.92s;">vastu</a>
+    <a href="decor.html" class="nav-link nav-drop" style="--delay: 1.04s;">decor</a>
+    <a href="portfolio.html" class="nav-link nav-drop" style="--delay: 1.16s;">portfolio</a>
+    <a href="contact.html" class="nav-link nav-drop" style="--delay: 1.28s;">contact</a>
+</nav>
+        <!-- Mobile Menu Button -->
+<button id="menuBtn" class="md:hidden text-2xl text-[#1a1a1a] mobile-menu-drop" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileMenu" type="button">
+    <i id="menuIcon" class="ph ph-list"></i>
+</button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden md:hidden px-6 lg:px-12 pt-4 pb-6 bg-white border-t border-gray-200 shadow-sm">
+<nav class="flex flex-col gap-5 text-sm font-medium text-gray-700 tracking-widest uppercase">
+    <a href="index.html" class="nav-link">home</a>
+    <a href="about.html" class="nav-link">about us</a>
+    <a href="interior.html" class="nav-link">interior</a>
+    <a href="vastu.html" class="nav-link">vastu</a>
+    <a href="decor.html" class="nav-link">decor</a>
+    <a href="portfolio.html" class="nav-link">portfolio</a>
+    <a href="contact.html" class="nav-link">contact</a>
+</nav>
+    </div>
+</header>
+
+        <main>
+
+<!-- INTERIOR DESIGN PAGE HERO -->
+<section id="interior" class="relative w-full max-w-7xl mx-auto px-6 lg:px-12 pt-3 pb-10">
+  <div class="relative min-h-[520px] lg:min-h-[640px] overflow-hidden rounded-[34px] bg-[#151515] interior-reveal">
+    <img
+      src="assets/images/int-hero.avif"
+      alt="Luxury living room interior design"
+      class="absolute inset-0 w-full h-full object-cover object-center opacity-80"
+    >
+    <div class="absolute inset-0 bg-gradient-to-r from-black/75 via-black/35 to-transparent"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent"></div>
+
+    <div class="relative z-10 min-h-[520px] lg:min-h-[640px] flex items-center">
+      <div class="max-w-3xl px-7 md:px-14 py-16">
+        <p class="text-customGold text-[11px] uppercase tracking-[0.55em] font-bold mb-6">
+          Interior Design Studio
+        </p>
+        <h1 class="font-serif-chic text-white text-[54px] md:text-[84px] lg:text-[96px] leading-[0.92] tracking-[-0.04em]">
+          Designed for<br>
+          <span class="italic text-customGold">beautiful living.</span>
+        </h1>
+        <div class="line-center-grow w-[260px] md:w-[420px] h-[3px] bg-customRed mt-9 mb-8"></div>
+        <p class="text-white/85 text-[15px] md:text-[18px] leading-[1.8] max-w-xl font-light">
+          We create refined residential and commercial interiors where comfort, function, material detailing, and timeless elegance work together beautifully.
+        </p>
+        <div class="flex flex-wrap gap-4 mt-10">
+          <a href="contact.html" class="bg-customRed hover:bg-red-800 text-white px-7 py-4 text-[11px] font-bold uppercase tracking-[0.25em] transition-colors">Book Consultation</a>
+          <a href="#interior-services" class="border border-white/50 text-white hover:bg-white hover:text-black px-7 py-4 text-[11px] font-bold uppercase tracking-[0.25em] transition-colors">Explore Work</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="absolute right-6 bottom-6 hidden md:grid grid-cols-3 gap-3 w-[420px]">
+      <div class="bg-white/90 backdrop-blur px-5 py-5 rounded-[18px]">
+        <h4 class="stat-number font-serif-chic text-customRed text-[34px] leading-none" data-target="60" data-suffix="+">0+</h4>
+        <p class="text-[10px] uppercase tracking-[0.2em] text-gray-700 mt-2">Projects</p>
+      </div>
+      <div class="bg-white/90 backdrop-blur px-5 py-5 rounded-[18px]">
+        <h4 class="stat-number font-serif-chic text-customRed text-[34px] leading-none" data-target="150" data-suffix="+">0+</h4>
+        <p class="text-[10px] uppercase tracking-[0.2em] text-gray-700 mt-2">Clients</p>
+      </div>
+      <div class="bg-white/90 backdrop-blur px-5 py-5 rounded-[18px]">
+        <h4 class="stat-number font-serif-chic text-customRed text-[34px] leading-none" data-target="8" data-suffix="+">0+</h4>
+        <p class="text-[10px] uppercase tracking-[0.2em] text-gray-700 mt-2">Years</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTRO SECTION -->
+<section class="w-full bg-white pt-14 pb-12 px-6 lg:px-12">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr] gap-12 lg:gap-20 items-end">
+    <div class="interior-reveal interior-delay-1">
+      <p class="text-customRed text-[12px] uppercase tracking-[0.45em] font-bold mb-5">Our Interior Approach</p>
+<h2 class="font-serif-chic text-[46px] md:text-[68px] leading-[0.98] text-[#1a1a1a]">
+  Designed for<br>
+  <span class="italic text-[#6a6763]">beautiful living.</span>
+</h2>
+    </div>
+    <div class="interior-reveal interior-delay-2">
+      <p class="text-[16px] md:text-[18px] leading-[1.9] text-[#333] font-medium">
+        From first moodboard to final styling, every detail is planned with purpose — layouts, lighting, furniture, textures, colour palettes, storage, décor, and Vastu-friendly flow. The result is a space that looks luxurious and works effortlessly in everyday life.
+      </p>
+      <div class="line-center-grow w-full max-w-[520px] h-[2px] bg-customRed mt-8"></div>
+    </div>
+  </div>
+</section>
+
+<!-- SIGNATURE SERVICES -->
+<section id="interior-services" class="w-full bg-[#f8f8f8] py-18 px-6 lg:px-12 interior-soft-grid">
+  <div class="max-w-7xl mx-auto py-16">
+    <div class="text-center max-w-3xl mx-auto mb-14 interior-reveal">
+      <p class="text-customRed text-[11px] uppercase tracking-[0.55em] font-bold mb-5">What We Design</p>
+      <h2 class="font-serif-chic text-[48px] md:text-[72px] leading-none text-[#1a1a1a]">
+        Signature <span class="italic text-customRed">Services</span>
+      </h2>
+      <div class="line-center-grow w-[260px] md:w-[440px] h-[3px] bg-customRed mx-auto mt-8"></div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="group relative h-[360px] rounded-[28px] overflow-hidden interior-card-shadow interior-reveal interior-delay-1">
+        <img src="assets/images/int-Residential Interiors.avif" alt="Residential interior design" class="interior-img-zoom w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent"></div>
+        <div class="absolute top-7 left-7 text-white/90 text-[22px] font-bold">01.</div>
+        <div class="absolute bottom-7 left-7 right-7">
+          <h3 class="font-serif-chic text-white text-[34px] leading-none">Residential <span class="italic font-light">Interiors</span></h3>
+          <p class="text-white/80 text-[13px] leading-[1.7] mt-4">Luxury homes, apartments, villas, bedrooms, kitchens and living rooms.</p>
+        </div>
+      </div>
+
+      <div class="group relative h-[360px] rounded-[28px] overflow-hidden interior-card-shadow interior-reveal interior-delay-2">
+        <img src="assets/images/int-modular kitchen.jpg" alt="Modular kitchen design" class="interior-img-zoom w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent"></div>
+        <div class="absolute top-7 left-7 text-white/90 text-[22px] font-bold">02.</div>
+        <div class="absolute bottom-7 left-7 right-7">
+          <h3 class="font-serif-chic text-white text-[34px] leading-none">Modular <br> <span class="italic font-light">Kitchen</span></h3>
+          <p class="text-white/80 text-[13px] leading-[1.7] mt-4">Elegant storage, premium finishes, durable surfaces and smart workflow.</p>
+        </div>
+      </div>
+
+      <div class="group relative h-[360px] rounded-[28px] overflow-hidden interior-card-shadow interior-reveal interior-delay-3">
+        <img src="assets/images/int-comercial spaces.jpg" alt="Commercial interior design" class="interior-img-zoom w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent"></div>
+        <div class="absolute top-7 left-7 text-white/90 text-[22px] font-bold">03.</div>
+        <div class="absolute bottom-7 left-7 right-7">
+          <h3 class="font-serif-chic text-white text-[34px] leading-none">Commercial <span class="italic font-light">Spaces</span></h3>
+          <p class="text-white/80 text-[13px] leading-[1.7] mt-4">Offices, studios, retail and hospitality spaces with strong brand presence.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS SECTION -->
+<section class="w-full bg-white py-20 px-6 lg:px-12">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_1.08fr] gap-12 lg:gap-16 items-center">
+    <div class="grid grid-cols-2 gap-4 interior-reveal interior-delay-1">
+      <div class="rounded-[28px] overflow-hidden h-[410px]">
+        <img src="assets/images/int-how 1.jpg" alt="Warm luxury living room" class="w-full h-full object-cover">
+      </div>
+      <div class="flex flex-col gap-4 pt-12">
+        <div class="rounded-[28px] overflow-hidden h-[230px]">
+          <img src="assets/images/int- how 2.avif" alt="Elegant bedroom design" class="w-full h-full object-cover">
+        </div>
+        <div class="bg-[#151515] rounded-[28px] p-8 text-white">
+          <h4 class="font-serif-chic text-customGold text-[44px] leading-none">4</h4>
+          <p class="text-[11px] uppercase tracking-[0.35em] mt-3">Step Design Process</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="interior-reveal interior-delay-2">
+      <p class="text-customRed text-[12px] uppercase tracking-[0.45em] font-bold mb-4">How We Work</p>
+      <h2 class="font-serif-chic text-[48px] md:text-[70px] leading-none text-[#1a1a1a] mb-9">
+        From concept<br><span class="italic text-customRed">to completion.</span>
+      </h2>
+
+      <div class="space-y-7">
+        <div class="flex gap-5">
+          <span class="font-serif-chic text-customRed text-[34px] leading-none">01</span>
+          <div><h3 class="font-bold text-[16px] uppercase tracking-[0.22em] mb-2">Discovery & Site Study</h3><p class="text-[#555] leading-[1.75]">We understand your lifestyle, budget, space measurements and design goals.</p></div>
+        </div>
+        <div class="flex gap-5">
+          <span class="font-serif-chic text-customRed text-[34px] leading-none">02</span>
+          <div><h3 class="font-bold text-[16px] uppercase tracking-[0.22em] mb-2">Moodboard & Planning</h3><p class="text-[#555] leading-[1.75]">We prepare layouts, palette, material direction, lighting and furniture planning.</p></div>
+        </div>
+        <div class="flex gap-5">
+          <span class="font-serif-chic text-customRed text-[34px] leading-none">03</span>
+          <div><h3 class="font-bold text-[16px] uppercase tracking-[0.22em] mb-2">Execution & Styling</h3><p class="text-[#555] leading-[1.75]">Our team handles design detailing, vendor coordination, décor and finishing touches.</p></div>
+        </div>
+        <div class="flex gap-5">
+          <span class="font-serif-chic text-customRed text-[34px] leading-none">04</span>
+          <div><h3 class="font-bold text-[16px] uppercase tracking-[0.22em] mb-2">Final Handover</h3><p class="text-[#555] leading-[1.75]">Your completed space is handed over with a premium, clean, ready-to-live finish.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO GRID -->
+<section class="w-full bg-[#151515] py-20 px-6 lg:px-12 overflow-hidden">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-12 interior-reveal">
+      <div>
+        <p class="text-customGold text-[12px] uppercase tracking-[0.45em] font-bold mb-4">Selected Inspirations</p>
+        <h2 class="font-serif-chic text-white text-[48px] md:text-[72px] leading-none">A gallery of <span class="italic text-customGold">possibilities.</span></h2>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-5">
+      <div class="md:col-span-2 h-[390px] rounded-[28px] overflow-hidden interior-reveal interior-delay-1"><img src="assets/images/int-port1.avif" alt="Premium interior inspiration" class="w-full h-full object-cover"></div>
+      <div class="h-[390px] rounded-[28px] overflow-hidden interior-reveal interior-delay-2"><img src="assets/images/int-port 2.jpg" alt="Luxury dining interior" class="w-full h-full object-cover"></div>
+      <div class="h-[390px] rounded-[28px] overflow-hidden interior-reveal interior-delay-3"><img src="assets/images/int-port 3.avif" alt="Modern home interior" class="w-full h-full object-cover"></div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="w-full bg-white py-20 px-6 lg:px-12">
+  <div class="max-w-7xl mx-auto relative overflow-hidden rounded-[34px] min-h-[430px] interior-reveal">
+    <img src="assets/images/int-cta.jpg" alt="Luxury home interior exterior" class="absolute inset-0 w-full h-full object-cover">
+    <div class="absolute inset-0 bg-black/55"></div>
+    <div class="relative z-10 min-h-[430px] flex items-center justify-center text-center px-8 py-16">
+      <div class="max-w-3xl">
+        <p class="text-customGold text-[11px] uppercase tracking-[0.55em] font-bold mb-6">Start Your Transformation</p>
+        <h2 class="font-serif-chic text-white text-[48px] md:text-[76px] leading-none">
+          Let’s design your<br><span class="italic text-customGold">dream interior.</span>
+        </h2>
+        <p class="text-white/75 text-[16px] leading-[1.8] mt-7 max-w-2xl mx-auto">Share your space, style, and vision — we will create an interior concept that feels elegant, balanced, and made for you.</p>
+        <a href="#contact" class="inline-block mt-9 bg-customRed hover:bg-red-800 text-white px-8 py-4 text-[11px] font-bold uppercase tracking-[0.25em] transition-colors">Talk To The Team</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </main>
+
+        <!-- Footer -->
+<footer id="clients" class="w-full bg-[#151515] relative pt-6 pb-2 z-10 border-t border-gray-800 overflow-hidden">
+    
+    <!-- Top Horizontal Line -->
+    <!-- <div class="footer-line absolute top-5 left-10 lg:left-24 right-10 lg:right-24 h-[2px] bg-[#cfa63a]"></div> -->
+
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 relative">
+        
+        <!-- Vertical Divider Lines -->
+       <div class="footer-line-vertical hidden md:block absolute top-[38px] bottom-[118px] left-[28%] w-px bg-[#cfa63a]"></div>
+<div class="footer-line-vertical hidden md:block absolute top-[38px] bottom-[118px] right-[28%] w-px bg-[#cfa63a]"></div>
+        <!-- Main Footer Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 relative z-10">
+
+            <!-- Left Column -->
+            <div class="flex flex-col justify-start pt-12 pb-16 md:pb-0 pl-0 md:pl-10">
+<nav class="flex flex-col gap-6 text-xs font-sans font-bold tracking-widest uppercase text-white">
+    <a href="index.html" class="footer-drop footer-delay-1 hover:text-customGold transition-colors duration-300">home</a>
+    <a href="about.html" class="footer-drop footer-delay-2 hover:text-customGold transition-colors duration-300">about us</a>
+    <a href="interior.html" class="footer-drop footer-delay-3 hover:text-customGold transition-colors duration-300">interior</a>
+    <a href="vastu.html" class="footer-drop footer-delay-4 hover:text-customGold transition-colors duration-300">vastu</a>
+    <a href="decor.html" class="footer-drop footer-delay-5 hover:text-customGold transition-colors duration-300">decor</a>
+    <a href="contact.html" class="footer-drop footer-delay-6 hover:text-customGold transition-colors duration-300">contact</a>
+</nav>
+            </div>
+
+            <!-- Center Column -->
+            <div id="contact" class="flex flex-col items-center text-center pt-8 pb-[118px] px-4 h-full">
+                <h4 class="text-customGold font-sans font-bold text-s uppercase tracking-[0.3em] mb-8">
+                    RECENT WORKS
+                </h4>
+
+<div class="grid grid-cols-3 gap-2 mb-6 w-full max-w-xs">
+    <img src="assets/images/11.jpg" class="w-full h-20 object-cover" alt="Recent work 1">
+    <img src="assets/images/12.jpg" class="w-full h-20 object-cover" alt="Recent work 2">
+    <img src="assets/images/13.jpg" class="w-full h-20 object-cover" alt="Recent work 3">
+    <img src="assets/images/14.jpg" class="w-full h-20 object-cover" alt="Recent work 4">
+    <img src="assets/images/15.jpg" class="w-full h-20 object-cover" alt="Recent work 5">
+    <img src="assets/images/16.jpg" class="w-full h-20 object-cover" alt="Recent work 6">
+</div>
+
+<div class="flex flex-col items-center text-center mt-auto pt-8">
+
+  <!-- Heading -->
+  <h4 class="text-white text-[12px] tracking-[0.35em] uppercase mb-4">
+    TALK TO THE TEAM
+  </h4>
+
+  <!-- Phone -->
+<p class="text-customGold font-serif-chic text-[24px] md:text-[24px] font-light tracking-[0.04em]">
+  (+91) 96542 32327
+</p>
+
+  <!-- Email -->
+  <p class="text-customGold text-[18px] md:text-[24px] font-light">
+    info@spacedecorbelle.com
+  </p>
+
+</div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="flex flex-col items-end md:items-center justify-end pt-8 pb-16 md:pb-[118px] pr-0 md:pr-10 h-full">
+    <div class="flex md:flex-col items-center gap-4 md:gap-3 md:pt-0 mt-auto">
+
+        <div class="footer-drop footer-delay-1 mb-0 md:mb-6">
+            <span class="text-white font-sans font-bold text-[8px] tracking-[0.3em] uppercase md:rotate-90 md:origin-center whitespace-nowrap inline-block">
+                FOLLOW US
+            </span>
+        </div>
+
+        <div class="footer-drop footer-delay-2 w-px h-16 bg-customGold hidden md:block mt-1 mb-3"></div>
+
+        <a href="#" class="footer-drop footer-delay-3 text-customGold border border-customGold rounded-full p-2 hover:bg-customGold hover:text-black transition-colors duration-300">
+            <i class="ph ph-whatsapp-logo text-sm"></i>
+        </a>
+
+        <a href="#" class="footer-drop footer-delay-4 text-customGold border border-customGold rounded-full p-2 hover:bg-customGold hover:text-black transition-colors duration-300">
+            <i class="ph ph-facebook-logo text-sm"></i>
+        </a>
+
+        <a href="#" class="footer-drop footer-delay-5 text-customGold border border-customGold rounded-full p-2 hover:bg-customGold hover:text-black transition-colors duration-300">
+            <i class="ph ph-linkedin-logo text-sm"></i>
+        </a>
+
+        <a href="#" class="footer-drop footer-delay-6 text-customGold border border-customGold rounded-full p-2 hover:bg-customGold hover:text-black transition-colors duration-300">
+            <i class="ph ph-instagram-logo text-sm"></i>
+        </a>
+    </div>
+</div>
+        </div>
+    </div>
+
+    <!-- Bottom Horizontal Line -->
+    <div class="footer-line absolute bottom-16 left-10 lg:left-24 right-10 lg:right-24 mb-12 h-px bg-[#cfa63a]"></div>
+
+    <!-- Footer Bottom Bar -->
+<div class="max-w-7xl mx-auto px-6 lg:px-12 mb-8 flex flex-col md:flex-row justify-between items-center text-[10px] text-gray-400 font-sans tracking-widest uppercase mt-4 relative z-10">
+
+<a href="privacy-policy.html"
+   class="hover:text-customGold transition-all duration-300 hover:tracking-[0.22em]">
+   PRIVACY POLICY
+</a>
+
+    <p>&copy; SPACEDECORBELLE ALL RIGHTS RESERVED</p>
+
+</div>
+</footer>
+<!-- RIGHT SIDE GLASS ACTION BUTTONS -->
+<div class="fixed right-4 top-1/2 -translate-y-1/2 z-50 hidden md:flex flex-col gap-5">
+  
+  <!-- Form -->
+  <a href="contact.html" class="glass-float-btn" aria-label="Fill Form">
+    <i class="ph ph-note-pencil text-[28px]"></i>
+  </a>
+
+  <!-- WhatsApp -->
+  <a href="https://wa.me/919654232327" target="_blank" class="glass-float-btn" aria-label="WhatsApp">
+    <i class="ph ph-whatsapp-logo text-[28px]"></i>
+  </a>
+
+</div>
+    </div>
+
+    <script>
+        const menuBtn = document.getElementById("menuBtn");
+        const mobileMenu = document.getElementById("mobileMenu");
+        const menuIcon = document.getElementById("menuIcon");
+        const mobileLinks = mobileMenu.querySelectorAll("a");
+
+        menuBtn.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+
+            if (mobileMenu.classList.contains("hidden")) {
+                menuIcon.classList.remove("ph-x");
+                menuIcon.classList.add("ph-list");
+            } else {
+                menuIcon.classList.remove("ph-list");
+                menuIcon.classList.add("ph-x");
+            }
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener("click", () => {
+                mobileMenu.classList.add("hidden");
+                menuIcon.classList.remove("ph-x");
+                menuIcon.classList.add("ph-list");
+            });
+        });
+        /* LINE ANIMATION ON VIEW */
+const lines = document.querySelectorAll(
+  '.red-line, .line-center-grow, .footer-line, .footer-line-vertical, .social-gold-line'
+);
+const footerDrops = document.querySelectorAll('.footer-drop');
+
+const footerDropObserver = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            obs.unobserve(entry.target);
+        }
+    });
+}, {
+    threshold: 0.2
+});
+
+footerDrops.forEach(item => {
+    footerDropObserver.observe(item);
+});
+
+const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            obs.unobserve(entry.target); // run once only
+        }
+    });
+}, {
+    threshold: 0.5
+});
+
+lines.forEach(line => {
+    observer.observe(line);
+});
+/* FEATURE ARROW ROTATES WITH SCROLL DIRECTION */
+/* FEATURE ARROW CLICK ROTATION + REDIRECT */
+const featureArrow = document.getElementById('featureArrow');
+
+if (featureArrow) {
+    let arrowAnimating = false;
+
+    featureArrow.addEventListener('click', () => {
+        if (arrowAnimating) return;
+
+        arrowAnimating = true;
+
+        featureArrow.animate(
+            [
+                { transform: 'rotate(0deg)' },
+                { transform: 'rotate(360deg)' },
+                { transform: 'rotate(0deg)' }
+            ],
+            {
+                duration: 1000,
+                easing: 'ease-in-out',
+                fill: 'forwards'
+            }
+        );
+
+        setTimeout(() => {
+            
+        }, 1000);
+    });
+}
+
+
+/* STATS COUNT UP ON VIEW */
+const statNumbers = document.querySelectorAll('.stat-number');
+
+function animateStat(el) {
+    const target = parseInt(el.dataset.target, 10);
+    const suffix = el.dataset.suffix || '';
+    const duration = 1800;
+    const startTime = performance.now();
+
+    function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const currentValue = Math.floor(eased * target);
+
+        el.textContent = `${currentValue}${suffix}`;
+
+        if (progress < 1) {
+            requestAnimationFrame(update);
+        } else {
+            el.textContent = `${target}${suffix}`;
+        }
+    }
+
+    requestAnimationFrame(update);
+}
+
+const statObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const el = entry.target;
+
+            if (!el.classList.contains('counted')) {
+                el.classList.add('counted');
+                animateStat(el);
+            }
+
+            observer.unobserve(el);
+        }
+    });
+}, {
+    threshold: 0.35
+});
+
+statNumbers.forEach(stat => {
+    statObserver.observe(stat);
+});
+const bestWords = document.querySelectorAll('.best-word');
+
+const bestWordObserver = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+
+            // delay BEFORE animation starts
+            setTimeout(() => {
+                entry.target.classList.add('in-view');
+            }, 0); // tiny buffer so observer feels smooth
+
+            obs.unobserve(entry.target);
+        }
+    });
+}, {
+    threshold: 0.4
+});
+
+bestWords.forEach(word => {
+    bestWordObserver.observe(word);
+});
+const servicesItems = document.querySelectorAll('.services-item');
+
+const servicesObserver = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            obs.unobserve(entry.target);
+        }
+    });
+}, {
+    threshold: 0.2
+});
+
+servicesItems.forEach(item => {
+    servicesObserver.observe(item);
+});
+const ctaCard = document.querySelector('.cta-card-slide');
+
+if (ctaCard) {
+    const ctaCardObserver = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+                obs.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.25
+    });
+
+    ctaCardObserver.observe(ctaCard);
+}
+
+const interiorReveals = document.querySelectorAll('.interior-reveal');
+
+const interiorRevealObserver = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            obs.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.18 });
+
+interiorReveals.forEach(item => {
+    interiorRevealObserver.observe(item);
+});
+
+
+    </script>
+    
+    
+</body>
+</html>

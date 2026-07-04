@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Decorative Designs | Space Decor Belle</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            customRed: '#c12323',
+            customGold: '#cfa63a',
+            customDark: '#1a1a1a',
+            customLightGray: '#f8f8f8',
+          },
+          fontFamily: {
+            sans: ['Montserrat', 'sans-serif'],
+            serif: ['Playfair Display', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Phosphor Icons -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: #1a1a1a;
+      overflow-x: hidden;
+      background: #ffffff;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    section,
+    footer,
+    div[id="contact"] {
+      scroll-margin-top: 110px;
+    }
+
+    .font-serif-chic {
+      font-family: 'Playfair Display', serif;
+    }
+
+    .cormorant-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-link {
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: #c12323;
+    }
+
+    #mobileMenu {
+      transition: all 0.35s ease;
+    }
+
+    .line-center-grow {
+      transform: scaleX(0);
+      transform-origin: center;
+      opacity: 0.6;
+      transition: transform 1.6s cubic-bezier(0.22, 1, 0.36, 1),
+                  opacity 1.6s ease;
+    }
+
+    .line-center-grow.in-view {
+      transform: scaleX(1);
+      opacity: 1;
+    }
+
+    .footer-line {
+      transform: scaleX(0);
+      transform-origin: center;
+      opacity: 0.6;
+      transition: transform 1.6s cubic-bezier(0.22, 1, 0.36, 1),
+                  opacity 1.6s ease;
+    }
+
+    .footer-line.in-view {
+      transform: scaleX(1);
+      opacity: 1;
+    }
+
+    .footer-line-vertical {
+      transform: scaleY(0);
+      transform-origin: center;
+      opacity: 0.6;
+      transition: transform 1.6s cubic-bezier(0.22, 1, 0.36, 1),
+                  opacity 1.6s ease;
+    }
+
+    .footer-line-vertical.in-view {
+      transform: scaleY(1);
+      opacity: 1;
+    }
+
+    .footer-drop {
+      opacity: 0;
+      transform: translateY(-26px);
+      transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+                  opacity 0.9s ease;
+    }
+
+    .footer-drop.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .footer-delay-1 { transition-delay: 0.08s; }
+    .footer-delay-2 { transition-delay: 0.18s; }
+    .footer-delay-3 { transition-delay: 0.28s; }
+    .footer-delay-4 { transition-delay: 0.38s; }
+    .footer-delay-5 { transition-delay: 0.48s; }
+    .footer-delay-6 { transition-delay: 0.58s; }
+
+    .social-bar-wrap {
+      overflow: hidden;
+    }
+
+    .social-bar-drop {
+      transform: translateY(-100%);
+      opacity: 0;
+      animation: socialBarDrop 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    .social-gold-line {
+      transform: scaleY(0);
+      transform-origin: top;
+      opacity: 0.6;
+      transition: transform 1.6s cubic-bezier(0.22, 1, 0.36, 1),
+                  opacity 1.6s ease;
+    }
+
+    .social-gold-line.in-view {
+      transform: scaleY(1);
+      opacity: 1;
+    }
+
+    .social-icon {
+      opacity: 0;
+      transform: translateY(-14px) scale(0.92);
+      display: inline-flex;
+      animation: socialIconReveal 0.45s ease forwards;
+    }
+
+    .social-icon:nth-child(1) { animation-delay: 1.05s; }
+    .social-icon:nth-child(2) { animation-delay: 1.18s; }
+    .social-icon:nth-child(3) { animation-delay: 1.31s; }
+    .social-icon:nth-child(4) { animation-delay: 1.44s; }
+
+    .header-logo-drop {
+      opacity: 0;
+      transform: translateY(-26px);
+      animation: headerDropIn 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      animation-delay: 0.28s;
+    }
+
+    .nav-drop {
+      opacity: 0;
+      transform: translateY(-18px);
+      animation: navDropIn 0.5s ease forwards;
+      animation-delay: var(--delay, 0s);
+    }
+
+    .mobile-menu-drop {
+      opacity: 0;
+      transform: translateY(-18px);
+      animation: headerDropIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      animation-delay: 0.38s;
+    }
+
+    @keyframes socialBarDrop {
+      0% {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+      70% {
+        transform: translateY(18px);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes socialIconReveal {
+      0% {
+        opacity: 0;
+        transform: translateY(-14px) scale(0.92);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes headerDropIn {
+      0% {
+        opacity: 0;
+        transform: translateY(-26px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes navDropIn {
+      0% {
+        opacity: 0;
+        transform: translateY(-18px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .glass-float-btn {
+      width: 66px;
+      height: 58px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.92);
+      text-decoration: none;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      background: rgba(40, 40, 40, 0.55);
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.14);
+      transition: all 0.28s ease;
+    }
+
+    .glass-float-btn:hover {
+      transform: translateX(-4px);
+      border-color: rgba(255, 255, 255, 0.4);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
+    }
+
+    @media (max-width: 767px) {
+      .glass-float-btn {
+        width: 82px;
+        height: 52px;
+        border-radius: 10px;
+      }
+
+      .glass-float-btn i {
+        font-size: 24px !important;
+      }
+    }
+
+    /* VASTU PAGE CUSTOM STYLES */
+    .vastu-reveal {
+      opacity: 0;
+      transform: translateY(58px);
+      transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1), opacity 1s ease;
+      will-change: transform, opacity;
+    }
+
+    .vastu-reveal.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .vastu-delay-1 { transition-delay: 0.10s; }
+    .vastu-delay-2 { transition-delay: 0.22s; }
+    .vastu-delay-3 { transition-delay: 0.34s; }
+    .vastu-delay-4 { transition-delay: 0.46s; }
+    .vastu-delay-5 { transition-delay: 0.58s; }
+    .vastu-delay-6 { transition-delay: 0.70s; }
+
+    .vastu-card-shadow {
+      box-shadow: 0 28px 70px rgba(0,0,0,0.10);
+    }
+
+    .vastu-img-zoom {
+      transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .group:hover .vastu-img-zoom {
+      transform: scale(1.07);
+    }
+
+    .vastu-soft-grid {
+      background-image:
+        linear-gradient(rgba(193,35,35,.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(193,35,35,.05) 1px, transparent 1px);
+      background-size: 46px 46px;
+    }
+
+
+
+  </style>
+</head>
+
+<body>
+
+  <!-- LEFT RED SOCIAL BAR -->
+  <div class="hidden lg:flex absolute left-0 top-0 z-50 social-bar-wrap">
+    <div class="w-[44px] h-[760px] bg-[#c61f1f] flex flex-col items-center pt-10 pb-10 social-bar-drop">
+
+      <div class="w-px h-80 bg-[#cfa63a] mb-16 mt-4 social-gold-line origin-top"></div>
+
+      <div class="flex flex-col items-center gap-7 text-white text-[19px] mt-14">
+        <a href="https://wa.me/919654232327" target="_blank" class="social-icon hover:text-[#cfa63a] transition-colors duration-300">
+          <i class="ph ph-whatsapp-logo"></i>
+        </a>
+
+        <a href="#" target="_blank" class="social-icon hover:text-[#cfa63a] transition-colors duration-300">
+          <i class="ph ph-facebook-logo"></i>
+        </a>
+
+        <a href="#" target="_blank" class="social-icon hover:text-[#cfa63a] transition-colors duration-300">
+          <i class="ph ph-linkedin-logo"></i>
+        </a>
+
+        <a href="#" target="_blank" class="social-icon hover:text-[#cfa63a] transition-colors duration-300">
+          <i class="ph ph-instagram-logo"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="w-full relative z-40 bg-white py-6">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center">
+
+      <!-- Logo -->
+      <a href="index.html" class="flex items-center overflow-hidden header-logo-drop">
+        <img
+          src="assets/images/logo.png"
+          alt="Space Decor Belle Logo"
+          class="h-[92px] w-auto object-contain scale-[1] origin-left"
+        >
+      </a>
+
+      <!-- Navigation -->
+      <nav class="hidden md:flex gap-7 text-sm font-medium text-gray-700 tracking-widest">
+        <a href="index.html" class="nav-link nav-drop" style="--delay: 0.56s;">home</a>
+        <a href="about.html" class="nav-link nav-drop" style="--delay: 0.68s;">about us</a>
+        <a href="interior.html" class="nav-link nav-drop" style="--delay: 0.80s;">interior</a>
+        <a href="vastu.html" class="nav-link nav-drop" style="--delay: 0.92s;">vastu</a>
+        <a href="decor.html" class="nav-link nav-drop text-customRed" style="--delay: 1.04s;">decor</a>
+        <a href="portfolio.html" class="nav-link nav-drop" style="--delay: 1.16s;">portfolio</a>
+        <a href="contact.html" class="nav-link nav-drop" style="--delay: 1.28s;">contact</a>
+      </nav>
+
+      <!-- Mobile Menu Button -->
+      <button id="menuBtn" class="md:hidden text-2xl text-[#1a1a1a] mobile-menu-drop" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileMenu" type="button">
+        <i id="menuIcon" class="ph ph-list"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden md:hidden px-6 lg:px-12 pt-4 pb-6 bg-white border-t border-gray-200 shadow-sm">
+      <nav class="flex flex-col gap-5 text-sm font-medium text-gray-700 tracking-widest uppercase">
+        <a href="index.html" class="nav-link">home</a>
+        <a href="about.html" class="nav-link">about us</a>
+        <a href="interior.html" class="nav-link">interior</a>
+        <a href="vastu.html" class="nav-link">vastu</a>
+        <a href="decor.html" class="nav-link text-customRed">decor</a>
+        <a href="portfolio.html" class="nav-link">portfolio</a>
+        <a href="contact.html" class="nav-link">contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- DECORATIVE DESIGNS HERO -->
+    <section id="decor" class="relative w-full max-w-7xl mx-auto px-6 lg:px-12 pt-3 pb-10">
+      <div class="relative min-h-[520px] lg:min-h-[640px] overflow-hidden rounded-[34px] bg-[#151515] vastu-reveal vastu-sacred-bg">
+        <img
+          src="assets/images/dec-herp.jpg"
+          alt="Luxury decorative interior design"
+          class="absolute inset-0 w-full h-full object-cover object-center opacity-45"
+        >
+<div class="absolute inset-0 bg-black/18"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-black/82 via-black/52 to-black/18"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/62 via-transparent to-transparent"></div>
+
+        <div class="absolute right-8 top-8 hidden md:flex gap-3">
+          <span class="direction-pill px-4 py-2 text-[10px] tracking-[0.28em] uppercase text-white bg-black/25 border border-white/25">Texture</span>
+          <span class="direction-pill px-4 py-2 text-[10px] tracking-[0.28em] uppercase text-white bg-black/25 border border-white/25">Detail</span>
+          <span class="direction-pill px-4 py-2 text-[10px] tracking-[0.28em] uppercase text-white bg-black/25 border border-white/25">Style</span>
+        </div>
+
+        <div class="relative z-10 min-h-[520px] lg:min-h-[640px] flex items-center">
+          <div class="max-w-3xl px-7 md:px-14 py-16">
+            <p class="text-customGold text-[11px] uppercase tracking-[0.55em] font-bold mb-6">
+              Decorative Design Studio
+            </p>
+
+            <h1 class="font-serif-chic text-white text-[52px] md:text-[82px] lg:text-[94px] leading-[0.92] tracking-[-0.04em]">
+              Details That<br>
+              <span class="italic text-customGold">Define Beauty.</span>
+            </h1>
+
+            <div class="line-center-grow w-[260px] md:w-[420px] h-[3px] bg-customRed mt-9 mb-8"></div>
+
+            <p class="text-white/85 text-[15px] md:text-[18px] leading-[1.8] max-w-xl font-light">
+              We craft decorative design elements that add character, warmth, elegance, and personality to every corner of your home or commercial space.
+            </p>
+
+            <div class="flex flex-wrap gap-4 mt-10">
+              <a href="#contact" class="bg-customRed hover:bg-red-800 text-white px-7 py-4 text-[11px] font-bold uppercase tracking-[0.25em] transition-colors">Book Consultation</a>
+              <a href="#decor-services" class="border border-white/50 text-white hover:bg-white hover:text-black px-7 py-4 text-[11px] font-bold uppercase tracking-[0.25em] transition-colors">Explore work</a>
+            </div>
+          </div>
+        </div>
+
+<div class="absolute right-6 bottom-6 hidden md:grid grid-cols-3 gap-3 w-[420px]">
+
+  <div class="bg-white/90 backdrop-blur px-5 py-5 rounded-[18px]">
+    <h4 class="stat-number font-serif-chic text-customRed text-[34px] leading-none"
+        data-target="120"
+        data-suffix="+">0+</h4>
+    <p class="text-[10px] uppercase tracking-[0.2em] text-gray-700 mt-2">
+      Decor Elements
+    </p>
+  </div>
+
+  <div class="bg-white/90 backdrop-blur px-5 py-5 rounded-[18px]">
+    <h4 class="stat-number font-serif-chic text-customRed text-[34px] leading-none"
+        data-target="75"
+        data-suffix="+">0+</h4>
+    <p class="text-[10px] uppercase tracking-[0.2em] text-gray-700 mt-2">
+      Styling Concepts
+    </p>
+  </div>
+
+  <div class="bg-white/90 backdrop-blur px-5 py-5 rounded-[18px]">
+    <h4 class="stat-number font-serif-chic text-customRed text-[34px] leading-none"
+        data-target="100"
+        data-suffix="%">0%</h4>
+    <p class="text-[10px] uppercase tracking-[0.2em] text-gray-700 mt-2">
+      Visual Harmony
+    </p>
+  </div>
+
+</div>
+      </div>
+    </section>
+
+    <!-- INTRO SECTION -->
+    <section class="w-full bg-white pt-14 pb-12 px-6 lg:px-12">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[0.88fr_1.12fr] gap-12 lg:gap-20 items-end">
+
+        <div class="vastu-reveal vastu-delay-1">
+          <p class="text-customRed text-[12px] uppercase tracking-[0.45em] font-bold mb-5">
+            Our Decorative Approach
+          </p>
+
+          <h2 class="font-serif-chic text-[46px] md:text-[68px] leading-[0.98] text-[#1a1a1a]">
+            Luxury is found<br>
+            <span class="italic text-[#6a6763]">in the final details.</span>
+          </h2>
+        </div>
+
+        <div class="vastu-reveal vastu-delay-2">
+          <p class="text-[16px] md:text-[18px] leading-[1.9] text-[#333] font-medium">
+            Decorative design is not just about adding accessories. It is about creating visual harmony through materials, lighting, wall treatments, art, soft furnishings, statement pieces, textures, colour balance, and curated styling that completes the entire space.
+          </p>
+          <div class="line-center-grow w-full max-w-[520px] h-[2px] bg-customRed mt-8"></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- DECOR SERVICES -->
+    <section id="decor-services" class="w-full bg-[#f8f8f8] py-18 px-6 lg:px-12 vastu-soft-grid">
+      <div class="max-w-7xl mx-auto py-16">
+
+        <div class="text-center max-w-3xl mx-auto mb-14 vastu-reveal">
+          <p class="text-customRed text-[11px] uppercase tracking-[0.55em] font-bold mb-5">
+            What We Create
+          </p>
+
+          <h2 class="font-serif-chic text-[48px] md:text-[72px] leading-none text-[#1a1a1a]">
+            Decorative <span class="italic text-customRed">Designs</span>
+          </h2>
+
+          <div class="line-center-grow w-[260px] md:w-[440px] h-[3px] bg-customRed mx-auto mt-8"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+          <div class="group relative h-[370px] rounded-[28px] overflow-hidden vastu-card-shadow vastu-reveal vastu-delay-1">
+            <img src="assets/images/dec-wall.jpg" alt="Wall decor design" class="vastu-img-zoom w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/82 via-black/25 to-transparent"></div>
+            <div class="absolute top-7 left-7 text-white/90 text-[22px] font-bold">01.</div>
+            <div class="absolute bottom-7 left-7 right-7">
+              <h3 class="font-serif-chic text-white text-[34px] leading-none">Wall <span class="italic font-light">Treatments</span></h3>
+              <p class="text-white/80 text-[13px] leading-[1.7] mt-4">Accent walls, textures, panels, wallpapers, mouldings, and artistic wall styling.</p>
+            </div>
+          </div>
+
+          <div class="group relative h-[370px] rounded-[28px] overflow-hidden vastu-card-shadow vastu-reveal vastu-delay-2">
+            <img src="assets/images/dec-soft.jpg" alt="Soft furnishing design" class="vastu-img-zoom w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/82 via-black/25 to-transparent"></div>
+            <div class="absolute top-7 left-7 text-white/90 text-[22px] font-bold">02.</div>
+            <div class="absolute bottom-7 left-7 right-7">
+              <h3 class="font-serif-chic text-white text-[34px] leading-none">Soft <span class="italic font-light">Furnishings</span></h3>
+              <p class="text-white/80 text-[13px] leading-[1.7] mt-4">Curtains, cushions, rugs, upholstery, throws, and fabric layering for comfort.</p>
+            </div>
+          </div>
+
+          <div class="group relative h-[370px] rounded-[28px] overflow-hidden vastu-card-shadow vastu-reveal vastu-delay-3">
+            <img src="assets/images/dec-light mood.jpg" alt="Lighting decor design" class="vastu-img-zoom w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/82 via-black/25 to-transparent"></div>
+            <div class="absolute top-7 left-7 text-white/90 text-[22px] font-bold">03.</div>
+            <div class="absolute bottom-7 left-7 right-7">
+              <h3 class="font-serif-chic text-white text-[34px] leading-none">Lighting <span class="italic font-light">Mood</span></h3>
+              <p class="text-white/80 text-[13px] leading-[1.7] mt-4">Chandeliers, lamps, warm lighting layers, wall sconces, and ambient glow planning.</p>
+            </div>
+          </div>
+
+          <div class="group relative h-[370px] rounded-[28px] overflow-hidden vastu-card-shadow vastu-reveal vastu-delay-4">
+            <img src="assets/images/dec-curated.jpg" alt="Decorative accessories" class="vastu-img-zoom w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/82 via-black/25 to-transparent"></div>
+            <div class="absolute top-7 left-7 text-white/90 text-[22px] font-bold">04.</div>
+            <div class="absolute bottom-7 left-7 right-7">
+              <h3 class="font-serif-chic text-white text-[34px] leading-none">Curated <span class="italic font-light">Accessories</span></h3>
+              <p class="text-white/80 text-[13px] leading-[1.7] mt-4">Vases, mirrors, sculptures, centre pieces, shelves, table decor, and luxury accents.</p>
+            </div>
+          </div>
+
+          <div class="group relative h-[370px] rounded-[28px] overflow-hidden vastu-card-shadow vastu-reveal vastu-delay-5">
+            <img src="assets/images/dec-art.jpg" alt="Art styling" class="vastu-img-zoom w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/82 via-black/25 to-transparent"></div>
+            <div class="absolute top-7 left-7 text-white/90 text-[22px] font-bold">05.</div>
+            <div class="absolute bottom-7 left-7 right-7">
+              <h3 class="font-serif-chic text-white text-[34px] leading-none">Art <span class="italic font-light">Styling</span></h3>
+              <p class="text-white/80 text-[13px] leading-[1.7] mt-4">Artwork selection, gallery walls, frames, focal points, and emotional storytelling.</p>
+            </div>
+          </div>
+
+          <div class="group relative h-[370px] rounded-[28px] overflow-hidden vastu-card-shadow vastu-reveal vastu-delay-6">
+            <img src="assets/images/dec-style.jpg" alt="Complete styling" class="vastu-img-zoom w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/82 via-black/25 to-transparent"></div>
+            <div class="absolute top-7 left-7 text-white/90 text-[22px] font-bold">06.</div>
+            <div class="absolute bottom-7 left-7 right-7">
+              <h3 class="font-serif-chic text-white text-[34px] leading-none">Final <span class="italic font-light">Styling</span></h3>
+              <p class="text-white/80 text-[13px] leading-[1.7] mt-4">Complete room styling with balance, proportion, colour harmony, and premium finishing.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SIGNATURE DETAILING SECTION -->
+    <section class="w-full bg-white py-20 px-6 lg:px-12 overflow-hidden">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-12 lg:gap-16 items-stretch">
+
+<div class="vastu-reveal vastu-delay-1 h-full">
+  <div class="relative rounded-[34px] overflow-hidden h-full min-h-[620px] bg-[#111] vastu-card-shadow group">
+            <img
+              src="assets/images/dec-detail.jpg"
+              alt="Luxury decorative design detailing"
+              class="w-full h-full object-cover vastu-img-zoom opacity-90"
+            >
+
+            <div class="absolute inset-0 bg-gradient-to-t from-black/72 via-black/15 to-transparent"></div>
+
+            <div class="absolute left-8 bottom-8 right-8 bg-white/92 backdrop-blur p-6 md:p-7">
+              <p class="text-customRed text-[10px] uppercase tracking-[0.35em] font-bold mb-3">Decor Moodboard</p>
+              <div class="grid grid-cols-4 gap-3">
+                <div class="h-16 bg-[#9b7b54]"></div>
+                <div class="h-16 bg-[#d8c1a2]"></div>
+                <div class="h-16 bg-[#2b2b2b]"></div>
+                <div class="h-16 bg-[#cfa63a]"></div>
+              </div>
+              <p class="text-[12px] text-[#555] leading-[1.7] mt-4 font-medium">
+                Textures, colours, lighting, and accessories are selected together so the final space feels complete and intentional.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="vastu-reveal vastu-delay-2">
+          <p class="text-customRed text-[12px] uppercase tracking-[0.45em] font-bold mb-5">
+            Styling With Purpose
+          </p>
+
+          <h2 class="font-serif-chic text-[46px] md:text-[70px] leading-[0.95] text-[#1a1a1a] mb-8">
+            Every object has<br>
+            <span class="italic text-[#6a6763]">a reason to belong.</span>
+          </h2>
+
+          <div class="line-center-grow w-full max-w-[480px] h-[2px] bg-customRed mb-8"></div>
+
+          <div class="space-y-6 text-[15px] md:text-[16px] leading-[1.85] text-[#333] font-medium max-w-xl">
+            <p>
+              We choose decorative pieces that support the mood of your interior instead of cluttering it. Every vase, frame, mirror, fabric, light, and artwork is selected to enhance the architecture of the space.
+            </p>
+
+            <p>
+              The result is a refined, polished, and expressive space that feels complete from the first glance to the smallest corner.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4 mt-10 max-w-xl">
+            <div class="border border-gray-200 p-5">
+              <p class="text-customGold font-serif-chic text-[34px] leading-none">01</p>
+              <p class="text-[11px] uppercase tracking-[0.22em] text-[#555] mt-3">Moodboard</p>
+            </div>
+
+            <div class="border border-gray-200 p-5">
+              <p class="text-customGold font-serif-chic text-[34px] leading-none">02</p>
+              <p class="text-[11px] uppercase tracking-[0.22em] text-[#555] mt-3">Material Palette</p>
+            </div>
+
+            <div class="border border-gray-200 p-5">
+              <p class="text-customGold font-serif-chic text-[34px] leading-none">03</p>
+              <p class="text-[11px] uppercase tracking-[0.22em] text-[#555] mt-3">Decor Selection</p>
+            </div>
+
+            <div class="border border-gray-200 p-5">
+              <p class="text-customGold font-serif-chic text-[34px] leading-none">04</p>
+              <p class="text-[11px] uppercase tracking-[0.22em] text-[#555] mt-3">Final Setup</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- DARK SERVICE STRIP -->
+    <section class="w-full bg-[#151515] py-16 px-6 lg:px-12 overflow-hidden">
+      <div class="max-w-7xl mx-auto">
+
+        <div class="grid grid-cols-1 lg:grid-cols-[0.8fr_1.2fr] gap-12 lg:gap-16 items-center">
+
+          <div class="vastu-reveal vastu-delay-1">
+            <p class="text-customGold text-[11px] uppercase tracking-[0.55em] font-bold mb-5">
+              Designed For
+            </p>
+
+            <h2 class="font-serif-chic text-white text-[44px] md:text-[64px] leading-[0.98]">
+              Homes, showrooms &<br>
+              <span class="italic text-customGold">premium interiors.</span>
+            </h2>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+            <div class="vastu-reveal vastu-delay-2 bg-white/5 border border-white/10 p-7">
+              <h3 class="font-serif-chic text-white text-[28px] mb-3">Living Room Decor</h3>
+              <p class="text-white/70 text-[14px] leading-[1.8]">Statement walls, coffee table styling, artwork, lighting, cushions, rugs, and display corners.</p>
+            </div>
+
+            <div class="vastu-reveal vastu-delay-3 bg-white/5 border border-white/10 p-7">
+              <h3 class="font-serif-chic text-white text-[28px] mb-3">Bedroom Styling</h3>
+              <p class="text-white/70 text-[14px] leading-[1.8]">Bedback styling, side tables, lamps, curtains, soft colours, fabrics, and calm finishing touches.</p>
+            </div>
+
+            <div class="vastu-reveal vastu-delay-4 bg-white/5 border border-white/10 p-7">
+              <h3 class="font-serif-chic text-white text-[28px] mb-3">Commercial Decor</h3>
+              <p class="text-white/70 text-[14px] leading-[1.8]">Reception styling, brand corners, statement walls, ambience planning, and customer experience details.</p>
+            </div>
+
+            <div class="vastu-reveal vastu-delay-5 bg-white/5 border border-white/10 p-7">
+              <h3 class="font-serif-chic text-white text-[28px] mb-3">Luxury Corners</h3>
+              <p class="text-white/70 text-[14px] leading-[1.8]">Console tables, entry foyers, niches, shelves, stair areas, and corners transformed into visual highlights.</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="w-full bg-white py-20 px-6 lg:px-12">
+      <div class="max-w-7xl mx-auto">
+        <div class="relative rounded-[34px] overflow-hidden min-h-[420px] bg-[#111] vastu-reveal">
+
+          <img
+            src="assets/images/dec-cta.avif"
+            alt="Decorative luxury interior styling"
+            class="absolute inset-0 w-full h-full object-cover opacity-70"
+          >
+
+          <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/20"></div>
+
+          <div class="relative z-10 min-h-[420px] px-8 md:px-14 py-16 md:py-20 max-w-4xl mx-auto text-center flex flex-col items-center justify-center">
+            <p class="text-customGold text-[11px] uppercase tracking-[0.55em] font-bold mb-5">
+              Complete Your Space
+            </p>
+
+            <h2 class="font-serif-chic text-white text-[46px] md:text-[76px] leading-[0.95]">
+              Let every detail<br>
+              <span class="italic text-customGold">speak beautifully.</span>
+            </h2>
+
+            <div class="line-center-grow w-[260px] md:w-[420px] h-[3px] bg-customRed mt-9 mb-8 mx-auto"></div>
+
+            <p class="text-white/85 text-[15px] md:text-[17px] leading-[1.8] max-w-2xl mx-auto">
+              From moodboard to final styling, we help you decorate your interiors with pieces that feel premium, personal, and perfectly placed.
+            </p>
+
+            <a href="#contact" class="inline-block mt-9 bg-customRed hover:bg-red-800 text-white px-8 py-4 text-[11px] font-bold uppercase tracking-[0.25em] transition-colors">
+              Book Decor Consultation
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+<footer id="clients" class="w-full bg-[#151515] relative pt-6 pb-2 z-10 border-t border-gray-800 overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12 relative">
+    <div class="footer-line-vertical hidden md:block absolute top-[38px] bottom-[118px] left-[28%] w-px bg-[#cfa63a]"></div>
+    <div class="footer-line-vertical hidden md:block absolute top-[38px] bottom-[118px] right-[28%] w-px bg-[#cfa63a]"></div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 relative z-10">
+      <div class="flex flex-col justify-start pt-12 pb-16 md:pb-0 pl-0 md:pl-10">
+        <nav class="flex flex-col gap-6 text-xs font-sans font-bold tracking-widest uppercase text-white">
+          <a href="index.html" class="footer-drop footer-delay-1 hover:text-customGold">home</a>
+          <a href="about.html" class="footer-drop footer-delay-2 hover:text-customGold">about us</a>
+          <a href="interior.html" class="footer-drop footer-delay-3 hover:text-customGold">interior</a>
+          <a href="vastu.html" class="footer-drop footer-delay-4 hover:text-customGold">vastu</a>
+          <a href="decor.html" class="footer-drop footer-delay-5 hover:text-customGold">decor</a>
+          <a href="contact.html" class="footer-drop footer-delay-6 hover:text-customGold">contact</a>
+        </nav>
+      </div>
+
+      <div id="contact" class="flex flex-col items-center text-center pt-8 pb-[118px] px-4 h-full">
+        <h4 class="text-customGold font-sans font-bold text-sm uppercase tracking-[0.3em] mb-8">RECENT WORKS</h4>
+        <div class="grid grid-cols-3 gap-2 mb-6 w-full max-w-xs">
+          <img src="assets/images/11.jpg" class="w-full h-20 object-cover" alt="">
+          <img src="assets/images/12.jpg" class="w-full h-20 object-cover" alt="">
+          <img src="assets/images/13.jpg" class="w-full h-20 object-cover" alt="">
+          <img src="assets/images/14.jpg" class="w-full h-20 object-cover" alt="">
+          <img src="assets/images/15.jpg" class="w-full h-20 object-cover" alt="">
+          <img src="assets/images/16.jpg" class="w-full h-20 object-cover" alt="">
+        </div>
+        <h4 class="text-white text-[12px] tracking-[0.35em] uppercase mb-4">TALK TO THE TEAM</h4>
+        <p class="text-customGold font-serif-chic text-[24px] font-light">(+91) 96542 32327</p>
+        <p class="text-customGold text-[18px] md:text-[24px] font-light">info@spacedecorbelle.com</p>
+      </div>
+
+      <div class="flex flex-col items-end md:items-center justify-end pt-8 pb-16 md:pb-[118px] pr-0 md:pr-10 h-full">
+        <div class="flex md:flex-col items-center gap-4 md:gap-3 md:pt-0 mt-auto">
+          <span class="footer-drop footer-delay-1 text-white font-bold text-[8px] tracking-[0.3em] uppercase md:rotate-90 whitespace-nowrap">FOLLOW US</span>
+          <div class="footer-drop footer-delay-2 w-px h-16 bg-customGold hidden md:block"></div>
+          <a href="#" class="footer-drop footer-delay-3 text-customGold border border-customGold rounded-full p-2 hover:bg-customGold hover:text-black"><i class="ph ph-whatsapp-logo text-sm"></i></a>
+          <a href="#" class="footer-drop footer-delay-4 text-customGold border border-customGold rounded-full p-2 hover:bg-customGold hover:text-black"><i class="ph ph-facebook-logo text-sm"></i></a>
+          <a href="#" class="footer-drop footer-delay-5 text-customGold border border-customGold rounded-full p-2 hover:bg-customGold hover:text-black"><i class="ph ph-linkedin-logo text-sm"></i></a>
+          <a href="#" class="footer-drop footer-delay-6 text-customGold border border-customGold rounded-full p-2 hover:bg-customGold hover:text-black"><i class="ph ph-instagram-logo text-sm"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-line absolute bottom-16 left-10 lg:left-24 right-10 lg:right-24 mb-12 h-px bg-[#cfa63a]"></div>
+
+    <!-- Footer Bottom Bar -->
+<div class="max-w-7xl mx-auto px-6 lg:px-12 mb-8 flex flex-col md:flex-row justify-between items-center text-[10px] text-gray-400 font-sans tracking-widest uppercase mt-4 relative z-10">
+
+<a href="privacy-policy.html"
+   class="hover:text-customGold transition-all duration-300 hover:tracking-[0.22em]">
+   PRIVACY POLICY
+</a>
+
+    <p>&copy; SPACEDECORBELLE ALL RIGHTS RESERVED</p>
+
+</div>
+</footer>
+
+<!-- RIGHT SIDE GLASS ACTION BUTTONS -->
+<div class="fixed right-4 top-1/2 -translate-y-1/2 z-50 hidden md:flex flex-col gap-5">
+  
+  <!-- Form -->
+  <a href="contact.html" class="glass-float-btn" aria-label="Fill Form">
+    <i class="ph ph-note-pencil text-[28px]"></i>
+  </a>
+
+  <!-- WhatsApp -->
+  <a href="https://wa.me/919654232327" target="_blank" class="glass-float-btn" aria-label="WhatsApp">
+    <i class="ph ph-whatsapp-logo text-[28px]"></i>
+  </a>
+
+</div>
+
+  <!-- JS -->
+  <script>
+    const menuBtn = document.getElementById("menuBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
+    const menuIcon = document.getElementById("menuIcon");
+    const mobileLinks = mobileMenu.querySelectorAll("a");
+
+    menuBtn.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+
+      if (mobileMenu.classList.contains("hidden")) {
+        menuIcon.classList.remove("ph-x");
+        menuIcon.classList.add("ph-list");
+      } else {
+        menuIcon.classList.remove("ph-list");
+        menuIcon.classList.add("ph-x");
+      }
+    });
+
+    mobileLinks.forEach(link => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.add("hidden");
+        menuIcon.classList.remove("ph-x");
+        menuIcon.classList.add("ph-list");
+      });
+    });
+
+    const lines = document.querySelectorAll(
+      '.line-center-grow, .footer-line, .footer-line-vertical, .social-gold-line'
+    );
+
+    const lineObserver = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.35
+    });
+
+    lines.forEach(line => {
+      lineObserver.observe(line);
+    });
+
+    const footerDrops = document.querySelectorAll('.footer-drop');
+
+    const footerDropObserver = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.2
+    });
+
+    footerDrops.forEach(item => {
+      footerDropObserver.observe(item);
+    });
+
+    const vastuReveals = document.querySelectorAll('.vastu-reveal');
+
+    const vastuObserver = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.18
+    });
+
+    vastuReveals.forEach(item => {
+      vastuObserver.observe(item);
+    });
+    const statNumbers = document.querySelectorAll('.stat-number');
+
+function animateStat(el) {
+  const target = parseInt(el.dataset.target, 10);
+  const suffix = el.dataset.suffix || '';
+  const duration = 1800;
+  const startTime = performance.now();
+
+  function update(currentTime) {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const currentValue = Math.floor(eased * target);
+
+    el.textContent = `${currentValue}${suffix}`;
+
+    if (progress < 1) {
+      requestAnimationFrame(update);
+    } else {
+      el.textContent = `${target}${suffix}`;
+    }
+  }
+
+  requestAnimationFrame(update);
+}
+
+const statObserver = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+
+      if (!el.classList.contains('counted')) {
+        el.classList.add('counted');
+        animateStat(el);
+      }
+
+      observer.unobserve(el);
+    }
+  });
+}, {
+  threshold: 0.35
+});
+
+statNumbers.forEach(stat => {
+  statObserver.observe(stat);
+});
+  </script>
+
+</body>
+</html>
