@@ -440,10 +440,354 @@
         font-size: 24px !important;
     }
 }
+/* RIGHT SIDE IMAGE FLOATING BUTTONS */
+.image-float-btn {
+    width: 64px;
+    height: 64px;
+    padding: 7px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #ffffff;
+    border-radius: 18px;
+
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.16);
+
+    overflow: hidden;
+    text-decoration: none;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.image-float-btn img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.image-float-btn:hover {
+    transform: translateX(-6px) scale(1.06);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.22);
+}
+/* =========================================
+   PREMIUM LUXURY HEADER
+========================================= */
+
+.premium-header {
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+
+    background: rgba(255, 255, 255, 0.95);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border-bottom: 1px solid rgba(207, 166, 58, 0.3);
+
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.045);
+}
+
+.premium-header-inner {
+    min-height: 112px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 24px;
+}
+
+/* LOGO */
+
+.premium-header-logo {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.premium-header-logo img {
+    height: 88px;
+    width: auto;
+    object-fit: contain;
+}
+
+/* =========================================
+   DESKTOP NAVIGATION
+========================================= */
+
+.premium-nav-link {
+    position: relative;
+
+    padding: 16px 15px;
+
+    color: #35312e;
+
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1;
+
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease;
+}
+
+/* RED DOT */
+
+.premium-nav-link::before {
+    content: "";
+
+    position: absolute;
+    left: 50%;
+    bottom: 7px;
+
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+    background: #c12323;
+
+    opacity: 0;
+
+    transform:
+        translateX(-50%)
+        translateY(6px);
+
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
+}
+
+/* GOLD GRADIENT LINE */
+
+.premium-nav-link::after {
+    content: "";
+
+    position: absolute;
+
+    left: 15px;
+    right: 15px;
+    bottom: 0;
+
+    height: 1px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #cfa63a,
+        transparent
+    );
+
+    opacity: 0;
+
+    transform: scaleX(0);
+    transform-origin: center;
+
+    transition:
+        opacity 0.35s ease,
+        transform 0.35s ease;
+}
+
+/* =========================================
+   HOVER EFFECT
+   Hover par bhi red text, dot aur line dikhegi
+========================================= */
+
+.premium-nav-link:hover {
+    color: #c12323;
+}
+
+.premium-nav-link:hover::before {
+    opacity: 1;
+
+    transform:
+        translateX(-50%)
+        translateY(0);
+}
+
+.premium-nav-link:hover::after {
+    opacity: 1;
+    transform: scaleX(1);
+}
+
+/* =========================================
+   ACTIVE/CURRENT PAGE
+   Current page par effect permanent rahega
+========================================= */
+
+.premium-nav-link.active {
+    color: #c12323;
+}
+
+.premium-nav-link.active::before {
+    opacity: 1;
+
+    transform:
+        translateX(-50%)
+        translateY(0);
+}
+
+.premium-nav-link.active::after {
+    opacity: 1;
+    transform: scaleX(1);
+}
+
+
+/* =========================================
+   MOBILE MENU
+========================================= */
+
+.premium-mobile-menu {
+    background: linear-gradient(
+        145deg,
+        #151515,
+        #24201e
+    );
+
+    border-top: 1px solid rgba(207, 166, 58, 0.25);
+
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+}
+
+.premium-mobile-link {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    gap: 17px;
+
+    padding: 16px 4px;
+
+    color: rgba(255, 255, 255, 0.78);
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+    font-family: "Playfair Display", serif;
+    font-size: 24px;
+    font-weight: 400;
+
+    text-decoration: none;
+
+    transition:
+        color 0.3s ease,
+        padding-left 0.3s ease;
+}
+
+.premium-mobile-link span {
+    min-width: 27px;
+
+    color: #cfa63a;
+
+    font-family: "Montserrat", sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+
+    letter-spacing: 0.16em;
+}
+
+/* Mobile active page */
+
+.premium-mobile-link.active {
+    color: #cfa63a;
+    padding-left: 10px;
+}
+
+.premium-mobile-link.active::after {
+    content: "";
+
+    position: absolute;
+    right: 4px;
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+    background: #c12323;
+}
+
+.premium-mobile-link:hover {
+    color: #cfa63a;
+    padding-left: 10px;
+}
+
+/* Mobile CTA */
+
+.premium-mobile-cta {
+    min-height: 54px;
+    margin-top: 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    background: #c12323;
+    color: #ffffff;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.premium-mobile-cta i {
+    font-size: 17px;
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (min-width: 1024px) {
+    .premium-desktop-nav {
+        display: flex;
+    }
+
+    .premium-menu-btn {
+        display: none;
+    }
+}
+
+@media (max-width: 1023px) {
+    .premium-header-inner {
+        min-height: 92px;
+    }
+
+    .premium-header-logo img {
+        height: 74px;
+    }
+}
+
+@media (max-width: 767px) {
+    .premium-header-inner {
+        min-height: 82px;
+    }
+
+    .premium-header-logo img {
+        height: 66px;
+    }
+
+    .premium-menu-btn {
+        width: 45px;
+        height: 45px;
+    }
+}
     </style>
 </head>
 <!-- LEFT RED SOCIAL BAR -->
-<div class="hidden lg:flex absolute left-0 top-0 z-50 social-bar-wrap">
+<!-- <div class="hidden lg:flex absolute left-0 top-0 z-50 social-bar-wrap">
   <div class="w-[44px] h-[760px] bg-[#c61f1f] flex flex-col items-center pt-10 pb-10 social-bar-drop">
     
     <div class="w-px h-80 bg-[#cfa63a] mb-16 mt-4 social-gold-line origin-top"></div>
@@ -468,48 +812,154 @@
 
     </div>
   </div>
-</div>
+</div> -->
 
-<header class="w-full relative z-40 bg-white py-6">
-    <div class="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center">
+<!-- PREMIUM LUXURY HEADER -->
+<header class="premium-header">
 
-        <!-- Logo -->
-        <a href="index.html" class="flex items-center overflow-hidden header-logo-drop">
-          <img 
-            src="assets/images/logo.png" 
-            alt="Space Decor Belle Logo"
-            class="h-[92px] w-auto object-contain scale-[1] origin-left"
-          >
+  <div class="max-w-7xl mx-auto px-5 lg:px-12">
+
+    <div class="premium-header-inner">
+
+      <!-- Logo -->
+      <a
+        href="index.html"
+        class="premium-header-logo header-logo-drop"
+        aria-label="Space Decor Belle Home"
+      >
+        <img
+          src="assets/images/logo.png"
+          alt="Space Decor Belle Logo"
+        >
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="premium-desktop-nav">
+
+        <a
+          href="index.html"
+          class="premium-nav-link nav-drop"
+          style="--delay: 0.56s;"
+        >
+          Home
         </a>
 
-        <!-- Navigation -->
-<nav class="hidden md:flex gap-7 text-sm font-medium text-gray-700 tracking-widest">
-    <a href="index.html" class="nav-link nav-drop" style="--delay: 0.56s;">home</a>
-    <a href="about.html" class="nav-link nav-drop" style="--delay: 0.68s;">about us</a>
-    <a href="interior.html" class="nav-link nav-drop" style="--delay: 0.80s;">interior</a>
-    <a href="vastu.html" class="nav-link nav-drop" style="--delay: 0.92s;">vastu</a>
-    <a href="decor.html" class="nav-link nav-drop" style="--delay: 1.04s;">decor</a>
-    <a href="portfolio.html" class="nav-link nav-drop" style="--delay: 1.16s;">portfolio</a>
-    <a href="contact.html" class="nav-link nav-drop" style="--delay: 1.28s;">contact</a>
-</nav>
-        <!-- Mobile Menu Button -->
-<button id="menuBtn" class="md:hidden text-2xl text-[#1a1a1a] mobile-menu-drop" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileMenu" type="button">
-    <i id="menuIcon" class="ph ph-list"></i>
-</button>
-    </div>
+        <a
+          href="about.html"
+          class="premium-nav-link nav-drop"
+          style="--delay: 0.68s;"
+        >
+          About Us
+        </a>
 
-    <!-- Mobile Menu -->
-    <div id="mobileMenu" class="hidden md:hidden px-6 lg:px-12 pt-4 pb-6 bg-white border-t border-gray-200 shadow-sm">
-<nav class="flex flex-col gap-5 text-sm font-medium text-gray-700 tracking-widest uppercase">
-    <a href="index.html" class="nav-link">home</a>
-    <a href="about.html" class="nav-link">about us</a>
-    <a href="interior.html" class="nav-link">interior</a>
-    <a href="vastu.html" class="nav-link">vastu</a>
-    <a href="decor.html" class="nav-link">decor</a>
-    <a href="portfolio.html" class="nav-link">portfolio</a>
-    <a href="contact.html" class="nav-link">contact</a>
-</nav>
+        <a
+          href="interior.html"
+          class="premium-nav-link nav-drop"
+          style="--delay: 0.80s;"
+        >
+          Interior
+        </a>
+
+        <a
+          href="vastu.html"
+          class="premium-nav-link nav-drop"
+          style="--delay: 0.92s;"
+        >
+          Vastu
+        </a>
+
+        <a
+          href="decor.html"
+          class="premium-nav-link nav-drop"
+          style="--delay: 1.04s;"
+        >
+          Decor
+        </a>
+
+        <a
+          href="portfolio.html"
+          class="premium-nav-link nav-drop"
+          style="--delay: 1.16s;"
+        >
+          Portfolio
+        </a>
+
+        <a
+          href="contact.html"
+          class="premium-nav-link nav-drop"
+          style="--delay: 1.28s;"
+        >
+          Contact
+        </a>
+
+      </nav>
+
+      <!-- Mobile Menu Button -->
+      <button
+        id="menuBtn"
+        class="premium-menu-btn mobile-menu-drop"
+        aria-label="Toggle menu"
+        aria-expanded="false"
+        aria-controls="mobileMenu"
+        type="button"
+      >
+        <i id="menuIcon" class="ph ph-list"></i>
+      </button>
+
     </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div
+    id="mobileMenu"
+    class="hidden lg:hidden premium-mobile-menu"
+  >
+
+    <nav class="max-w-7xl mx-auto px-6 py-7 flex flex-col">
+
+      <a href="index.html" class="premium-mobile-link">
+        <span>01</span>
+        Home
+      </a>
+
+      <a href="about.html" class="premium-mobile-link">
+        <span>02</span>
+        About Us
+      </a>
+
+      <a href="interior.html" class="premium-mobile-link">
+        <span>03</span>
+        Interior
+      </a>
+
+      <a href="vastu.html" class="premium-mobile-link">
+        <span>04</span>
+        Vastu
+      </a>
+
+      <a href="decor.html" class="premium-mobile-link">
+        <span>05</span>
+        Decor
+      </a>
+
+      <a href="portfolio.html" class="premium-mobile-link">
+        <span>06</span>
+        Portfolio
+      </a>
+
+      <a href="contact.html" class="premium-mobile-link">
+        <span>07</span>
+        Contact
+      </a>
+
+      <a href="contact.html" class="premium-mobile-cta">
+        Book Consultation
+        <i class="ph ph-arrow-up-right"></i>
+      </a>
+
+    </nav>
+  </div>
+
 </header>
 
         <main>
@@ -645,7 +1095,7 @@
   
 <div class="flex justify-center mt-6 mb-6">
   <img 
-    src="assets/images/interesting feature.jpg" 
+    src="assets/images/interesting feature.png" 
     alt="Interesting Features"
     class="h-[50px] md:h-[65px] object-contain"
   >
@@ -972,17 +1422,35 @@
 
 </div>
 </footer>
-<!-- RIGHT SIDE GLASS ACTION BUTTONS -->
-<div class="fixed right-4 top-1/2 -translate-y-1/2 z-50 hidden md:flex flex-col gap-5">
-  
-  <!-- Form -->
-  <a href="contact.html" class="glass-float-btn" aria-label="Fill Form">
-    <i class="ph ph-note-pencil text-[28px]"></i>
+<!-- RIGHT SIDE FLOATING IMAGE BUTTONS -->
+<div class="fixed right-5 top-1/2 -translate-y-1/2 z-50 hidden md:flex flex-col gap-4">
+
+  <!-- Gmail -->
+  <a
+    href="mailto:info@spacedecorbelle.com"
+    class="image-float-btn"
+    aria-label="Send Email"
+    title="Send Email"
+  >
+    <img
+      src="assets\images\gmail-icon.png"
+      alt="Gmail"
+    >
   </a>
 
   <!-- WhatsApp -->
-  <a href="https://wa.me/919654232327" target="_blank" class="glass-float-btn" aria-label="WhatsApp">
-    <i class="ph ph-whatsapp-logo text-[28px]"></i>
+  <a
+    href="https://wa.me/919654232327?text=Hello%20Space%20Decor%20Belle%2C%20I%20would%20like%20to%20discuss%20an%20interior%20design%20project."
+    target="_blank"
+    rel="noopener noreferrer"
+    class="image-float-btn"
+    aria-label="Chat on WhatsApp"
+    title="Chat on WhatsApp"
+  >
+    <img
+      src="assets\images\whatsaap-icon.png"
+      alt="WhatsApp"
+    >
   </a>
 
 </div>
@@ -1181,6 +1649,65 @@ if (ctaCard) {
 
     ctaCardObserver.observe(ctaCard);
 }
+/* =========================================
+   AUTOMATIC ACTIVE NAVIGATION
+========================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const desktopLinks = document.querySelectorAll(".premium-nav-link");
+    const mobileLinks = document.querySelectorAll(".premium-mobile-link");
+
+    /*
+      Current page filename:
+      /index.html      => index.html
+      /about.html      => about.html
+      /                => index.html
+    */
+
+    let currentPage = window.location.pathname
+        .split("/")
+        .pop()
+        .split("?")[0]
+        .split("#")[0];
+
+    /* Root URL ko Home treat karo */
+    if (
+        currentPage === "" ||
+        currentPage === "/" ||
+        currentPage === "home"
+    ) {
+        currentPage = "index.html";
+    }
+
+    function setActiveNavigation(links) {
+
+        links.forEach(function (link) {
+
+            const linkHref = link
+                .getAttribute("href")
+                .split("/")
+                .pop()
+                .split("?")[0]
+                .split("#")[0];
+
+            link.classList.remove("active");
+
+            if (linkHref === currentPage) {
+                link.classList.add("active");
+                link.setAttribute("aria-current", "page");
+            } else {
+                link.removeAttribute("aria-current");
+            }
+
+        });
+
+    }
+
+    setActiveNavigation(desktopLinks);
+    setActiveNavigation(mobileLinks);
+
+});
 
 
     </script>

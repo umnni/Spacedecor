@@ -470,6 +470,40 @@
     background-size: 44px 44px;
 }
 
+/* RIGHT SIDE IMAGE FLOATING BUTTONS */
+.image-float-btn {
+    width: 64px;
+    height: 64px;
+    padding: 7px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #ffffff;
+    border-radius: 18px;
+
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.16);
+
+    overflow: hidden;
+    text-decoration: none;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.image-float-btn img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.image-float-btn:hover {
+    transform: translateX(-6px) scale(1.06);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.22);
+}
     </style>
 </head>
 <!-- LEFT RED SOCIAL BAR -->
@@ -598,8 +632,8 @@
     <div class="interior-reveal interior-delay-1">
       <p class="text-customRed text-[12px] uppercase tracking-[0.45em] font-bold mb-5">Our Interior Approach</p>
 <h2 class="font-serif-chic text-[46px] md:text-[68px] leading-[0.98] text-[#1a1a1a]">
-  Designed for<br>
-  <span class="italic text-[#6a6763]">beautiful living.</span>
+  Spaces that reflect<br>
+  <span class="italic text-[#6a6763]">your lifestyle.</span>
 </h2>
     </div>
     <div class="interior-reveal interior-delay-2">
@@ -848,20 +882,39 @@
 
 </div>
 </footer>
-<!-- RIGHT SIDE GLASS ACTION BUTTONS -->
-<div class="fixed right-4 top-1/2 -translate-y-1/2 z-50 hidden md:flex flex-col gap-5">
-  
-  <!-- Form -->
-  <a href="contact.html" class="glass-float-btn" aria-label="Fill Form">
-    <i class="ph ph-note-pencil text-[28px]"></i>
+<!-- RIGHT SIDE FLOATING IMAGE BUTTONS -->
+<div class="fixed right-5 top-1/2 -translate-y-1/2 z-50 hidden md:flex flex-col gap-4">
+
+  <!-- Gmail -->
+  <a
+    href="mailto:info@spacedecorbelle.com"
+    class="image-float-btn"
+    aria-label="Send Email"
+    title="Send Email"
+  >
+    <img
+      src="assets\images\gmail-icon.png"
+      alt="Gmail"
+    >
   </a>
 
   <!-- WhatsApp -->
-  <a href="https://wa.me/919654232327" target="_blank" class="glass-float-btn" aria-label="WhatsApp">
-    <i class="ph ph-whatsapp-logo text-[28px]"></i>
+  <a
+    href="https://wa.me/919654232327?text=Hello%20Space%20Decor%20Belle%2C%20I%20would%20like%20to%20discuss%20an%20interior%20design%20project."
+    target="_blank"
+    rel="noopener noreferrer"
+    class="image-float-btn"
+    aria-label="Chat on WhatsApp"
+    title="Chat on WhatsApp"
+  >
+    <img
+      src="assets\images\whatsaap-icon.png"
+      alt="WhatsApp"
+    >
   </a>
 
 </div>
+
     </div>
 
     <script>
