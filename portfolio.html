@@ -259,6 +259,248 @@
     transform: translateX(-6px) scale(1.06);
     box-shadow: 0 16px 36px rgba(0, 0, 0, 0.22);
 }
+
+/* =========================================
+   PREMIUM LUXURY HEADER
+========================================= */
+.premium-header {
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    font-family: "Montserrat", sans-serif;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-bottom: 1px solid rgba(207, 166, 58, 0.3);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.045);
+}
+
+.premium-header-inner {
+    min-height: 112px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.premium-header-logo {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.premium-header-logo img {
+    display: block;
+    width: auto;
+    height: 88px;
+    object-fit: contain;
+}
+
+.premium-desktop-nav {
+    display: none;
+    align-items: center;
+}
+
+.premium-nav-link {
+    position: relative;
+    padding: 16px 15px;
+    color: #35312e;
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.premium-nav-link::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 7px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #c12323;
+    opacity: 0;
+    transform: translateX(-50%) translateY(6px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.premium-nav-link::after {
+    content: "";
+    position: absolute;
+    left: 15px;
+    right: 15px;
+    bottom: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #cfa63a, transparent);
+    opacity: 0;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.premium-nav-link:hover,
+.premium-nav-link.active {
+    color: #c12323;
+}
+
+.premium-nav-link:hover::before,
+.premium-nav-link.active::before {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.premium-nav-link:hover::after,
+.premium-nav-link.active::after {
+    opacity: 1;
+    transform: scaleX(1);
+}
+
+.premium-menu-btn {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(193, 35, 35, 0.2);
+    border-radius: 50%;
+    color: #2e2d35;
+    background: #ffffff;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+    transition: color 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+}
+
+.premium-menu-btn i {
+    font-size: 25px;
+    line-height: 1;
+}
+
+.premium-menu-btn:hover {
+    color: #ffffff;
+    background: #c12323;
+    border-color: #c12323;
+}
+
+.premium-mobile-menu {
+    display: block;
+    background: linear-gradient(145deg, #151515, #24201e);
+    border-top: 1px solid rgba(207, 166, 58, 0.25);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+}
+
+#mobileMenu.hidden {
+    display: none !important;
+}
+
+.premium-mobile-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 17px;
+    padding: 16px 4px;
+    color: rgba(255, 255, 255, 0.78);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    font-family: "Playfair Display", serif;
+    font-size: 24px;
+    font-weight: 400;
+    text-decoration: none;
+    transition: color 0.3s ease, padding-left 0.3s ease;
+}
+
+.premium-mobile-link span {
+    min-width: 27px;
+    color: #cfa63a;
+    font-family: "Montserrat", sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+}
+
+.premium-mobile-link:hover,
+.premium-mobile-link.active {
+    color: #cfa63a;
+    padding-left: 10px;
+}
+
+.premium-mobile-link.active::after {
+    content: "";
+    position: absolute;
+    right: 4px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #c12323;
+}
+
+.premium-mobile-cta {
+    min-height: 54px;
+    margin-top: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: #c12323;
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.premium-mobile-cta i {
+    font-size: 17px;
+}
+
+@media (min-width: 1024px) {
+    .premium-desktop-nav {
+        display: flex;
+    }
+
+    .premium-menu-btn,
+    .premium-mobile-menu {
+        display: none !important;
+    }
+}
+
+@media (max-width: 1023px) {
+    .premium-desktop-nav {
+        display: none !important;
+    }
+
+    .premium-menu-btn {
+        display: flex;
+    }
+
+    .premium-header-inner {
+        min-height: 92px;
+    }
+
+    .premium-header-logo img {
+        height: 74px;
+    }
+}
+
+@media (max-width: 767px) {
+    .premium-header-inner {
+        min-height: 82px;
+    }
+
+    .premium-header-logo img {
+        height: 66px;
+    }
+
+    .premium-menu-btn {
+        width: 45px;
+        height: 45px;
+    }
+}
   </style>
 </head>
 
@@ -276,38 +518,60 @@
   </div>
 </div>
 
-<header class="w-full relative z-40 bg-white py-6">
-  <div class="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center">
-    <a href="index.html" class="flex items-center overflow-hidden header-logo-drop">
-      <img src="assets/images/logo.png" alt="Space Decor Belle Logo" class="h-[92px] w-auto object-contain">
-    </a>
+<header class="premium-header">
 
-    <nav class="hidden md:flex gap-7 text-sm font-medium text-gray-700 tracking-widest">
-      <a href="index.html" class="nav-link nav-drop" style="--delay:.56s;">home</a>
-      <a href="about.html" class="nav-link nav-drop" style="--delay:.68s;">about us</a>
-      <a href="interior.html" class="nav-link nav-drop" style="--delay:.80s;">interior</a>
-      <a href="vastu.html" class="nav-link nav-drop" style="--delay:.92s;">vastu</a>
-      <a href="decor.html" class="nav-link nav-drop" style="--delay:1.04s;">decor</a>
-      <a href="portfolio.html" class="nav-link nav-drop active" style="--delay:1.16s;">portfolio</a>
-      <a href="contact.html" class="nav-link nav-drop" style="--delay:1.28s;">contact</a>
-    </nav>
+  <div class="max-w-7xl mx-auto px-5 lg:px-12">
+    <div class="premium-header-inner">
 
-    <button id="menuBtn" class="md:hidden text-2xl text-[#1a1a1a] mobile-menu-drop" type="button">
-      <i id="menuIcon" class="ph ph-list"></i>
-    </button>
+      <a
+        href="index.html"
+        class="premium-header-logo header-logo-drop"
+        aria-label="Space Decor Belle Home"
+      >
+        <img src="assets/images/logo.png" alt="Space Decor Belle Logo">
+      </a>
+
+      <nav class="premium-desktop-nav" aria-label="Main navigation">
+        <a href="index.html" class="premium-nav-link nav-drop" style="--delay: 0.56s;">Home</a>
+        <a href="about.html" class="premium-nav-link nav-drop" style="--delay: 0.68s;">About Us</a>
+        <a href="interior.html" class="premium-nav-link nav-drop" style="--delay: 0.80s;">Interior</a>
+        <a href="vastu.html" class="premium-nav-link nav-drop" style="--delay: 0.92s;">Vastu</a>
+        <a href="decor.html" class="premium-nav-link nav-drop" style="--delay: 1.04s;">Decor</a>
+        <a href="portfolio.html" class="premium-nav-link nav-drop active" style="--delay: 1.16s;" aria-current="page">Portfolio</a>
+        <a href="contact.html" class="premium-nav-link nav-drop" style="--delay: 1.28s;">Contact</a>
+      </nav>
+
+      <button
+        id="menuBtn"
+        class="premium-menu-btn mobile-menu-drop"
+        type="button"
+        aria-label="Toggle menu"
+        aria-expanded="false"
+        aria-controls="mobileMenu"
+      >
+        <i id="menuIcon" class="ph ph-list"></i>
+      </button>
+
+    </div>
   </div>
 
-  <div id="mobileMenu" class="hidden md:hidden px-6 lg:px-12 pt-4 pb-6 bg-white border-t border-gray-200 shadow-sm">
-    <nav class="flex flex-col gap-5 text-sm font-medium text-gray-700 tracking-widest uppercase">
-      <a href="index.html" class="nav-link">home</a>
-      <a href="about.html" class="nav-link">about us</a>
-      <a href="interior.html" class="nav-link">interior</a>
-      <a href="vastu.html" class="nav-link">vastu</a>
-      <a href="decor.html" class="nav-link">decor</a>
-      <a href="portfolio.html" class="nav-link active">portfolio</a>
-      <a href="contact.html" class="nav-link">contact</a>
+  <div id="mobileMenu" class="hidden lg:hidden premium-mobile-menu">
+    <nav class="max-w-7xl mx-auto px-6 py-7 flex flex-col" aria-label="Mobile navigation">
+      <a href="index.html" class="premium-mobile-link"><span>01</span>Home</a>
+      <a href="about.html" class="premium-mobile-link"><span>02</span>About Us</a>
+      <a href="interior.html" class="premium-mobile-link"><span>03</span>Interior</a>
+      <a href="vastu.html" class="premium-mobile-link"><span>04</span>Vastu</a>
+      <a href="decor.html" class="premium-mobile-link"><span>05</span>Decor</a>
+      <a href="portfolio.html" class="premium-mobile-link active" aria-current="page"><span>06</span>Portfolio</a>
+      <a href="contact.html" class="premium-mobile-link"><span>07</span>Contact</a>
+
+      <a href="contact.html" class="premium-mobile-cta">
+        Book Consultation
+        <i class="ph ph-arrow-up-right"></i>
+      </a>
     </nav>
   </div>
+
 </header>
 
 <main>

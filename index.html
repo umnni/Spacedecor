@@ -396,6 +396,205 @@
     cursor: pointer;
     transform: rotate(0deg);
 }
+
+/* RESPONSIVE INTERESTING FEATURES */
+.interesting-features {
+    overflow: hidden;
+}
+
+.interesting-title {
+    font-size: clamp(2.15rem, 5vw, 4rem);
+    line-height: 1.08;
+    text-wrap: balance;
+}
+
+.interesting-label {
+    width: min(100%, 490px);
+    height: auto;
+}
+
+.feature-gallery {
+    display: grid;
+    grid-template-columns: minmax(0, 1.55fr) minmax(280px, 0.85fr);
+    gap: 18px;
+}
+
+.feature-picture {
+    position: relative;
+    height: clamp(390px, 42vw, 540px);
+    overflow: hidden;
+    border-radius: 30px;
+    background: #eeeae5;
+}
+
+.feature-picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.feature-picture:hover img {
+    transform: scale(1.035);
+}
+
+.feature-stats-panel {
+    position: relative;
+    z-index: 10;
+    width: calc(100% - 72px);
+    max-width: 1040px;
+    margin: -58px auto 0;
+    padding: 24px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    border: 1px solid rgba(193, 35, 35, 0.12);
+    border-radius: 28px;
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 22px 55px rgba(37, 29, 25, 0.12);
+    backdrop-filter: blur(12px);
+}
+
+.feature-stat-card {
+    min-width: 0;
+    padding: 22px 24px;
+    border-radius: 20px;
+    background: linear-gradient(145deg, #fff 0%, #faf7f4 100%);
+    border: 1px solid #eee7e2;
+}
+
+.feature-stat-card .stat-number {
+    display: block;
+    margin-bottom: 10px;
+    color: #c12323;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 4vw, 3.65rem);
+    font-weight: 500;
+    line-height: 0.95;
+}
+
+.feature-stat-card p {
+    min-height: 38px;
+    color: #373238;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.55;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.feature-stat-card::after {
+    content: "";
+    display: block;
+    width: 42px;
+    height: 2px;
+    margin-top: 14px;
+    background: #c12323;
+}
+
+.feature-arrow {
+    position: absolute;
+    z-index: 3;
+    top: 20px;
+    right: 20px;
+    width: 68px;
+    height: 68px;
+    display: grid;
+    place-items: center;
+    border: 1.5px solid #2e2d35;
+    border-radius: 999px;
+    color: #2e2d35;
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+    transition: color 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+}
+
+.feature-arrow:hover {
+    color: #fff;
+    background: #c12323;
+    border-color: #c12323;
+}
+
+@media (max-width: 767px) {
+    .interesting-features {
+        padding-top: 42px;
+        padding-bottom: 48px;
+    }
+
+    .feature-gallery {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .feature-picture {
+        height: 300px;
+        border-radius: 22px;
+    }
+
+    .feature-picture-secondary {
+        height: 235px;
+    }
+
+    .feature-stats-panel {
+        width: 100%;
+        margin: 16px 0 0;
+        padding: 12px;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        border-radius: 22px;
+        box-shadow: 0 16px 40px rgba(37, 29, 25, 0.09);
+    }
+
+    .feature-stat-card {
+        padding: 18px 20px;
+        display: grid;
+        grid-template-columns: 92px 1fr;
+        grid-template-rows: auto auto;
+        align-items: center;
+        column-gap: 16px;
+    }
+
+    .feature-stat-card .stat-number {
+        grid-row: 1 / 3;
+        margin: 0;
+        font-size: 2.7rem;
+    }
+
+    .feature-stat-card p {
+        min-height: auto;
+        font-size: 10px;
+    }
+
+    .feature-stat-card::after {
+        width: 36px;
+        margin-top: 9px;
+    }
+
+    .feature-arrow {
+        top: 14px;
+        right: 14px;
+        width: 54px;
+        height: 54px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .feature-gallery {
+        grid-template-columns: minmax(0, 1.3fr) minmax(240px, 0.8fr);
+    }
+
+    .feature-picture {
+        height: 430px;
+    }
+
+    .feature-stats-panel {
+        width: calc(100% - 36px);
+    }
+
+    .feature-stat-card {
+        padding: 20px 18px;
+    }
+}
 .cta-card-slide h2 {
     overflow-wrap: break-word;
 }
@@ -522,6 +721,11 @@
    DESKTOP NAVIGATION
 ========================================= */
 
+.premium-desktop-nav {
+    display: none;
+    align-items: center;
+}
+
 .premium-nav-link {
     position: relative;
 
@@ -647,7 +851,38 @@
    MOBILE MENU
 ========================================= */
 
+.premium-menu-btn {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(193, 35, 35, 0.2);
+    border-radius: 50%;
+    color: #2e2d35;
+    background: #ffffff;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+    transition:
+        color 0.3s ease,
+        background 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.premium-menu-btn i {
+    font-size: 25px;
+    line-height: 1;
+}
+
+.premium-menu-btn:hover {
+    color: #ffffff;
+    background: #c12323;
+    border-color: #c12323;
+}
+
 .premium-mobile-menu {
+    display: block;
     background: linear-gradient(
         145deg,
         #151515,
@@ -657,6 +892,10 @@
     border-top: 1px solid rgba(207, 166, 58, 0.25);
 
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+}
+
+#mobileMenu.hidden {
+    display: none !important;
 }
 
 .premium-mobile-link {
@@ -756,11 +995,23 @@
     }
 
     .premium-menu-btn {
-        display: none;
+        display: none !important;
+    }
+
+    .premium-mobile-menu {
+        display: none !important;
     }
 }
 
 @media (max-width: 1023px) {
+    .premium-desktop-nav {
+        display: none !important;
+    }
+
+    .premium-menu-btn {
+        display: flex;
+    }
+
     .premium-header-inner {
         min-height: 92px;
     }
@@ -782,6 +1033,62 @@
     .premium-menu-btn {
         width: 45px;
         height: 45px;
+    }
+}
+.feature-stats-panel {
+    width: calc(100% - 40px);
+    max-width: 650px;
+    margin: -42px auto 0;
+    padding: 12px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    border-radius: 22px;
+}
+
+.feature-stat-card {
+    padding: 18px 22px;
+    text-align: center;
+    border-radius: 16px;
+}
+
+.feature-stat-card .stat-number {
+    margin-bottom: 7px;
+    font-size: clamp(2.2rem, 4vw, 3rem);
+}
+
+.feature-stat-card p {
+    min-height: auto;
+    font-size: 10px;
+    line-height: 1.5;
+}
+
+.feature-stat-card::after {
+    width: 35px;
+    margin: 10px auto 0;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .feature-stats-panel {
+        width: 100%;
+        margin-top: 14px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        padding: 9px;
+        gap: 8px;
+    }
+
+    .feature-stat-card {
+        display: block;
+        padding: 16px 10px;
+    }
+
+    .feature-stat-card .stat-number {
+        margin-bottom: 7px;
+        font-size: 2.2rem;
+    }
+
+    .feature-stat-card p {
+        font-size: 9px;
     }
 }
     </style>
@@ -1078,113 +1385,59 @@
 </section>
 
 <!-- Interesting Features Section -->
-<section class="w-full bg-white py-12">
-  <div class="max-w-[1250px] mx-auto px-6 lg:px-8">
+<section class="interesting-features w-full bg-white py-12 md:py-16">
+  <div class="max-w-[1250px] mx-auto px-4 sm:px-6 lg:px-8">
 
-    <!-- Heading -->
-    <div class="text-center mb-14">
-<h2 class="font-serif-chic text-[46px] md:text-[64px] leading-none text-[#6e6868] tracking-[-0.03em]">
-  <span class="text-black">Designing</span> <span class="italic">Spaces</span>
-  <span class="text-customRed">•</span>
-  <span class="text-black">Defining</span> <span class="italic">Lifestyles</span>
-</h2>
+    <div class="text-center mb-8 md:mb-12">
+      <h2 class="interesting-title font-serif-chic text-[#6e6868] tracking-[-0.03em]">
+        <span class="text-black">Designing</span> <span class="italic">Spaces</span>
+        <span class="text-customRed">•</span>
+        <span class="text-black">Defining</span> <span class="italic">Lifestyles</span>
+      </h2>
 
-      <div class="line-center-grow w-[320px] md:w-[500px] h-[3px] bg-customRed mx-auto mt-14"></div>
+      <div class="line-center-grow w-[180px] sm:w-[320px] md:w-[500px] h-[2px] md:h-[3px] bg-customRed mx-auto mt-7 md:mt-12"></div>
 
-<div class="flex justify-center mt-10">
-  
-<div class="flex justify-center mt-6 mb-6">
-  <img 
-    src="assets/images/interesting feature.png" 
-    alt="Interesting Features"
-    class="h-[50px] md:h-[65px] object-contain"
-  >
-</div>
-
-</div>
-
-<!-- Main layout -->
-<div class="grid grid-cols-1 lg:grid-cols-[1.45fr_0.85fr] gap-5 lg:gap-4 items-start">
-
-  <!-- LEFT SIDE -->
-  <div class="relative pb-0 lg:pb-[40px]">
-
-    <!-- Image -->
-    <div class="overflow-hidden rounded-[24px] md:rounded-[28px] h-[280px] sm:h-[360px] md:h-[480px] lg:h-[520px]">
-      <img
-        src="assets/images/2.jpg"
-        alt="Interesting feature left"
-        class="w-full h-full object-cover"
-      >
+      <div class="flex justify-center mt-7 md:mt-10">
+        <img
+          src="assets/images/interesting feature.png"
+          alt="Interesting Features"
+          class="interesting-label object-contain"
+        >
+      </div>
     </div>
 
-<!-- Stats -->
-<div class="mt-6 lg:mt-0 lg:absolute lg:left-0 lg:bottom-[80px] lg:w-[76%] z-20">
-  <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-5 lg:gap-6 text-left">
+    <div class="feature-gallery">
+      <figure class="feature-picture">
+        <img src="assets/images/2.png" alt="Contemporary luxury interior">
+      </figure>
 
-    <div class="flex flex-col items-start">
-      <h4 class="stat-number text-customRed text-[34px] sm:text-[36px] md:text-[46px] lg:text-[54px] font-serif-chic font-medium tracking-[-0.02em] leading-none mb-2" data-target="60" data-suffix="+">
-        0+
-      </h4>
-      <p class="text-[11px] sm:text-[12px] md:text-[13px] uppercase tracking-[0.08em] text-[#2e2d35] leading-[1.35]">
-        Projects<br>Completed
-      </p>
-      <div class="w-12 md:w-14 h-[2px] bg-customRed mt-3 md:mt-4"></div>
+      <figure class="feature-picture feature-picture-secondary">
+        <img src="assets/images/3.png" alt="Warm premium living room">
+
+        <button
+          id="featureArrow"
+          type="button"
+          class="feature-arrow"
+          aria-label="Explore our interior design projects"
+        >
+          <i class="ph ph-arrow-up-right text-[23px] md:text-[27px]"></i>
+        </button>
+      </figure>
     </div>
 
-    <div class="flex flex-col items-start">
-      <h4 class="stat-number text-customRed text-[34px] sm:text-[36px] md:text-[46px] lg:text-[54px] font-serif-chic font-medium tracking-[-0.02em] leading-none mb-2" data-target="150" data-suffix="+">
-        0+
-      </h4>
-      <p class="text-[11px] sm:text-[12px] md:text-[13px] uppercase tracking-[0.08em] text-[#2e2d35] leading-[1.35]">
-        Happy &<br>Satisfied Clients
-      </p>
-      <div class="w-12 md:w-14 h-[2px] bg-customRed mt-3 md:mt-4"></div>
-    </div>
+<div class="feature-stats-panel" aria-label="Company achievements">
 
-    <div class="flex flex-col items-start">
-      <h4 class="stat-number text-customRed text-[34px] sm:text-[36px] md:text-[46px] lg:text-[54px] font-serif-chic font-medium tracking-[-0.02em] leading-none mb-2" data-target="08" data-suffix="+">
-        0+
-      </h4>
-      <p class="text-[11px] sm:text-[12px] md:text-[13px] uppercase tracking-[0.08em] text-[#2e2d35] leading-[1.35]">
-        Years of<br>Experience
-      </p>
-      <div class="w-12 md:w-14 h-[2px] bg-customRed mt-3 md:mt-4"></div>
-    </div>
+  <article class="feature-stat-card">
+    <h4 class="stat-number" data-target="150" data-suffix="+">0+</h4>
+    <p>Projects Completed</p>
+  </article>
 
-  </div>
-</div>
-
-  </div>
-
-
-<!-- RIGHT SIDE -->
-<div class="relative h-[280px] sm:h-[360px] md:h-[480px] lg:h-[520px]">
-
-  <!-- Image -->
-  <div class="w-full h-full overflow-hidden rounded-[24px] md:rounded-[28px]">
-    <img
-      src="assets/images/3.jpg"
-      alt="Interesting feature right"
-      class="w-full h-full object-cover"
-    >
-  </div>
-
-  <!-- Arrow Circle -->
-<button
-  id="featureArrow"
-  type="button"
-  class="absolute z-30 top-[20px] right-[20px] w-[72px] h-[72px] rounded-full border-2 border-[#2e2d35] bg-white flex items-center justify-center shadow-md cursor-pointer"
->
-  <i class="ph ph-arrow-up-right text-[26px] text-[#2e2d35]"></i>
-</button>
+  <article class="feature-stat-card">
+    <h4 class="stat-number" data-target="20" data-suffix="+">0+</h4>
+    <p>Years of Experience</p>
+  </article>
 
 </div>
-
-</div>
-</div>
-
-    </div>
   </div>
 </section>
 <!-- Services Section -->
