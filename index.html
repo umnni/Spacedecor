@@ -66,12 +66,6 @@
     transition: transform 1.6s cubic-bezier(0.22, 1, 0.36, 1),
                 opacity 1.6s ease;
 }
-/* FEATURE ARROW ROTATION */
-/* #featureArrow {
-    transition: transform 0.12s linear;
-    transform: rotate(0deg);
-} */
-
 /* STATS */
 .stat-number {
     will-change: contents;
@@ -84,22 +78,6 @@
     opacity: 1;
 }
 
-@media (min-width: 768px) {
-    .red-line {
-        width: 320px;
-    }
-}
-
-@media (min-width: 768px) {
-    .red-line {
-        width: 320px;
-    }
-}
-.luxury-heading {
-    font-family: 'Playfair Display', serif;
-    font-weight: 400;
-    letter-spacing: -0.02em;
-}
 .cormorant-heading {
     font-family: 'Cormorant Garamond', serif;
     font-weight: 500;
@@ -153,40 +131,280 @@
 .footer-delay-5 { transition-delay: 0.48s; }
 .footer-delay-6 { transition-delay: 0.58s; }
 
+/* FOOTER BRAND + NEWSLETTER */
+.footer-main-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: stretch;
+}
+
+.footer-divider-one {
+    left: 33.333%;
+}
+
+.footer-divider-two {
+    right: 33.333%;
+}
+
+.footer-brand-column,
+.footer-center-column,
+.footer-social-column {
+    min-width: 0;
+    padding: 48px 0 64px;
+}
+
+.footer-brand-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.footer-brand-logo img {
+    width: auto;
+    height: 82px;
+    max-width: 230px;
+    object-fit: contain;
+}
+
+.footer-newsletter {
+    width: 100%;
+    max-width: 360px;
+    margin: 28px auto 0;
+}
+
+.footer-newsletter-eyebrow {
+    margin-bottom: 12px;
+    color: #cfa63a;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+}
+
+.footer-newsletter-title {
+    color: #fff;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.15rem, 2.8vw, 3.25rem);
+    font-weight: 400;
+    line-height: 0.98;
+    letter-spacing: -0.025em;
+}
+
+.footer-newsletter-title span {
+    display: block;
+    margin-top: 5px;
+    color: #c12323;
+    font-style: italic;
+}
+
+.footer-newsletter-copy {
+    max-width: 350px;
+    margin-top: 20px;
+    color: rgba(255, 255, 255, 0.62);
+    font-size: 12px;
+    line-height: 1.75;
+}
+
+.footer-newsletter-form {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    margin-top: 25px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(207, 166, 58, 0.75);
+}
+
+.footer-newsletter-form input {
+    flex: 1;
+    min-width: 0;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+}
+
+.footer-newsletter-form input::placeholder {
+    color: rgba(255, 255, 255, 0.38);
+}
+
+.footer-newsletter-form button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    border: 0;
+    background: transparent;
+    color: #cfa63a;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.footer-newsletter-form button:hover {
+    color: #fff;
+    transform: translateX(3px);
+}
+
+.footer-newsletter-arrow {
+    font-size: 18px;
+    line-height: 1;
+}
+
+.footer-newsletter-status {
+    min-height: 18px;
+    margin-top: 10px;
+    color: #cfa63a;
+    font-size: 10px;
+    line-height: 1.5;
+}
+
+.footer-center-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.footer-recent-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    width: 100%;
+    max-width: 320px;
+    margin-bottom: 24px;
+}
+
+.footer-recent-grid img {
+    width: 100%;
+    height: 80px;
+    object-fit: cover;
+}
+
+.footer-contact-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: auto;
+    padding-top: 32px;
+}
+
+.footer-contact-phone {
+    color: #cfa63a;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.35rem, 1.7vw, 1.6rem);
+    font-weight: 300;
+    letter-spacing: 0.04em;
+}
+
+.footer-contact-email {
+    max-width: 100%;
+    color: #cfa63a;
+    font-size: clamp(0.95rem, 1.45vw, 1.35rem);
+    font-weight: 300;
+    overflow-wrap: anywhere;
+}
+
+.footer-social-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.footer-social-label {
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+}
+
+.footer-social-rule {
+    width: 1px;
+    height: 62px;
+    margin: 22px 0;
+    background: #cfa63a;
+}
+
+.footer-social-links {
+    display: grid;
+    grid-template-columns: repeat(2, 42px);
+    gap: 14px;
+}
+
+.footer-social-link {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border: 1px solid #cfa63a;
+    border-radius: 50%;
+    color: #cfa63a;
+    transition:
+        color 0.25s ease,
+        background 0.25s ease,
+        transform 0.25s ease;
+}
+
+.footer-social-link:hover {
+    color: #151515;
+    background: #cfa63a;
+    transform: translateY(-3px);
+}
+
+@media (min-width: 768px) {
+    .footer-main-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .footer-brand-column,
+    .footer-center-column,
+    .footer-social-column {
+        min-height: 560px;
+        padding: 48px 38px 118px;
+    }
+}
+
+@media (max-width: 767px) {
+    .footer-brand-column,
+    .footer-center-column {
+        border-bottom: 1px solid rgba(207, 166, 58, 0.3);
+    }
+
+    .footer-brand-logo img {
+        height: 72px;
+    }
+
+    .footer-newsletter {
+        max-width: 520px;
+    }
+
+    .footer-social-rule {
+        width: 62px;
+        height: 1px;
+    }
+
+    .footer-social-links {
+        grid-template-columns: repeat(4, 42px);
+    }
+}
+
         /* Typography Utilities */
         .font-serif-chic {
             font-family: 'Playfair Display', serif;
         }
 
-        /* Hero Text Outline Effect */
-        .text-outline {
-            color: transparent;
-            -webkit-text-stroke: 1px rgba(0, 0, 0, 0.6);
-        }
-
         /* Smooth Scrolling */
         html {
             scroll-behavior: smooth;
-        }
-
-        /* Nav Link Hover Red Dot */
-        .nav-link {
-            position: relative;
-            transition: all 0.3s ease;
-        }
-        .nav-link:hover {
-            color: #c12323;
-        }
-
-        /* Red Accent Bar on Left */
-        .red-accent-bar {
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 4rem;
-            background-color: #c12323;
-            z-index: -1;
         }
 
         /* Ensure images scale correctly */
@@ -206,43 +424,6 @@
         div[id="contact"] {
             scroll-margin-top: 110px;
         }
-        /* LEFT SOCIAL BAR ANIMATIONS */
-        /* LEFT SOCIAL BAR ANIMATIONS */
-.social-bar-wrap {
-    overflow: hidden;
-}
-
-.social-bar-drop {
-    transform: translateY(-100%);
-    opacity: 0;
-    animation: socialBarDrop 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-
-.social-gold-line {
-    transform: scaleY(0);
-    transform-origin: top;
-    opacity: 0.6;
-
-    transition: transform 1.6s cubic-bezier(0.22, 1, 0.36, 1),
-                opacity 1.6s ease;
-}
-
-.social-gold-line.in-view {
-    transform: scaleY(1);
-    opacity: 1;
-}
-
-.social-icon {
-    opacity: 0;
-    transform: translateY(-14px) scale(0.92);
-    display: inline-flex;
-    animation: socialIconReveal 0.45s ease forwards;
-}
-
-.social-icon:nth-child(1) { animation-delay: 1.05s; }
-.social-icon:nth-child(2) { animation-delay: 1.18s; }
-.social-icon:nth-child(3) { animation-delay: 1.31s; }
-.social-icon:nth-child(4) { animation-delay: 1.44s; }
 
 /* LOGO */
 .header-logo-drop {
@@ -266,32 +447,6 @@
     transform: translateY(-18px);
     animation: headerDropIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
     animation-delay: 0.38s;
-}
-
-@keyframes socialBarDrop {
-    0% {
-        transform: translateY(-100%);
-        opacity: 0;
-    }
-    70% {
-        transform: translateY(18px);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-@keyframes socialIconReveal {
-    0% {
-        opacity: 0;
-        transform: translateY(-14px) scale(0.92);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
 }
 
 @keyframes headerDropIn {
@@ -379,6 +534,130 @@
 
 .services-text-delay-1 { transition-delay: 0.35s; }
 .services-text-delay-2 { transition-delay: 0.52s; }
+
+/* TRUSTED PARTNERS SINGLE STRIP */
+.trusted-partners-section {
+    background:
+        radial-gradient(circle at top left, rgba(207, 166, 58, 0.12), transparent 35%),
+        linear-gradient(180deg, #fff, #fafafa);
+    border-top: 1px solid rgba(207, 166, 58, 0.25);
+    border-bottom: 1px solid rgba(207, 166, 58, 0.25);
+}
+
+.trusted-marquee-wrap {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.trusted-marquee-wrap::before,
+.trusted-marquee-wrap::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 120px;
+    height: 100%;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.trusted-marquee-wrap::before {
+    left: 0;
+    background: linear-gradient(to right, #fff, transparent);
+}
+
+.trusted-marquee-wrap::after {
+    right: 0;
+    background: linear-gradient(to left, #fff, transparent);
+}
+
+.trusted-marquee {
+    --trusted-gap-half: 12px;
+    display: flex;
+    gap: 24px;
+    width: max-content;
+    padding: 8px 0;
+    animation: trustedMoveLeft 38s linear infinite;
+}
+
+.trusted-marquee:hover {
+    animation-play-state: paused;
+}
+
+.trusted-logo-set {
+    display: flex;
+    gap: 24px;
+    flex: 0 0 auto;
+}
+
+.trusted-logo-card {
+    width: 180px;
+    height: 92px;
+    flex: 0 0 auto;
+    background: #fff;
+    border: 1px solid rgba(207, 166, 58, 0.22);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 28px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.06);
+    filter: grayscale(100%);
+    opacity: 0.72;
+    transition: 0.35s ease;
+}
+
+.trusted-logo-card img {
+    max-width: 100%;
+    max-height: 52px;
+    object-fit: contain;
+}
+
+.trusted-logo-card:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1.08);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.14);
+    border-color: #cfa63a;
+}
+
+@keyframes trustedMoveLeft {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(calc(-50% - var(--trusted-gap-half)));
+    }
+}
+
+@media (max-width: 768px) {
+    .trusted-marquee-wrap::before,
+    .trusted-marquee-wrap::after {
+        width: 48px;
+    }
+
+    .trusted-logo-card {
+        width: 145px;
+        height: 76px;
+        padding: 14px 20px;
+        border-radius: 16px;
+    }
+
+    .trusted-logo-card img {
+        max-height: 42px;
+    }
+
+    .trusted-marquee,
+    .trusted-logo-set {
+        gap: 16px;
+    }
+
+    .trusted-marquee {
+        --trusted-gap-half: 8px;
+        animation-duration: 28s;
+    }
+}
+
 /* CTA CARD SLIDE FROM LEFT */
 .cta-card-slide {
     opacity: 0;
@@ -598,47 +877,6 @@
 .cta-card-slide h2 {
     overflow-wrap: break-word;
 }
-/* GLASS FLOATING BUTTONS */
-.glass-float-btn {
-    width: 66px;
-    height: 58px;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: rgba(255, 255, 255, 0.92);
-    text-decoration: none;
-    border: 1px solid rgba(255, 255, 255, 0.28);
-    background: rgba(40, 40, 40, 0.55);  /* dark grey + opacity */
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    -webkit-backdrop-filter: blur(8px);
-    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.14);
-    transition: all 0.28s ease;
-}
-
-.glass-float-btn:hover {
-    transform: translateX(-4px);
-    /* background: rgba(255, 255, 255, 0.12); */
-    border-color: rgba(255, 255, 255, 0.4);
-    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
-}
-
-.glass-float-btn i {
-    line-height: 1;
-}
-
-@media (max-width: 767px) {
-    .glass-float-btn {
-        width: 82px;
-        height: 52px;
-        border-radius: 10px;
-    }
-
-    .glass-float-btn i {
-        font-size: 24px !important;
-    }
-}
 /* RIGHT SIDE IMAGE FLOATING BUTTONS */
 .image-float-btn {
     width: 64px;
@@ -728,16 +966,15 @@
 
 .premium-nav-link {
     position: relative;
-
     padding: 16px 15px;
 
-    color: #35312e;
-
+    font-family: "Montserrat", sans-serif;
     font-size: 10px;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 1;
+    letter-spacing: 0.32em;
 
-    letter-spacing: 0.14em;
+    color: #4b4744;
     text-transform: uppercase;
     text-decoration: none;
 
@@ -745,7 +982,6 @@
         color 0.3s ease,
         transform 0.3s ease;
 }
-
 /* RED DOT */
 
 .premium-nav-link::before {
@@ -1091,36 +1327,513 @@
         font-size: 9px;
     }
 }
+
+/* FESTIVE OFFER POPUP */
+body.festive-popup-open {
+    overflow: hidden;
+}
+
+.festive-popup {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    background: rgba(12, 14, 18, 0.72);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+.festive-popup[aria-hidden="false"] {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.festive-popup-card {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(310px, 0.9fr) minmax(430px, 1.1fr);
+    width: min(980px, 100%);
+    max-height: calc(100vh - 48px);
+    overflow: hidden;
+    border: 1px solid rgba(207, 166, 58, 0.38);
+    border-radius: 28px;
+    background: #fff;
+    box-shadow: 0 35px 100px rgba(0, 0, 0, 0.35);
+    transform: translateY(24px) scale(0.97);
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.festive-popup[aria-hidden="false"] .festive-popup-card {
+    transform: translateY(0) scale(1);
+}
+
+.festive-offer-visual {
+    position: relative;
+    min-height: 620px;
+    overflow: hidden;
+    background: #241815;
+}
+
+.festive-offer-visual > img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.02);
+}
+
+.festive-offer-visual::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(180deg, rgba(16, 10, 8, 0.18) 0%, rgba(20, 10, 8, 0.44) 48%, rgba(19, 10, 8, 0.94) 100%),
+        linear-gradient(90deg, rgba(193, 35, 35, 0.16), transparent 62%);
+}
+
+.festive-offer-copy {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100%;
+    padding: 42px 38px;
+    color: #fff;
+}
+
+.festive-offer-badge {
+    align-self: flex-start;
+    margin-bottom: auto;
+    padding: 9px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.58);
+    border-radius: 999px;
+    background: rgba(15, 10, 8, 0.36);
+    backdrop-filter: blur(8px);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+}
+
+.festive-offer-kicker {
+    color: #f0ce70;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+}
+
+.festive-offer-copy h2 {
+    margin: 12px 0 8px;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3.35rem, 5.3vw, 5rem);
+    font-weight: 500;
+    line-height: 0.88;
+}
+
+.festive-offer-copy h2 span {
+    display: block;
+    color: #f1cb62;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.42em;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+    line-height: 1.4;
+    text-transform: uppercase;
+}
+
+.festive-offer-copy > p {
+    max-width: 330px;
+    margin-top: 10px;
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.festive-offer-benefits {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    margin-top: 24px;
+}
+
+.festive-offer-benefit {
+    padding-top: 13px;
+    border-top: 1px solid rgba(240, 206, 112, 0.52);
+    color: rgba(255, 255, 255, 0.86);
+    font-size: 9px;
+    font-weight: 600;
+    line-height: 1.45;
+    letter-spacing: 0.04em;
+}
+
+.festive-offer-benefit i {
+    display: block;
+    margin-bottom: 7px;
+    color: #f0ce70;
+    font-size: 19px;
+}
+
+.festive-form-panel {
+    position: relative;
+    max-height: calc(100vh - 48px);
+    overflow-y: auto;
+    padding: 46px 48px 38px;
+    background:
+        radial-gradient(circle at top right, rgba(207, 166, 58, 0.1), transparent 30%),
+        #fff;
+}
+
+.festive-popup-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 4;
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    border: 1px solid #e7dfd9;
+    border-radius: 50%;
+    background: #fff;
+    color: #343434;
+    font-size: 20px;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.festive-popup-close:hover {
+    border-color: #c12323;
+    background: #c12323;
+    color: #fff;
+    transform: rotate(90deg);
+}
+
+.festive-form-eyebrow {
+    margin-bottom: 8px;
+    color: #c12323;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+}
+
+.festive-form-panel h3 {
+    max-width: 390px;
+    margin-bottom: 9px;
+    color: #202731;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.4vw, 2.8rem);
+    font-weight: 500;
+    line-height: 1.08;
+}
+
+.festive-form-intro {
+    margin-bottom: 24px;
+    color: #707780;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.festive-field {
+    margin-bottom: 16px;
+}
+
+.festive-field-label {
+    display: block;
+    margin-bottom: 8px;
+    color: #3b4149;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
+.festive-property-options {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 7px;
+}
+
+.festive-property-option {
+    position: relative;
+}
+
+.festive-property-option input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.festive-property-option span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 8px 6px;
+    border: 1px solid #e2e4e7;
+    border-radius: 10px;
+    color: #5e646d;
+    background: #fafafa;
+    font-size: 10px;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.22s ease;
+}
+
+.festive-property-option input:checked + span {
+    border-color: #c12323;
+    background: rgba(193, 35, 35, 0.07);
+    color: #c12323;
+    box-shadow: inset 0 0 0 1px #c12323;
+}
+
+.festive-property-option input:focus-visible + span {
+    outline: 2px solid #cfa63a;
+    outline-offset: 2px;
+}
+
+.festive-input,
+.festive-phone-wrap {
+    width: 100%;
+    min-height: 48px;
+    border: 1px solid #e2e4e7;
+    border-radius: 11px;
+    background: #fafafa;
+    transition: 0.22s ease;
+}
+
+.festive-input {
+    padding: 0 15px;
+    color: #292f37;
+    font-size: 12px;
+    outline: none;
+}
+
+.festive-input::placeholder {
+    color: #9b9fa5;
+}
+
+.festive-input:focus,
+.festive-phone-wrap:focus-within {
+    border-color: #cfa63a;
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(207, 166, 58, 0.12);
+}
+
+.festive-phone-wrap {
+    display: flex;
+    align-items: center;
+}
+
+.festive-phone-code {
+    padding: 0 13px;
+    border-right: 1px solid #e2e4e7;
+    color: #414750;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.festive-phone-wrap input {
+    flex: 1;
+    min-width: 0;
+    height: 46px;
+    padding: 0 14px;
+    border: 0;
+    outline: none;
+    background: transparent;
+    color: #292f37;
+    font-size: 12px;
+}
+
+.festive-consent {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    margin: 4px 0 17px;
+    color: #626870;
+    font-size: 10px;
+    line-height: 1.5;
+    cursor: pointer;
+}
+
+.festive-consent input {
+    width: 15px;
+    height: 15px;
+    margin-top: 1px;
+    accent-color: #1a9b53;
+}
+
+.festive-consent i {
+    color: #1a9b53;
+    font-size: 14px;
+}
+
+.festive-submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    min-height: 50px;
+    border: 0;
+    border-radius: 11px;
+    background: linear-gradient(135deg, #c12323, #9f1717);
+    box-shadow: 0 12px 28px rgba(193, 35, 35, 0.24);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.festive-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 17px 34px rgba(193, 35, 35, 0.32);
+}
+
+.festive-form-note {
+    margin-top: 12px;
+    color: #9a9da2;
+    font-size: 8px;
+    line-height: 1.6;
+    text-align: center;
+}
+
+.festive-form-success {
+    display: none;
+    margin-top: 13px;
+    padding: 10px 12px;
+    border: 1px solid rgba(26, 155, 83, 0.24);
+    border-radius: 10px;
+    background: rgba(26, 155, 83, 0.07);
+    color: #16713e;
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.festive-form-success.is-visible {
+    display: block;
+}
+
+@media (max-width: 820px) {
+    .festive-popup {
+        padding: 16px;
+    }
+
+    .festive-popup-card {
+        display: block;
+        width: min(560px, 100%);
+        max-height: calc(100vh - 32px);
+        overflow-y: auto;
+        border-radius: 22px;
+    }
+
+    .festive-offer-visual {
+        min-height: 245px;
+    }
+
+    .festive-offer-copy {
+        min-height: 245px;
+        padding: 24px;
+    }
+
+    .festive-offer-copy h2 {
+        font-size: 3.2rem;
+    }
+
+    .festive-offer-copy > p {
+        margin-top: 4px;
+    }
+
+    .festive-offer-benefits {
+        display: none;
+    }
+
+    .festive-form-panel {
+        max-height: none;
+        overflow: visible;
+        padding: 34px 24px 26px;
+    }
+}
+
+@media (max-width: 480px) {
+    .festive-popup {
+        padding: 10px;
+    }
+
+    .festive-popup-card {
+        max-height: calc(100vh - 20px);
+        border-radius: 18px;
+    }
+
+    .festive-offer-visual,
+    .festive-offer-copy {
+        min-height: 200px;
+    }
+
+    .festive-offer-copy {
+        padding: 20px;
+    }
+
+    .festive-offer-badge {
+        padding: 7px 10px;
+        font-size: 8px;
+    }
+
+    .festive-offer-copy h2 {
+        margin-top: 8px;
+        font-size: 2.65rem;
+    }
+
+    .festive-offer-copy > p {
+        display: none;
+    }
+
+    .festive-form-panel {
+        padding: 30px 18px 22px;
+    }
+
+    .festive-form-panel h3 {
+        padding-right: 34px;
+        font-size: 1.85rem;
+    }
+
+    .festive-form-intro {
+        margin-bottom: 18px;
+    }
+
+    .festive-property-options {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+.festive-popup-close svg {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    pointer-events: none;
+}
     </style>
 </head>
-<!-- LEFT RED SOCIAL BAR -->
-<!-- <div class="hidden lg:flex absolute left-0 top-0 z-50 social-bar-wrap">
-  <div class="w-[44px] h-[760px] bg-[#c61f1f] flex flex-col items-center pt-10 pb-10 social-bar-drop">
-    
-    <div class="w-px h-80 bg-[#cfa63a] mb-16 mt-4 social-gold-line origin-top"></div>
-
-    <div class="flex flex-col items-center gap-7 text-white text-[19px] mt-14">
-      
-      <a href="#" target="_blank" class="social-icon hover:text-[#cfa63a] transition-colors duration-300">
-        <i class="ph ph-whatsapp-logo"></i>
-      </a>
-
-      <a href="#" target="_blank" class="social-icon hover:text-[#cfa63a] transition-colors duration-300">
-        <i class="ph ph-facebook-logo"></i>
-      </a>
-
-      <a href="#" target="_blank" class="social-icon hover:text-[#cfa63a] transition-colors duration-300">
-        <i class="ph ph-linkedin-logo"></i>
-      </a>
-
-      <a href="#" target="_blank" class="social-icon hover:text-[#cfa63a] transition-colors duration-300">
-        <i class="ph ph-instagram-logo"></i>
-      </a>
-
-    </div>
-  </div>
-</div> -->
-
 <!-- PREMIUM LUXURY HEADER -->
 <header class="premium-header">
 
@@ -1269,6 +1982,160 @@
 
 </header>
 
+<!-- FESTIVE OFFER POPUP -->
+<div
+  id="festiveOfferPopup"
+  class="festive-popup"
+  role="dialog"
+  aria-modal="true"
+  aria-hidden="true"
+  aria-labelledby="festiveOfferTitle"
+>
+  <div class="festive-popup-card">
+
+    <aside class="festive-offer-visual" aria-label="Festive interior design offer">
+      <img src="assets/images/festive offer.jpeg" alt="Festive interior offer">
+      <div class="festive-offer-copy">
+        <span class="festive-offer-badge">Festive Offer</span>
+        <p class="festive-offer-kicker">Celebrate your dream home</p>
+        <h2>
+          25% OFF
+          <span>On Complete Interiors</span>
+        </h2>
+        <p>
+          Give your home a festive transformation with thoughtfully planned,
+          beautifully finished interiors.
+        </p>
+
+        <div class="festive-offer-benefits">
+          <div class="festive-offer-benefit">
+            <i class="ph ph-pencil-ruler"></i>
+            Personalised Designs
+          </div>
+          <div class="festive-offer-benefit">
+            <i class="ph ph-chat-circle-text"></i>
+            Free Consultation
+          </div>
+          <div class="festive-offer-benefit">
+            <i class="ph ph-seal-check"></i>
+            Premium Finish
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <section class="festive-form-panel">
+      <button
+        id="festivePopupClose"
+        class="festive-popup-close"
+        type="button"
+        aria-label="Close festive offer popup"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M6 6L18 18M18 6L6 18"></path>
+        </svg>
+      </button>
+
+      <p class="festive-form-eyebrow">Complimentary Consultation</p>
+      <h3 id="festiveOfferTitle">Let’s design your dream home</h3>
+      <p class="festive-form-intro">
+        Share a few details and our design team will connect with you.
+      </p>
+
+      <form id="festiveOfferForm">
+        <div class="festive-field">
+          <span class="festive-field-label">Property type</span>
+          <div class="festive-property-options">
+            <label class="festive-property-option">
+              <input type="radio" name="propertyType" value="1 BHK" required>
+              <span>1 BHK</span>
+            </label>
+            <label class="festive-property-option">
+              <input type="radio" name="propertyType" value="2 BHK">
+              <span>2 BHK</span>
+            </label>
+            <label class="festive-property-option">
+              <input type="radio" name="propertyType" value="3 BHK">
+              <span>3 BHK</span>
+            </label>
+            <label class="festive-property-option">
+              <input type="radio" name="propertyType" value="4+ BHK / Duplex">
+              <span>4+ / Duplex</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="festive-field">
+          <label class="festive-field-label" for="festiveLocation">Property location</label>
+          <input
+            id="festiveLocation"
+            class="festive-input"
+            type="text"
+            name="location"
+            placeholder="Enter city or locality"
+            autocomplete="address-level2"
+            required
+          >
+        </div>
+
+        <div class="festive-field">
+          <label class="festive-field-label" for="festiveName">Name</label>
+          <input
+            id="festiveName"
+            class="festive-input"
+            type="text"
+            name="name"
+            placeholder="Enter your name"
+            autocomplete="name"
+            required
+          >
+        </div>
+
+        <div class="festive-field">
+          <label class="festive-field-label" for="festiveMobile">Mobile number</label>
+          <div class="festive-phone-wrap">
+            <span class="festive-phone-code">+91</span>
+            <input
+              id="festiveMobile"
+              type="tel"
+              name="mobile"
+              placeholder="10-digit mobile number"
+              autocomplete="tel-national"
+              inputmode="numeric"
+              pattern="[6-9][0-9]{9}"
+              maxlength="10"
+              required
+            >
+          </div>
+        </div>
+
+        <label class="festive-consent">
+          <input type="checkbox" name="whatsappConsent" checked>
+          <span>
+            Yes, send me project updates via WhatsApp
+            <i class="ph ph-whatsapp-logo"></i>
+          </span>
+        </label>
+
+        <button class="festive-submit" type="submit">
+          Book a Free Consultation
+          <i class="ph ph-arrow-up-right"></i>
+        </button>
+
+        <p class="festive-form-note">
+          By submitting, you agree to be contacted by Space Decor Belle.
+          Offer applicability is subject to project scope and final quotation.
+        </p>
+
+        <p id="festiveFormSuccess" class="festive-form-success" role="status">
+          Thank you! Opening WhatsApp with your consultation details.
+        </p>
+      </form>
+    </section>
+
+  </div>
+</div>
+
         <main>
             <!-- Hero Wrapper -->
 <section id="home" class="relative w-full max-w-7xl mx-auto px-6 lg:px-12 pt-3 pb-16">
@@ -1331,7 +2198,6 @@
 
 </div>
 
-    <!-- Cards below banner -->
 <!-- Cards below banner -->
 <div class="max-w-6xl mx-auto px-6 relative z-10 flex flex-col items-center -mt-20 md:-mt-28 lg:-mt-20">
 
@@ -1533,6 +2399,56 @@
   </div>
 </section>
 
+<!-- TRUSTED PARTNERS SECTION -->
+<section class="trusted-partners-section py-20 overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+
+    <div class="text-center mb-14">
+      <p class="text-customGold text-[11px] uppercase tracking-[0.6em] font-bold mb-5">
+        Our Trusted Partners
+      </p>
+
+      <h2 class="font-serif-chic text-[#151515] text-[42px] md:text-[68px] leading-tight">
+        Trusted By Leading Brands
+      </h2>
+
+      <p class="text-gray-600 text-sm md:text-base leading-8 max-w-3xl mx-auto mt-5">
+        We proudly collaborate with premium brands, developers, architects
+        and businesses to create timeless luxury interiors.
+      </p>
+    </div>
+
+    <div class="trusted-marquee-wrap">
+      <div class="trusted-marquee">
+        <div class="trusted-logo-set" aria-label="Trusted partner logos">
+          <div class="trusted-logo-card"><img src="assets/images/partner-1.jpg" alt="Trusted partner 1"></div>
+          <div class="trusted-logo-card"><img src="assets/images/partner-2.jpg" alt="Trusted partner 2"></div>
+          <div class="trusted-logo-card"><img src="assets/images/partner-3.jpg" alt="Trusted partner 3"></div>
+          <div class="trusted-logo-card"><img src="assets/images/partner-4.jpg" alt="Trusted partner 4"></div>
+          <div class="trusted-logo-card"><img src="assets/images/partner-5.jpg" alt="Trusted partner 5"></div>
+          <div class="trusted-logo-card"><img src="assets/images/partner-6.jpg" alt="Trusted partner 6"></div>
+          <div class="trusted-logo-card"><img src="assets/images/partner-7.jpg" alt="Trusted partner 7"></div>
+          <div class="trusted-logo-card"><img src="assets/images/partner-8.jpg" alt="Trusted partner 8"></div>
+          <div class="trusted-logo-card"><img src="assets/images/partner-9.jpg" alt="Trusted partner 9"></div>
+        </div>
+
+        <div class="trusted-logo-set" aria-hidden="true">
+          <div class="trusted-logo-card"><img src="assets/images/partner-1.jpg" alt=""></div>
+          <div class="trusted-logo-card"><img src="assets/images/partner-2.jpg" alt=""></div>
+          <div class="trusted-logo-card"><img src="assets/images/partner-3.jpg" alt=""></div>
+          <div class="trusted-logo-card"><img src="assets/images/partner-4.jpg" alt=""></div>
+          <div class="trusted-logo-card"><img src="assets/images/partner-5.jpg" alt=""></div>
+          <div class="trusted-logo-card"><img src="assets/images/partner-6.jpg" alt=""></div>
+          <div class="trusted-logo-card"><img src="assets/images/partner-7.jpg" alt=""></div>
+          <div class="trusted-logo-card"><img src="assets/images/partner-8.jpg" alt=""></div>
+          <div class="trusted-logo-card"><img src="assets/images/partner-9.jpg" alt=""></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <!-- CTA Banner Section -->
 <section class="w-full relative overflow-hidden bg-[#151515]">
 
@@ -1567,39 +2483,75 @@
 </section>
         </main>
 
-        <!-- Footer -->
+<!-- Footer -->
 <footer id="clients" class="w-full bg-[#151515] relative pt-6 pb-2 z-10 border-t border-gray-800 overflow-hidden">
-    
-    <!-- Top Horizontal Line -->
-    <!-- <div class="footer-line absolute top-5 left-10 lg:left-24 right-10 lg:right-24 h-[2px] bg-[#cfa63a]"></div> -->
 
     <div class="max-w-7xl mx-auto px-6 lg:px-12 relative">
         
         <!-- Vertical Divider Lines -->
-       <div class="footer-line-vertical hidden md:block absolute top-[38px] bottom-[118px] left-[28%] w-px bg-[#cfa63a]"></div>
-<div class="footer-line-vertical hidden md:block absolute top-[38px] bottom-[118px] right-[28%] w-px bg-[#cfa63a]"></div>
-        <!-- Main Footer Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 relative z-10">
+        <div class="footer-line-vertical footer-divider-one hidden md:block absolute top-[38px] bottom-[118px] w-px bg-[#cfa63a]"></div>
+        <div class="footer-line-vertical footer-divider-two hidden md:block absolute top-[38px] bottom-[118px] w-px bg-[#cfa63a]"></div>
 
-            <!-- Left Column -->
-            <div class="flex flex-col justify-start pt-12 pb-16 md:pb-0 pl-0 md:pl-10">
-<nav class="flex flex-col gap-6 text-xs font-sans font-bold tracking-widest uppercase text-white">
-    <a href="index.html" class="footer-drop footer-delay-1 hover:text-customGold transition-colors duration-300">home</a>
-    <a href="about.html" class="footer-drop footer-delay-2 hover:text-customGold transition-colors duration-300">about us</a>
-    <a href="interior.html" class="footer-drop footer-delay-3 hover:text-customGold transition-colors duration-300">interior</a>
-    <a href="vastu.html" class="footer-drop footer-delay-4 hover:text-customGold transition-colors duration-300">vastu</a>
-    <a href="decor.html" class="footer-drop footer-delay-5 hover:text-customGold transition-colors duration-300">decor</a>
-    <a href="contact.html" class="footer-drop footer-delay-6 hover:text-customGold transition-colors duration-300">contact</a>
-</nav>
+        <!-- Main Footer Grid -->
+        <div class="footer-main-grid relative z-10">
+
+            <!-- Logo + Newsletter -->
+            <div class="footer-brand-column">
+                <a
+                    href="index.html"
+                    class="footer-brand-logo footer-drop footer-delay-1"
+                    aria-label="Space Decor Belle Home"
+                >
+                    <img src="assets/images/logo.png" alt="Space Decor Belle">
+                </a>
+
+                <div class="footer-newsletter footer-drop footer-delay-2">
+                    <p class="footer-newsletter-eyebrow">Space Decor Belle Journal</p>
+
+                    <h3 class="footer-newsletter-title">
+                        Subscribe to our
+                        <span>design journal.</span>
+                    </h3>
+
+                    <p class="footer-newsletter-copy">
+                        Rare projects, studio notes and thoughtful material
+                        studies—shared seasonally.
+                    </p>
+
+                    <form id="footerNewsletterForm" class="footer-newsletter-form">
+                        <label class="sr-only" for="footerNewsletterEmail">
+                            Email address
+                        </label>
+                        <input
+                            id="footerNewsletterEmail"
+                            type="email"
+                            name="email"
+                            placeholder="your@email.com"
+                            autocomplete="email"
+                            required
+                        >
+                        <button type="submit">
+                            Subscribe
+                            <span class="footer-newsletter-arrow" aria-hidden="true">→</span>
+                        </button>
+                    </form>
+
+                    <p
+                        id="footerNewsletterStatus"
+                        class="footer-newsletter-status"
+                        role="status"
+                        aria-live="polite"
+                    ></p>
+                </div>
             </div>
 
             <!-- Center Column -->
-            <div id="contact" class="flex flex-col items-center text-center pt-8 pb-[118px] px-4 h-full">
-                <h4 class="text-customGold font-sans font-bold text-s uppercase tracking-[0.3em] mb-8">
+            <div id="contact" class="footer-center-column">
+                <h4 class="text-customGold font-sans font-bold text-xs uppercase tracking-[0.3em] mb-8">
                     RECENT WORKS
                 </h4>
 
-<div class="grid grid-cols-3 gap-2 mb-6 w-full max-w-xs">
+<div class="footer-recent-grid">
     <img src="assets/images/11.jpg" class="w-full h-20 object-cover" alt="Recent work 1">
     <img src="assets/images/12.jpg" class="w-full h-20 object-cover" alt="Recent work 2">
     <img src="assets/images/13.jpg" class="w-full h-20 object-cover" alt="Recent work 3">
@@ -1608,7 +2560,7 @@
     <img src="assets/images/16.jpg" class="w-full h-20 object-cover" alt="Recent work 6">
 </div>
 
-<div class="flex flex-col items-center text-center mt-auto pt-8">
+<div class="footer-contact-block">
 
   <!-- Heading -->
   <h4 class="text-white text-[12px] tracking-[0.35em] uppercase mb-4">
@@ -1616,12 +2568,12 @@
   </h4>
 
   <!-- Phone -->
-<p class="text-customGold font-serif-chic text-[24px] md:text-[24px] font-light tracking-[0.04em]">
+<p class="footer-contact-phone">
   (+91) 96542 32327
 </p>
 
   <!-- Email -->
-  <p class="text-customGold text-[18px] md:text-[24px] font-light">
+  <p class="footer-contact-email">
     info@spacedecorbelle.com
   </p>
 
@@ -1629,34 +2581,31 @@
             </div>
 
             <!-- Right Column -->
-            <div class="flex flex-col items-end md:items-center justify-end pt-8 pb-16 md:pb-[118px] pr-0 md:pr-10 h-full">
-    <div class="flex md:flex-col items-center gap-4 md:gap-3 md:pt-0 mt-auto">
+            <div class="footer-social-column">
+                <p class="footer-social-label footer-drop footer-delay-1">
+                    Follow Us
+                </p>
 
-        <div class="footer-drop footer-delay-1 mb-0 md:mb-6">
-            <span class="text-white font-sans font-bold text-[8px] tracking-[0.3em] uppercase md:rotate-90 md:origin-center whitespace-nowrap inline-block">
-                FOLLOW US
-            </span>
-        </div>
+                <div class="footer-social-rule footer-drop footer-delay-2"></div>
 
-        <div class="footer-drop footer-delay-2 w-px h-16 bg-customGold hidden md:block mt-1 mb-3"></div>
-
-        <a href="#" class="footer-drop footer-delay-3 text-customGold border border-customGold rounded-full p-2 hover:bg-customGold hover:text-black transition-colors duration-300">
+                <div class="footer-social-links">
+        <a href="#" class="footer-social-link footer-drop footer-delay-3" aria-label="WhatsApp">
             <i class="ph ph-whatsapp-logo text-sm"></i>
         </a>
 
-        <a href="#" class="footer-drop footer-delay-4 text-customGold border border-customGold rounded-full p-2 hover:bg-customGold hover:text-black transition-colors duration-300">
+        <a href="#" class="footer-social-link footer-drop footer-delay-4" aria-label="Facebook">
             <i class="ph ph-facebook-logo text-sm"></i>
         </a>
 
-        <a href="#" class="footer-drop footer-delay-5 text-customGold border border-customGold rounded-full p-2 hover:bg-customGold hover:text-black transition-colors duration-300">
+        <a href="#" class="footer-social-link footer-drop footer-delay-5" aria-label="LinkedIn">
             <i class="ph ph-linkedin-logo text-sm"></i>
         </a>
 
-        <a href="#" class="footer-drop footer-delay-6 text-customGold border border-customGold rounded-full p-2 hover:bg-customGold hover:text-black transition-colors duration-300">
+        <a href="#" class="footer-social-link footer-drop footer-delay-6" aria-label="Instagram">
             <i class="ph ph-instagram-logo text-sm"></i>
         </a>
-    </div>
-</div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -1677,7 +2626,6 @@
 </footer>
 <!-- RIGHT SIDE FLOATING IMAGE BUTTONS -->
 <div class="fixed right-5 top-1/2 -translate-y-1/2 z-50 hidden md:flex flex-col gap-4">
-
   <!-- Gmail -->
   <a
     href="mailto:info@spacedecorbelle.com"
@@ -1686,7 +2634,7 @@
     title="Send Email"
   >
     <img
-      src="assets\images\gmail-icon.png"
+      src="assets/images/gmail-icon.png"
       alt="Gmail"
     >
   </a>
@@ -1701,7 +2649,7 @@
     title="Chat on WhatsApp"
   >
     <img
-      src="assets\images\whatsaap-icon.png"
+      src="assets/images/whatsaap-icon.png"
       alt="WhatsApp"
     >
   </a>
@@ -1736,7 +2684,7 @@
         });
         /* LINE ANIMATION ON VIEW */
 const lines = document.querySelectorAll(
-  '.red-line, .line-center-grow, .footer-line, .footer-line-vertical, .social-gold-line'
+  '.red-line, .line-center-grow, .footer-line, .footer-line-vertical'
 );
 const footerDrops = document.querySelectorAll('.footer-drop');
 
@@ -1781,7 +2729,7 @@ if (featureArrow) {
 
         arrowAnimating = true;
 
-        featureArrow.animate(
+        const arrowRotation = featureArrow.animate(
             [
                 { transform: 'rotate(0deg)' },
                 { transform: 'rotate(360deg)' },
@@ -1794,9 +2742,9 @@ if (featureArrow) {
             }
         );
 
-        setTimeout(() => {
-            
-        }, 1000);
+        arrowRotation.finished.finally(() => {
+            arrowAnimating = false;
+        });
     });
 }
 
@@ -1962,6 +2910,114 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
+/* =========================================
+   FESTIVE OFFER POPUP - OPENS AFTER 14 SECONDS
+========================================= */
+const festivePopup = document.getElementById("festiveOfferPopup");
+const festivePopupClose = document.getElementById("festivePopupClose");
+const festiveOfferForm = document.getElementById("festiveOfferForm");
+const festiveFormSuccess = document.getElementById("festiveFormSuccess");
+const festiveFirstField = document.querySelector(
+    '.festive-property-option input'
+);
+
+let festivePopupTimer;
+
+function openFestivePopup() {
+    if (!festivePopup) return;
+
+    festivePopup.setAttribute("aria-hidden", "false");
+    document.body.classList.add("festive-popup-open");
+
+    window.setTimeout(() => {
+        if (festiveFirstField) festiveFirstField.focus();
+    }, 450);
+}
+
+function closeFestivePopup() {
+    if (!festivePopup) return;
+
+    festivePopup.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("festive-popup-open");
+}
+
+if (festivePopup) {
+    festivePopupTimer = window.setTimeout(openFestivePopup, 14000);
+
+    festivePopupClose.addEventListener("click", () => {
+        window.clearTimeout(festivePopupTimer);
+        closeFestivePopup();
+    });
+
+    festivePopup.addEventListener("click", (event) => {
+        if (event.target === festivePopup) {
+            window.clearTimeout(festivePopupTimer);
+            closeFestivePopup();
+        }
+    });
+
+    document.addEventListener("keydown", (event) => {
+        if (
+            event.key === "Escape" &&
+            festivePopup.getAttribute("aria-hidden") === "false"
+        ) {
+            closeFestivePopup();
+        }
+    });
+}
+
+if (festiveOfferForm) {
+    festiveOfferForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        if (!festiveOfferForm.reportValidity()) return;
+
+        const formData = new FormData(festiveOfferForm);
+        const whatsappUpdates = formData.get("whatsappConsent")
+            ? "Yes"
+            : "No";
+
+        const message = [
+            "Hello Space Decor Belle,",
+            "",
+            "I am interested in the Festive Offer - 25% OFF.",
+            `Name: ${formData.get("name")}`,
+            `Mobile: +91 ${formData.get("mobile")}`,
+            `Property Type: ${formData.get("propertyType")}`,
+            `Property Location: ${formData.get("location")}`,
+            `WhatsApp Updates: ${whatsappUpdates}`,
+            "",
+            "I would like to book a free design consultation."
+        ].join("\n");
+
+        festiveFormSuccess.classList.add("is-visible");
+
+        window.open(
+            `https://wa.me/919654232327?text=${encodeURIComponent(message)}`,
+            "_blank",
+            "noopener,noreferrer"
+        );
+    });
+}
+
+const footerNewsletterForm = document.getElementById(
+    "footerNewsletterForm"
+);
+const footerNewsletterStatus = document.getElementById(
+    "footerNewsletterStatus"
+);
+
+if (footerNewsletterForm && footerNewsletterStatus) {
+    footerNewsletterForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        if (!footerNewsletterForm.reportValidity()) return;
+
+        footerNewsletterStatus.textContent =
+            "Thank you for subscribing to our design journal.";
+        footerNewsletterForm.reset();
+    });
+}
 
     </script>
     
