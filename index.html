@@ -1832,6 +1832,670 @@ body.festive-popup-open {
     stroke-linecap: round;
     pointer-events: none;
 }
+/* =========================================
+   ABOUT TRUST STRIP
+========================================= */
+
+.about-trust-strip {
+    position: relative;
+
+    display: grid;
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr))
+        minmax(235px, 1.4fr);
+
+    width: 100%;
+    max-width: 1180px;
+    margin: 42px auto 0;
+
+    overflow: hidden;
+
+    background: linear-gradient(
+        135deg,
+        #ffffff 0%,
+        #faf7f3 100%
+    );
+
+    border: 1px solid rgba(207, 166, 58, 0.28);
+    border-radius: 24px;
+
+    box-shadow: 0 20px 55px rgba(37, 29, 25, 0.09);
+}
+
+/* Top accent line */
+.about-trust-strip::before {
+    content: "";
+
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 3px;
+
+    background: linear-gradient(
+        90deg,
+        #c12323 0%,
+        #cfa63a 50%,
+        #c12323 100%
+    );
+}
+
+
+/* =========================================
+   STAT ITEMS
+========================================= */
+
+.about-trust-metric {
+    position: relative;
+    min-width: 0;
+    min-height: 132px;
+    padding: 25px 16px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    border-left: 1px solid rgba(207, 166, 58, 0.2);
+
+    transition:
+        background-color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.about-trust-metric:first-child {
+    border-left: 0;
+}
+
+.about-trust-metric:hover {
+    z-index: 1;
+
+    transform: translateY(-3px);
+    background: rgba(207, 166, 58, 0.06);
+}
+
+.about-trust-number {
+    display: block;
+    margin-bottom: 9px;
+
+    color: #c12323;
+
+    font-family: "Playfair Display", serif;
+    font-size: clamp(2.2rem, 3.2vw, 3.25rem);
+    font-weight: 500;
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+}
+
+.about-trust-label {
+    color: #3d3633;
+
+    font-size: 9px;
+    font-weight: 700;
+    line-height: 1.55;
+    letter-spacing: 0.17em;
+    text-transform: uppercase;
+}
+
+
+/* =========================================
+   LOCATION ITEM
+========================================= */
+
+.about-trust-location {
+    position: relative;
+    min-width: 0;
+    min-height: 132px;
+    padding: 24px 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+
+    background: transparent;
+
+    border-left: 1px solid rgba(207, 166, 58, 0.2);
+
+    transition:
+        background-color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.about-trust-location:hover {
+    transform: translateY(-3px);
+    background: rgba(207, 166, 58, 0.06);
+}
+
+.about-trust-location-icon {
+    width: 46px;
+    height: 46px;
+    flex-shrink: 0;
+
+    display: grid;
+    place-items: center;
+
+    color: #c12323;
+    font-size: 22px;
+
+    background: rgba(193, 35, 35, 0.05);
+    border: 1px solid rgba(193, 35, 35, 0.25);
+    border-radius: 50%;
+}
+
+.about-trust-location-content {
+    min-width: 0;
+    text-align: left;
+}
+
+.about-trust-location-label {
+    margin-bottom: 7px;
+
+    color: #c12323;
+
+    font-size: 9px;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+}
+
+.about-trust-location-title {
+    color: #1a1a1a;
+
+    font-family: "Playfair Display", serif;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1;
+}
+
+.about-trust-cities {
+    margin-top: 8px;
+
+    color: #68615d;
+
+    font-size: 9px;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 960px) {
+    .about-trust-strip {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        max-width: 700px;
+        border-radius: 22px;
+    }
+
+    .about-trust-metric {
+        min-height: 115px;
+
+        border-left: 0;
+        border-bottom: 1px solid rgba(207, 166, 58, 0.2);
+    }
+
+    .about-trust-metric:nth-child(even) {
+        border-left: 1px solid rgba(207, 166, 58, 0.2);
+    }
+
+    .about-trust-metric:nth-child(3),
+    .about-trust-metric:nth-child(4) {
+        border-bottom: 0;
+    }
+
+    .about-trust-location {
+        grid-column: 1 / -1;
+
+        min-height: 112px;
+
+        border-left: 0;
+        border-top: 1px solid rgba(207, 166, 58, 0.2);
+    }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 520px) {
+    .about-trust-strip {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        margin-top: 32px;
+        border-radius: 19px;
+    }
+
+    .about-trust-metric {
+        min-height: 108px;
+        padding: 20px 9px;
+    }
+
+    .about-trust-number {
+        margin-bottom: 7px;
+        font-size: 2.15rem;
+    }
+
+    .about-trust-label {
+        font-size: 8px;
+        line-height: 1.5;
+        letter-spacing: 0.11em;
+    }
+
+    .about-trust-location {
+        min-height: 106px;
+        padding: 21px 18px;
+        gap: 13px;
+    }
+
+    .about-trust-location-icon {
+        width: 42px;
+        height: 42px;
+        font-size: 20px;
+    }
+
+    .about-trust-location-label {
+        margin-bottom: 6px;
+
+        font-size: 8px;
+        letter-spacing: 0.18em;
+    }
+
+    .about-trust-location-title {
+        font-size: 21px;
+    }
+
+    .about-trust-cities {
+        margin-top: 7px;
+
+        font-size: 8px;
+        letter-spacing: 0.08em;
+    }
+}
+
+/* =========================================
+   HOME STORY / COMPACT ABOUT SECTION
+========================================= */
+
+.home-story-section {
+    width: 100%;
+    padding: 10px 24px 72px;
+    background: #ffffff;
+}
+
+.home-story-shell {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto;
+    overflow: hidden;
+    background: #f8f5f1;
+    border: 1px solid rgba(207, 166, 58, 0.25);
+    border-radius: 28px;
+    box-shadow: 0 22px 58px rgba(37, 29, 25, 0.1);
+}
+
+.home-story-intro {
+    position: relative;
+    min-width: 0;
+    padding: 42px 44px;
+    overflow: hidden;
+    color: #ffffff;
+    background:
+        radial-gradient(
+            circle at 12% 10%,
+            rgba(193, 35, 35, 0.25),
+            transparent 34%
+        ),
+        linear-gradient(145deg, #201f1d 0%, #141414 100%);
+}
+
+.home-story-intro::before {
+    content: "";
+    position: absolute;
+    top: -95px;
+    right: -80px;
+    width: 235px;
+    height: 235px;
+    border: 1px solid rgba(207, 166, 58, 0.18);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.home-story-eyebrow {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+    color: #cfa63a;
+    font-size: 9px;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: 0.27em;
+    text-transform: uppercase;
+}
+
+.home-story-eyebrow::before {
+    content: "";
+    width: 32px;
+    height: 1px;
+    flex-shrink: 0;
+    background: #c12323;
+}
+
+.home-story-title {
+    position: relative;
+    z-index: 1;
+    max-width: 470px;
+    color: #ffffff;
+    font-family: "Playfair Display", serif;
+    font-size: clamp(2.25rem, 3.6vw, 3.7rem);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -0.04em;
+}
+
+.home-story-title span {
+    display: block;
+    margin-top: 5px;
+    color: #cfa63a;
+    font-style: italic;
+}
+
+.home-story-copy {
+    position: relative;
+    z-index: 1;
+    max-width: 480px;
+    margin-top: 19px;
+    color: rgba(255, 255, 255, 0.67);
+    font-size: 11px;
+    line-height: 1.75;
+}
+
+.home-story-link {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    width: fit-content;
+    margin-top: 22px;
+    padding-bottom: 7px;
+    color: #ffffff;
+    border-bottom: 1px solid rgba(207, 166, 58, 0.75);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.19em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition:
+        color 0.3s ease,
+        gap 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.home-story-link i {
+    color: #c12323;
+    font-size: 17px;
+    transition: transform 0.3s ease;
+}
+
+.home-story-link:hover {
+    gap: 15px;
+    color: #cfa63a;
+    border-color: #c12323;
+}
+
+.home-story-link:hover i {
+    transform: translate(3px, -3px);
+}
+
+.home-story-pillars {
+    min-width: 0;
+    padding: 22px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    align-items: stretch;
+}
+
+.home-story-card {
+    position: relative;
+    min-width: 0;
+    padding: 24px 19px 22px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.82);
+    border: 1px solid rgba(207, 166, 58, 0.22);
+    border-radius: 19px;
+    transition:
+        transform 0.35s ease,
+        background-color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.home-story-card::after {
+    content: "";
+    position: absolute;
+    right: -30px;
+    bottom: -30px;
+    width: 78px;
+    height: 78px;
+    border: 1px solid rgba(193, 35, 35, 0.12);
+    border-radius: 50%;
+}
+
+.home-story-card:hover {
+    transform: translateY(-5px);
+    background: #ffffff;
+    box-shadow: 0 14px 32px rgba(37, 29, 25, 0.1);
+}
+
+.home-story-number {
+    width: 38px;
+    height: 38px;
+    margin-bottom: 19px;
+    display: grid;
+    place-items: center;
+    color: #c12323;
+    background: rgba(193, 35, 35, 0.055);
+    border: 1px solid rgba(193, 35, 35, 0.22);
+    border-radius: 50%;
+    font-family: "Playfair Display", serif;
+    font-size: 12px;
+    font-style: italic;
+    transition:
+        color 0.3s ease,
+        background-color 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.home-story-card:hover .home-story-number {
+    color: #ffffff;
+    background: #c12323;
+    border-color: #c12323;
+}
+
+.home-story-card h3 {
+    margin-bottom: 10px;
+    color: #26211f;
+    font-family: "Playfair Display", serif;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.1;
+}
+
+.home-story-card p {
+    position: relative;
+    z-index: 1;
+
+    color: #6d6661;
+
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.75;
+}
+@media (max-width: 700px) {
+    .home-story-card p {
+        font-size: 11px;
+        line-height: 1.7;
+    }
+}
+
+@media (max-width: 1000px) {
+    .home-story-shell {
+        grid-template-columns: 1fr;
+        max-width: 760px;
+    }
+
+    .home-story-intro {
+        padding: 38px 40px;
+    }
+
+    .home-story-pillars {
+        padding: 18px;
+    }
+}
+
+@media (max-width: 700px) {
+    .home-story-section {
+        padding: 4px 14px 52px;
+    }
+
+    .home-story-shell {
+        border-radius: 22px;
+    }
+
+    .home-story-intro {
+        padding: 34px 25px 35px;
+    }
+
+    .home-story-title {
+        font-size: clamp(2.15rem, 10vw, 3rem);
+    }
+
+    .home-story-pillars {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 12px;
+    }
+
+    .home-story-card {
+        padding: 20px;
+        display: grid;
+        grid-template-columns: 40px minmax(0, 1fr);
+        column-gap: 14px;
+        align-items: start;
+    }
+
+    .home-story-number {
+        grid-row: 1 / 3;
+        margin: 0;
+    }
+
+    .home-story-card h3 {
+        margin: 1px 0 7px;
+        font-size: 19px;
+    }
+}
+
+/* =========================================
+   COMPACT FOOTER SPACING FIX
+========================================= */
+
+.footer-brand-column,
+.footer-center-column,
+.footer-social-column {
+    min-height: 0;
+}
+
+.footer-contact-block {
+    margin-top: 18px;
+    padding-top: 0;
+}
+
+.footer-bottom-line {
+    width: calc(100% - 48px);
+    max-width: 1180px;
+    height: 1px;
+    margin: 0 auto;
+    background: rgba(207, 166, 58, 0.78);
+}
+
+.footer-bottom-bar {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 21px 24px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    color: #9ca3af;
+    font-family: "Montserrat", sans-serif;
+    font-size: 10px;
+    line-height: 1.5;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+@media (min-width: 768px) {
+    .footer-brand-column,
+    .footer-center-column,
+    .footer-social-column {
+        min-height: 0 !important;
+        padding: 38px 30px 42px !important;
+    }
+
+    .footer-line-vertical.footer-divider-one,
+    .footer-line-vertical.footer-divider-two {
+        top: 32px !important;
+        bottom: 32px !important;
+    }
+
+    .footer-newsletter {
+        margin-top: 20px;
+    }
+
+    .footer-newsletter-title {
+        font-size: clamp(2rem, 2.5vw, 2.75rem);
+    }
+}
+
+@media (max-width: 767px) {
+    .footer-brand-column,
+    .footer-center-column,
+    .footer-social-column {
+        padding: 38px 0 42px;
+    }
+
+    .footer-bottom-line {
+        width: calc(100% - 32px);
+    }
+
+    .footer-bottom-bar {
+        padding: 20px 18px 23px;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        gap: 10px;
+    }
+}
+
     </style>
 </head>
 <!-- PREMIUM LUXURY HEADER -->
@@ -1994,7 +2658,7 @@ body.festive-popup-open {
   <div class="festive-popup-card">
 
     <aside class="festive-offer-visual" aria-label="Festive interior design offer">
-      <img src="assets/images/festive offer.jpeg" alt="Festive interior offer">
+      <img src="assets/images/festive offer.png" alt="Festive interior offer">
       <div class="festive-offer-copy">
         <span class="festive-offer-badge">Festive Offer</span>
         <p class="festive-offer-kicker">Celebrate your dream home</p>
@@ -2149,7 +2813,7 @@ body.festive-popup-open {
 </section>
 
             <!-- About Us Wrapper -->
-            <section id="about" class="w-full pt-8 pb-4 px-6">
+            <section id="about" class="w-full pt-8 pb-10 px-6">
                 <div class="max-w-4xl mx-auto text-center flex flex-col items-center">
                     <h4 class="text-customRed font-bold text-xs uppercase tracking-[0.8em] mb-6">About Us</h4>
                     
@@ -2164,6 +2828,67 @@ body.festive-popup-open {
 
                     <div class="line-center-grow w-[320px] md:w-[500px] h-[3px] bg-customRed mx-auto mt-6"></div>
                 </div>
+                <div class="about-trust-strip" aria-label="Space Decor Belle achievements">
+
+    <article class="about-trust-metric">
+        <span
+            class="stat-number about-trust-number"
+            data-target="150"
+            data-suffix="+"
+        >
+            0+
+        </span>
+        <p class="about-trust-label">Projects Completed</p>
+    </article>
+
+    <article class="about-trust-metric">
+        <span
+            class="stat-number about-trust-number"
+            data-target="20"
+            data-suffix="+"
+        >
+            0+
+        </span>
+        <p class="about-trust-label">Years of Experience</p>
+    </article>
+
+    <article class="about-trust-metric">
+        <span
+            class="stat-number about-trust-number"
+            data-target="120"
+            data-suffix="+"
+        >
+            0+
+        </span>
+        <p class="about-trust-label">Decor Elements</p>
+    </article>
+
+    <article class="about-trust-metric">
+        <span
+            class="stat-number about-trust-number"
+            data-target="75"
+            data-suffix="+"
+        >
+            0+
+        </span>
+        <p class="about-trust-label">Design Concepts</p>
+    </article>
+
+    <div class="about-trust-location">
+        <div class="about-trust-location-icon" aria-hidden="true">
+            <i class="ph ph-map-pin"></i>
+        </div>
+
+        <div class="about-trust-location-content">
+            <p class="about-trust-location-label">Serving Across</p>
+            <h3 class="about-trust-location-title">Delhi NCR</h3>
+            <p class="about-trust-cities">
+                Delhi · Noida · Gurugram
+            </p>
+        </div>
+    </div>
+
+</div>
             </section>
 
 
@@ -2291,21 +3016,80 @@ body.festive-popup-open {
       </figure>
     </div>
 
-<div class="feature-stats-panel" aria-label="Company achievements">
 
-  <article class="feature-stat-card">
-    <h4 class="stat-number" data-target="150" data-suffix="+">0+</h4>
-    <p>Projects Completed</p>
-  </article>
-
-  <article class="feature-stat-card">
-    <h4 class="stat-number" data-target="20" data-suffix="+">0+</h4>
-    <p>Years of Experience</p>
-  </article>
-
-</div>
   </div>
 </section>
+
+<!-- Compact About Us / Our Story Section -->
+<section class="home-story-section" aria-labelledby="homeStoryTitle">
+
+  <div class="home-story-shell services-item services-delay-1">
+
+    <!-- Who We Are -->
+    <div class="home-story-intro">
+
+      <p class="home-story-eyebrow">About Space Decor Belle</p>
+
+      <h2 id="homeStoryTitle" class="home-story-title">
+        We shape spaces around
+        <span>the way you live.</span>
+      </h2>
+
+      <p class="home-story-copy">
+        We are an interior design studio bringing interiors, Vastu and
+        decor together through one thoughtful and beautifully managed
+        design process.
+      </p>
+
+      <a href="about.html" class="home-story-link">
+        Discover Our Story
+        <i class="ph ph-arrow-up-right" aria-hidden="true"></i>
+      </a>
+
+    </div>
+
+    <!-- What We Do / How We Work -->
+    <div class="home-story-pillars">
+
+      <article class="home-story-card">
+        <div class="home-story-number">01</div>
+
+        <h3>Who We Are</h3>
+
+        <p>
+          A multidisciplinary studio creating refined, functional and
+          deeply personal spaces.
+        </p>
+      </article>
+
+      <article class="home-story-card">
+        <div class="home-story-number">02</div>
+
+        <h3>What We Do</h3>
+
+        <p>
+          Interiors, space planning, Vastu guidance, custom furniture
+          and final decor styling.
+        </p>
+      </article>
+
+      <article class="home-story-card">
+        <div class="home-story-number">03</div>
+
+        <h3>How We Work</h3>
+
+        <p>
+          We listen, plan and execute around your lifestyle,
+          requirements, budget and space.
+        </p>
+      </article>
+
+    </div>
+
+  </div>
+
+</section>
+
 <!-- Services Section -->
 <section id="portfolio" class="w-full bg-white py-12">
   <div class="max-w-[1180px] mx-auto px-6 lg:px-8">
@@ -2484,7 +3268,7 @@ body.festive-popup-open {
         </main>
 
 <!-- Footer -->
-<footer id="clients" class="w-full bg-[#151515] relative pt-6 pb-2 z-10 border-t border-gray-800 overflow-hidden">
+<footer id="clients" class="w-full bg-[#151515] relative pt-2 pb-0 z-10 border-t border-gray-800 overflow-hidden">
 
     <div class="max-w-7xl mx-auto px-6 lg:px-12 relative">
         
@@ -2610,19 +3394,21 @@ body.festive-popup-open {
     </div>
 
     <!-- Bottom Horizontal Line -->
-    <div class="footer-line absolute bottom-16 left-10 lg:left-24 right-10 lg:right-24 mb-12 h-px bg-[#cfa63a]"></div>
+    <div class="footer-line footer-bottom-line"></div>
 
     <!-- Footer Bottom Bar -->
-<div class="max-w-7xl mx-auto px-6 lg:px-12 mb-8 flex flex-col md:flex-row justify-between items-center text-[10px] text-gray-400 font-sans tracking-widest uppercase mt-4 relative z-10">
+    <div class="footer-bottom-bar relative z-10">
 
-<a href="privacy-policy.html"
-   class="hover:text-customGold transition-all duration-300 hover:tracking-[0.22em]">
-   PRIVACY POLICY
-</a>
+        <a
+            href="privacy-policy.html"
+            class="hover:text-customGold transition-all duration-300 hover:tracking-[0.22em]"
+        >
+            PRIVACY POLICY
+        </a>
 
-    <p>&copy; SPACEDECORBELLE ALL RIGHTS RESERVED</p>
+        <p>&copy; SPACEDECORBELLE ALL RIGHTS RESERVED</p>
 
-</div>
+    </div>
 </footer>
 <!-- RIGHT SIDE FLOATING IMAGE BUTTONS -->
 <div class="fixed right-5 top-1/2 -translate-y-1/2 z-50 hidden md:flex flex-col gap-4">
@@ -2755,7 +3541,9 @@ const statNumbers = document.querySelectorAll('.stat-number');
 function animateStat(el) {
     const target = parseInt(el.dataset.target, 10);
     const suffix = el.dataset.suffix || '';
-    const duration = 1800;
+    const duration = el.classList.contains("about-trust-number")
+    ? 3000
+    : 1800;
     const startTime = performance.now();
 
     function update(currentTime) {
