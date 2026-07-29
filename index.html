@@ -878,6 +878,17 @@
     overflow-wrap: break-word;
 }
 /* RIGHT SIDE IMAGE FLOATING BUTTONS */
+.whatsapp-sticky-wrap {
+    position: fixed;
+    z-index: 999;
+    right: 22px;
+    bottom: 22px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .image-float-btn {
     width: 64px;
     height: 64px;
@@ -908,8 +919,23 @@
 }
 
 .image-float-btn:hover {
-    transform: translateX(-6px) scale(1.06);
+    transform: translateY(-5px) scale(1.06);
     box-shadow: 0 16px 36px rgba(0, 0, 0, 0.22);
+}
+
+@media (max-width: 767px) {
+    .whatsapp-sticky-wrap {
+        right: 14px;
+        bottom: 14px;
+    }
+
+    .image-float-btn {
+        width: 56px;
+        height: 56px;
+        padding: 6px;
+        border-radius: 16px;
+        box-shadow: 0 10px 26px rgba(0, 0, 0, 0.2);
+    }
 }
 /* =========================================
    PREMIUM LUXURY HEADER
@@ -2815,18 +2841,18 @@ body.festive-popup-open {
             <!-- About Us Wrapper -->
             <section id="about" class="w-full pt-8 pb-10 px-6">
                 <div class="max-w-4xl mx-auto text-center flex flex-col items-center">
-                    <h4 class="text-customRed font-bold text-xs uppercase tracking-[0.8em] mb-6">About Us</h4>
+                    <h4 class="text-customRed font-bold text-[13px] uppercase tracking-[0.42em] mb-5">About Us</h4>
                     
-                    <p class="font-sans text-xl md:text-2xl text-gray-800 leading-relaxed font-light mb-4 text-balance">
+                    <p class="font-sans text-[17px] sm:text-[18px] md:text-[20px] text-gray-800 leading-[1.65] font-light mb-3 text-balance">
                         We are a team of passionate designers 
                         <br class="hidden md:block">committed to crafting unique and impactful interior solutions
                         <br class="hidden md:block">Our studio focuses on merging aesthetics that are not only 
                     </p>
-                    <p class="font-serif-chic text-3xl md:text-4xl text-gray-900 font-bold italic mb-10">
+                    <p class="font-serif-chic text-[20px] sm:text-[21px] md:text-[23px] text-gray-900 font-semibold italic leading-[1.45] mb-8">
                         visually stunning but also practical and efficient.
                     </p>
 
-                    <div class="line-center-grow w-[320px] md:w-[500px] h-[3px] bg-customRed mx-auto mt-6"></div>
+                    <div class="line-center-grow w-[280px] md:w-[430px] h-[3px] bg-customRed mx-auto mt-5"></div>
                 </div>
                 <div class="about-trust-strip" aria-label="Space Decor Belle achievements">
 
@@ -3005,14 +3031,14 @@ body.festive-popup-open {
       <figure class="feature-picture feature-picture-secondary">
         <img src="assets/images/3.png" alt="Warm premium living room">
 
-        <button
+        <!-- <button
           id="featureArrow"
           type="button"
           class="feature-arrow"
           aria-label="Explore our interior design projects"
         >
           <i class="ph ph-arrow-up-right text-[23px] md:text-[27px]"></i>
-        </button>
+        </button> -->
       </figure>
     </div>
 
@@ -3192,9 +3218,9 @@ body.festive-popup-open {
         Our Trusted Partners
       </p>
 
-      <h2 class="font-serif-chic text-[#151515] text-[42px] md:text-[68px] leading-tight">
-        Trusted By Leading Brands
-      </h2>
+<h2 class="font-serif-chic text-[#151515] text-[32px] md:text-[48px] leading-tight">
+  Elevating Every Space
+</h2>
 
       <p class="text-gray-600 text-sm md:text-base leading-8 max-w-3xl mx-auto mt-5">
         We proudly collaborate with premium brands, developers, architects
@@ -3410,22 +3436,8 @@ body.festive-popup-open {
 
     </div>
 </footer>
-<!-- RIGHT SIDE FLOATING IMAGE BUTTONS -->
-<div class="fixed right-5 top-1/2 -translate-y-1/2 z-50 hidden md:flex flex-col gap-4">
-  <!-- Gmail -->
-  <a
-    href="mailto:info@spacedecorbelle.com"
-    class="image-float-btn"
-    aria-label="Send Email"
-    title="Send Email"
-  >
-    <img
-      src="assets/images/gmail-icon.png"
-      alt="Gmail"
-    >
-  </a>
-
-  <!-- WhatsApp -->
+<!-- STICKY WHATSAPP BUTTON -->
+<div class="whatsapp-sticky-wrap">
   <a
     href="https://wa.me/919654232327?text=Hello%20Space%20Decor%20Belle%2C%20I%20would%20like%20to%20discuss%20an%20interior%20design%20project."
     target="_blank"
@@ -3439,7 +3451,6 @@ body.festive-popup-open {
       alt="WhatsApp"
     >
   </a>
-
 </div>
     </div>
 
