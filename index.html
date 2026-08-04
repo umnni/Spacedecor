@@ -602,8 +602,8 @@
     justify-content: center;
     padding: 18px 28px;
     box-shadow: 0 12px 35px rgba(0, 0, 0, 0.06);
-    filter: grayscale(100%);
-    opacity: 0.72;
+    filter: none;
+    opacity: 1;
     transition: 0.35s ease;
 }
 
@@ -614,7 +614,7 @@
 }
 
 .trusted-logo-card:hover {
-    filter: grayscale(0%);
+    filter: none;
     opacity: 1;
     transform: scale(1.08);
     box-shadow: 0 20px 45px rgba(0, 0, 0, 0.14);
@@ -1859,75 +1859,195 @@ body.festive-popup-open {
     pointer-events: none;
 }
 /* =========================================
-   ABOUT TRUST STRIP
+   FULL-WIDTH HOME HERO
 ========================================= */
+
+.home-hero {
+    position: relative;
+    isolation: isolate;
+    width: 100%;
+    min-height: calc(100svh - 112px);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: #191817;
+}
+
+.home-hero-media,
+.home-hero-overlay {
+    position: absolute;
+    inset: 0;
+}
+
+.home-hero-media {
+    z-index: -2;
+}
+
+.home-hero-media img {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+    object-position: center 58%;
+    transform: scale(1.015);
+}
+
+.home-hero-overlay {
+    z-index: -1;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(13, 13, 13, 0.94) 0%,
+            rgba(18, 17, 16, 0.82) 42%,
+            rgba(18, 17, 16, 0.45) 72%,
+            rgba(18, 17, 16, 0.25) 100%
+        ),
+        linear-gradient(
+            0deg,
+            rgba(8, 8, 8, 0.44) 0%,
+            transparent 42%
+        );
+}
+
+.home-hero-content {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 88px 48px 96px;
+}
+
+.home-hero-copy-wrap {
+    width: min(100%, 760px);
+}
+
+.home-hero-eyebrow {
+    margin-bottom: 24px;
+    color: #d7b46a;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+}
+
+.home-hero-title {
+    max-width: 740px;
+    color: #ffffff;
+    font-family: "Playfair Display", serif;
+    font-size: clamp(3.35rem, 6.6vw, 7rem);
+    font-weight: 400;
+    line-height: 0.97;
+    letter-spacing: -0.04em;
+    text-wrap: balance;
+}
+
+.home-hero-title span {
+    display: block;
+    color: #d7b46a;
+    font-style: italic;
+}
+
+.home-hero-description {
+    max-width: 690px;
+    margin-top: 30px;
+    color: rgba(255, 255, 255, 0.82);
+    font-size: clamp(0.95rem, 1.35vw, 1.12rem);
+    font-weight: 400;
+    line-height: 1.85;
+}
+
+.home-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 38px;
+}
+
+.home-hero-btn {
+    min-height: 52px;
+    padding: 0 25px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border: 1px solid transparent;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition:
+        color 0.3s ease,
+        background-color 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.home-hero-btn:hover {
+    transform: translateY(-3px);
+}
+
+.home-hero-btn-primary {
+    color: #ffffff;
+    background: #c12323;
+    border-color: #c12323;
+}
+
+.home-hero-btn-primary:hover {
+    color: #1a1a1a;
+    background: #d7b46a;
+    border-color: #d7b46a;
+}
+
+.home-hero-btn-secondary {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+}
+
+.home-hero-btn-secondary:hover {
+    color: #1a1a1a;
+    background: #ffffff;
+    border-color: #ffffff;
+}
+
+/* =========================================
+   HERO TRUST STRIP
+========================================= */
+
+.home-trust-section {
+    width: 100%;
+    background: #ffffff;
+}
 
 .about-trust-strip {
     position: relative;
-
     display: grid;
     grid-template-columns:
-        repeat(4, minmax(0, 1fr))
-        minmax(235px, 1.4fr);
-
+        repeat(2, minmax(0, 1fr))
+        minmax(300px, 1.35fr);
     width: 100%;
-    max-width: 1180px;
-    margin: 42px auto 0;
-
+    margin: 0;
     overflow: hidden;
-
-    background: linear-gradient(
-        135deg,
-        #ffffff 0%,
-        #faf7f3 100%
-    );
-
-    border: 1px solid rgba(207, 166, 58, 0.28);
-    border-radius: 24px;
-
-    box-shadow: 0 20px 55px rgba(37, 29, 25, 0.09);
+    background: #f7f7f6;
+    border-top: 1px solid rgba(103, 103, 103, 0.18);
+    border-bottom: 1px solid rgba(103, 103, 103, 0.18);
+    box-shadow: 0 16px 45px rgba(31, 31, 31, 0.07);
 }
-
-/* Top accent line */
-.about-trust-strip::before {
-    content: "";
-
-    position: absolute;
-    z-index: 2;
-    top: 0;
-    left: 0;
-
-    width: 100%;
-    height: 3px;
-
-    background: linear-gradient(
-        90deg,
-        #c12323 0%,
-        #cfa63a 50%,
-        #c12323 100%
-    );
-}
-
-
-/* =========================================
-   STAT ITEMS
-========================================= */
 
 .about-trust-metric {
     position: relative;
     min-width: 0;
     min-height: 132px;
-    padding: 25px 16px;
-
+    padding: 25px 18px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
     text-align: center;
-
-    border-left: 1px solid rgba(207, 166, 58, 0.2);
-
+    border-left: 1px solid rgba(103, 103, 103, 0.16);
     transition:
         background-color 0.3s ease,
         transform 0.3s ease;
@@ -1937,19 +2057,16 @@ body.festive-popup-open {
     border-left: 0;
 }
 
-.about-trust-metric:hover {
-    z-index: 1;
-
+.about-trust-metric:hover,
+.about-trust-location:hover {
     transform: translateY(-3px);
-    background: rgba(207, 166, 58, 0.06);
+    background: rgba(86, 86, 86, 0.045);
 }
 
 .about-trust-number {
     display: block;
     margin-bottom: 9px;
-
-    color: #c12323;
-
+    color: #737373;
     font-family: "Playfair Display", serif;
     font-size: clamp(2.2rem, 3.2vw, 3.25rem);
     font-weight: 500;
@@ -1958,8 +2075,7 @@ body.festive-popup-open {
 }
 
 .about-trust-label {
-    color: #3d3633;
-
+    color: #777777;
     font-size: 9px;
     font-weight: 700;
     line-height: 1.55;
@@ -1967,49 +2083,31 @@ body.festive-popup-open {
     text-transform: uppercase;
 }
 
-
-/* =========================================
-   LOCATION ITEM
-========================================= */
-
 .about-trust-location {
     position: relative;
     min-width: 0;
     min-height: 132px;
-    padding: 24px 25px;
-
+    padding: 24px 28px;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 15px;
-
-    background: transparent;
-
-    border-left: 1px solid rgba(207, 166, 58, 0.2);
-
+    border-left: 1px solid rgba(103, 103, 103, 0.16);
     transition:
         background-color 0.3s ease,
         transform 0.3s ease;
-}
-
-.about-trust-location:hover {
-    transform: translateY(-3px);
-    background: rgba(207, 166, 58, 0.06);
 }
 
 .about-trust-location-icon {
     width: 46px;
     height: 46px;
     flex-shrink: 0;
-
     display: grid;
     place-items: center;
-
-    color: #c12323;
+    color: #777777;
     font-size: 22px;
-
-    background: rgba(193, 35, 35, 0.05);
-    border: 1px solid rgba(193, 35, 35, 0.25);
+    background: rgba(104, 104, 104, 0.05);
+    border: 1px solid rgba(104, 104, 104, 0.24);
     border-radius: 50%;
 }
 
@@ -2020,9 +2118,7 @@ body.festive-popup-open {
 
 .about-trust-location-label {
     margin-bottom: 7px;
-
-    color: #c12323;
-
+    color: #7a7a7a;
     font-size: 9px;
     font-weight: 700;
     line-height: 1.4;
@@ -2031,19 +2127,16 @@ body.festive-popup-open {
 }
 
 .about-trust-location-title {
-    color: #1a1a1a;
-
+    color: #666666;
     font-family: "Playfair Display", serif;
-    font-size: 24px;
+    font-size: 25px;
     font-weight: 500;
     line-height: 1;
 }
 
 .about-trust-cities {
     margin-top: 8px;
-
-    color: #68615d;
-
+    color: #858585;
     font-size: 9px;
     font-weight: 500;
     line-height: 1.5;
@@ -2051,56 +2144,89 @@ body.festive-popup-open {
     text-transform: uppercase;
 }
 
+@media (max-width: 1023px) {
+    .home-hero {
+        min-height: calc(100svh - 92px);
+    }
 
-/* =========================================
-   TABLET
-========================================= */
+    .home-hero-content {
+        padding: 78px 38px 84px;
+    }
 
-@media (max-width: 960px) {
+    .home-hero-copy-wrap {
+        width: min(100%, 680px);
+    }
+
     .about-trust-strip {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-
-        max-width: 700px;
-        border-radius: 22px;
-    }
-
-    .about-trust-metric {
-        min-height: 115px;
-
-        border-left: 0;
-        border-bottom: 1px solid rgba(207, 166, 58, 0.2);
-    }
-
-    .about-trust-metric:nth-child(even) {
-        border-left: 1px solid rgba(207, 166, 58, 0.2);
-    }
-
-    .about-trust-metric:nth-child(3),
-    .about-trust-metric:nth-child(4) {
-        border-bottom: 0;
     }
 
     .about-trust-location {
         grid-column: 1 / -1;
-
         min-height: 112px;
-
+        border-top: 1px solid rgba(103, 103, 103, 0.16);
         border-left: 0;
-        border-top: 1px solid rgba(207, 166, 58, 0.2);
     }
 }
 
+@media (max-width: 767px) {
+    .home-hero {
+        min-height: calc(100svh - 82px);
+        align-items: flex-end;
+    }
 
-/* =========================================
-   MOBILE
-========================================= */
+    .home-hero-media img {
+        object-position: 62% center;
+    }
+
+    .home-hero-overlay {
+        background:
+            linear-gradient(
+                90deg,
+                rgba(13, 13, 13, 0.88) 0%,
+                rgba(18, 17, 16, 0.62) 100%
+            ),
+            linear-gradient(
+                0deg,
+                rgba(8, 8, 8, 0.86) 0%,
+                rgba(8, 8, 8, 0.18) 76%
+            );
+    }
+
+    .home-hero-content {
+        padding: 62px 22px 58px;
+    }
+
+    .home-hero-eyebrow {
+        margin-bottom: 18px;
+        font-size: 9px;
+        letter-spacing: 0.24em;
+    }
+
+    .home-hero-title {
+        font-size: clamp(2.65rem, 13vw, 4.8rem);
+        line-height: 1;
+    }
+
+    .home-hero-description {
+        margin-top: 23px;
+        font-size: 0.92rem;
+        line-height: 1.72;
+    }
+
+    .home-hero-actions {
+        margin-top: 30px;
+    }
+
+    .home-hero-btn {
+        flex: 1 1 190px;
+        padding: 0 18px;
+    }
+}
 
 @media (max-width: 520px) {
     .about-trust-strip {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-
-        margin-top: 32px;
-        border-radius: 19px;
     }
 
     .about-trust-metric {
@@ -2133,7 +2259,6 @@ body.festive-popup-open {
 
     .about-trust-location-label {
         margin-bottom: 6px;
-
         font-size: 8px;
         letter-spacing: 0.18em;
     }
@@ -2144,7 +2269,6 @@ body.festive-popup-open {
 
     .about-trust-cities {
         margin-top: 7px;
-
         font-size: 8px;
         letter-spacing: 0.08em;
     }
@@ -2522,12 +2646,1304 @@ body.festive-popup-open {
     }
 }
 
+/* =========================================
+   REQUESTED HOME PAGE REFINEMENTS
+========================================= */
+
+/* Curved sticky glass header */
+.premium-header {
+    top: 0;
+    padding: 0 14px;
+    background: transparent;
+    border-bottom: 0;
+    box-shadow: none;
+}
+
+.premium-header-shell {
+    position: relative;
+    width: 100%;
+    max-width: 1320px;
+    padding-right: 28px;
+    padding-left: 28px;
+    overflow: hidden;
+    background:
+        linear-gradient(
+            120deg,
+            rgba(255, 255, 255, 0.88),
+            rgba(249, 247, 244, 0.66)
+        );
+    border: 1px solid rgba(255, 255, 255, 0.76);
+    border-top: 0;
+    border-radius: 0 0 34px 34px;
+    backdrop-filter: blur(24px) saturate(150%);
+    -webkit-backdrop-filter: blur(24px) saturate(150%);
+    box-shadow:
+        0 18px 45px rgba(31, 27, 24, 0.13),
+        inset 0 -1px 0 rgba(193, 35, 35, 0.14);
+}
+
+.premium-header-shell::after {
+    content: "";
+    position: absolute;
+    right: -72px;
+    bottom: -92px;
+    width: 245px;
+    height: 150px;
+    border: 1px solid rgba(193, 35, 35, 0.18);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.premium-header-inner {
+    min-height: 96px;
+    gap: 16px;
+}
+
+.premium-header-logo img {
+    height: 74px;
+}
+
+.premium-desktop-nav {
+    flex: 1 1 auto;
+    justify-content: center;
+}
+
+.premium-nav-link {
+    padding: 15px 12px;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+}
+
+.premium-nav-link::after {
+    right: 12px;
+    left: 12px;
+}
+
+.premium-header-cta {
+    position: relative;
+    z-index: 1;
+    min-height: 48px;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    padding: 0 20px;
+    color: #ffffff;
+    background: rgba(193, 35, 35, 0.94);
+    border: 1px solid rgba(193, 35, 35, 0.94);
+    border-radius: 999px;
+    box-shadow: 0 10px 24px rgba(193, 35, 35, 0.2);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.17em;
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+    transition:
+        color 0.3s ease,
+        background-color 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.premium-header-cta i {
+    font-size: 16px;
+}
+
+.premium-header-cta:hover {
+    color: #ffffff;
+    background: #9f1b1b;
+    border-color: #9f1b1b;
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px rgba(193, 35, 35, 0.3);
+}
+
+.premium-mobile-menu {
+    width: min(calc(100% - 28px), 1280px);
+    margin: 8px auto 0;
+    overflow: hidden;
+    background: rgba(32, 31, 30, 0.94);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 0 0 28px 28px;
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+}
+
+@media (min-width: 1180px) {
+    .premium-desktop-nav {
+        display: flex !important;
+    }
+
+    .premium-header-cta {
+        display: inline-flex;
+    }
+
+    .premium-menu-btn {
+        display: none !important;
+    }
+
+    .premium-mobile-menu {
+        display: none !important;
+    }
+}
+
+@media (max-width: 1179px) {
+    .premium-desktop-nav,
+    .premium-header-cta {
+        display: none !important;
+    }
+
+    .premium-menu-btn {
+        display: flex !important;
+    }
+
+    .premium-mobile-menu {
+        display: block !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .premium-header {
+        padding: 0 8px;
+    }
+
+    .premium-header-shell {
+        padding-right: 18px;
+        padding-left: 18px;
+        border-radius: 0 0 25px 25px;
+    }
+
+    .premium-header-inner {
+        min-height: 82px;
+    }
+
+    .premium-header-logo img {
+        height: 64px;
+    }
+}
+
+/* Red boundaries for every trust box */
+.about-trust-strip {
+    gap: 12px;
+    padding: 12px;
+    background: #ffffff;
+    border: 0;
+    box-shadow: 0 14px 38px rgba(31, 31, 31, 0.06);
+}
+
+.about-trust-metric,
+.about-trust-metric:first-child,
+.about-trust-location {
+    border: 1px solid rgba(193, 35, 35, 0.58);
+    border-radius: 18px;
+    background: #ffffff;
+}
+
+.about-trust-metric:hover,
+.about-trust-location:hover {
+    background: rgba(193, 35, 35, 0.035);
+    border-color: #c12323;
+    box-shadow: 0 10px 26px rgba(193, 35, 35, 0.09);
+}
+
+@media (max-width: 1023px) {
+    .about-trust-location {
+        border: 1px solid rgba(193, 35, 35, 0.58);
+    }
+}
+
+@media (max-width: 520px) {
+    .about-trust-strip {
+        gap: 8px;
+        padding: 8px;
+    }
+
+    .about-trust-metric,
+    .about-trust-location {
+        border-radius: 14px;
+    }
+}
+
+/* Clickable Interior, Vastu and Decor image cards */
+.expertise-card {
+    position: relative;
+    min-width: 0;
+    overflow: hidden;
+    color: inherit;
+    background: #ffffff;
+    border: 1px solid rgba(193, 35, 35, 0.15);
+    border-radius: 22px;
+    box-shadow: 0 16px 40px rgba(36, 31, 27, 0.09);
+    text-decoration: none;
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.expertise-card:hover {
+    transform: translateY(-7px);
+    border-color: rgba(193, 35, 35, 0.55);
+    box-shadow: 0 24px 52px rgba(36, 31, 27, 0.15);
+}
+
+.expertise-card-image {
+    display: block;
+    width: 100%;
+    height: 170px;
+    overflow: hidden;
+    background: #efefef;
+}
+
+.expertise-card-image img {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+    transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.expertise-card:hover .expertise-card-image img {
+    transform: scale(1.08);
+}
+
+.expertise-card-copy {
+    min-height: 145px;
+    padding: 24px 22px 27px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.expertise-card-arrow {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    color: #ffffff;
+    background: rgba(193, 35, 35, 0.94);
+    border-radius: 50%;
+    font-size: 17px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.16);
+}
+
+/* Services click-to-enlarge preview */
+.service-preview-card {
+    width: 100%;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    background: #e9e9e9;
+    text-align: left;
+    cursor: zoom-in;
+}
+
+.service-preview-card:focus-visible {
+    box-shadow:
+        0 0 0 3px #ffffff,
+        0 0 0 6px #c12323;
+}
+
+.service-preview-hint {
+    position: absolute;
+    top: 19px;
+    right: 19px;
+    z-index: 2;
+    width: 39px;
+    height: 39px;
+    display: grid;
+    place-items: center;
+    color: #ffffff;
+    background: rgba(18, 18, 18, 0.46);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    border-radius: 50%;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition:
+        color 0.3s ease,
+        background-color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.service-preview-card:hover .service-preview-hint {
+    color: #ffffff;
+    background: #c12323;
+    border-color: #c12323;
+    transform: scale(1.08);
+}
+
+body.service-lightbox-open {
+    overflow: hidden;
+}
+
+.service-lightbox {
+    position: fixed;
+    z-index: 120;
+    inset: 0;
+    padding: 24px;
+    display: grid;
+    place-items: center;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    background: rgba(10, 10, 10, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition:
+        opacity 0.32s ease,
+        visibility 0.32s ease;
+}
+
+.service-lightbox[aria-hidden="false"] {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.service-lightbox-content {
+    width: min(1080px, 92vw);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+}
+
+.service-lightbox-content img {
+    width: auto;
+    max-width: 100%;
+    max-height: 82vh;
+    object-fit: contain;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 18px;
+    box-shadow: 0 28px 70px rgba(0, 0, 0, 0.42);
+}
+
+.service-lightbox-title {
+    color: #ffffff;
+    font-family: "Playfair Display", serif;
+    font-size: clamp(1.2rem, 2.2vw, 1.75rem);
+    line-height: 1.3;
+    text-align: center;
+}
+
+.service-lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 2;
+    width: 48px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+    color: #ffffff;
+    background: #c12323;
+    border: 0;
+    border-radius: 50%;
+    font-size: 23px;
+    cursor: pointer;
+    transition:
+        background-color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.service-lightbox-close:hover {
+    background: #9f1b1b;
+    transform: rotate(90deg);
+}
+
+/* Keep partner logos in their original colours at all times */
+.trusted-logo-card,
+.trusted-logo-card:hover {
+    filter: none;
+    opacity: 1;
+}
+
+/* Grey footer with readable contact details */
+.site-footer {
+    background:
+        radial-gradient(circle at 8% 0%, rgba(255, 255, 255, 0.08), transparent 36%),
+        linear-gradient(145deg, #626262 0%, #505050 46%, #414141 100%);
+    border-top: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.site-footer .footer-line-vertical,
+.site-footer .footer-bottom-line {
+    background: rgba(255, 255, 255, 0.22) !important;
+}
+
+.site-footer .footer-newsletter-copy,
+.site-footer .footer-bottom-bar {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.footer-contact-phone,
+.footer-contact-email {
+    text-decoration: none;
+    transition:
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+.footer-contact-phone {
+    color: #ffffff;
+    font-family: "Montserrat", sans-serif;
+    font-size: clamp(1rem, 1.45vw, 1.2rem);
+    font-weight: 500;
+    line-height: 1.6;
+    letter-spacing: 0.025em;
+}
+
+.footer-contact-email {
+    margin-top: 4px;
+    color: rgba(255, 255, 255, 0.82);
+    font-size: clamp(0.88rem, 1.15vw, 1rem);
+    font-weight: 400;
+    line-height: 1.65;
+    letter-spacing: 0.01em;
+}
+
+.footer-contact-phone:hover,
+.footer-contact-email:hover {
+    color: #ffffff;
+    transform: translateY(-1px);
+}
+
+.site-footer .footer-social-rule {
+    background: rgba(255, 255, 255, 0.28);
+}
+
+.footer-social-link {
+    width: 46px;
+    height: 46px;
+    color: #ffffff;
+    border: 1px solid transparent;
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.15);
+}
+
+.footer-social-icon {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
+
+.footer-social-icon--instagram {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+}
+
+.footer-social-icon--instagram .instagram-dot {
+    fill: currentColor;
+    stroke: none;
+}
+
+.footer-social-link--whatsapp {
+    background: #25d366;
+}
+
+.footer-social-link--facebook {
+    background: #1877f2;
+}
+
+.footer-social-link--linkedin {
+    background: #0a66c2;
+}
+
+.footer-social-link--instagram {
+    background:
+        radial-gradient(circle at 30% 105%, #fdf497 0 9%, #fd5949 31%, #d6249f 58%, #285aeb 88%);
+}
+
+.footer-social-link:hover {
+    color: #ffffff;
+    transform: translateY(-4px) scale(1.06);
+    box-shadow: 0 15px 28px rgba(0, 0, 0, 0.22);
+}
+
+.footer-social-link--whatsapp:hover {
+    background: #25d366;
+}
+
+.footer-social-link--facebook:hover {
+    background: #1877f2;
+}
+
+.footer-social-link--linkedin:hover {
+    background: #0a66c2;
+}
+
+.footer-social-link--instagram:hover {
+    background:
+        radial-gradient(circle at 30% 105%, #fdf497 0 9%, #fd5949 31%, #d6249f 58%, #285aeb 88%);
+}
+
+@media (max-width: 767px) {
+    .service-lightbox {
+        padding: 16px;
+    }
+
+    .service-lightbox-close {
+        top: 14px;
+        right: 14px;
+        width: 44px;
+        height: 44px;
+    }
+}
+
+/* =========================================
+   FLOATING HEADER + FULL-SCREEN HERO
+========================================= */
+
+.premium-header {
+    position: fixed;
+    z-index: 90;
+    top: 16px;
+    right: 0;
+    left: 0;
+    width: 100%;
+    padding: 0 22px;
+    pointer-events: none;
+}
+
+.premium-header-shell {
+    max-width: 1340px;
+    overflow: visible;
+    pointer-events: auto;
+    background:
+        linear-gradient(
+            115deg,
+            rgba(19, 19, 19, 0.62),
+            rgba(31, 28, 26, 0.42)
+        );
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    border-radius: 34px;
+    backdrop-filter: blur(24px) saturate(145%);
+    -webkit-backdrop-filter: blur(24px) saturate(145%);
+    box-shadow:
+        0 18px 55px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.16);
+}
+
+.premium-header-shell::after {
+    content: none;
+    display: none;
+}
+
+.premium-header-inner {
+    min-height: 82px;
+}
+
+.premium-header-logo img {
+    height: 64px;
+}
+
+.premium-desktop-nav {
+    gap: 2px;
+}
+
+.premium-nav-link {
+    padding: 15px 11px;
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    white-space: nowrap;
+}
+
+.premium-nav-link:hover,
+.premium-nav-link.active {
+    color: #ffffff;
+}
+
+.premium-nav-link::after {
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #d7b46a,
+        transparent
+    );
+}
+
+.premium-header-cta {
+    min-height: 48px;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.075);
+    border-color: rgba(255, 255, 255, 0.66);
+    box-shadow: none;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.premium-header-cta:hover {
+    color: #ffffff;
+    background: #c12323;
+    border-color: #c12323;
+}
+
+.premium-mobile-menu {
+    pointer-events: auto;
+}
+
+.premium-menu-btn {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.36);
+    box-shadow: none;
+}
+
+.home-hero {
+    min-height: 100svh;
+}
+
+.home-hero-media img {
+    object-position: center center;
+    transform: none;
+}
+
+.home-hero-content {
+    padding-top: 168px;
+    padding-bottom: 96px;
+}
+
+.home-hero-title {
+    max-width: 790px;
+    font-size: clamp(3.8rem, 7vw, 7.4rem);
+    line-height: 0.93;
+}
+
+.home-hero-description {
+    max-width: 720px;
+    font-size: clamp(1rem, 1.4vw, 1.18rem);
+}
+
+.site-footer .footer-brand-logo img {
+    filter: brightness(0) invert(1);
+    opacity: 1;
+}
+
+@media (max-width: 1179px) {
+    .premium-header-shell {
+        overflow: hidden;
+    }
+}
+
+@media (max-width: 767px) {
+    .premium-header {
+        top: 10px;
+        padding: 0 10px;
+    }
+
+    .premium-header-shell {
+        border-radius: 25px;
+    }
+
+    .premium-header-inner {
+        min-height: 74px;
+    }
+
+    .premium-header-logo img {
+        height: 58px;
+    }
+
+    .home-hero {
+        min-height: 100svh;
+    }
+
+    .home-hero-content {
+        padding-top: 142px;
+        padding-bottom: 60px;
+    }
+
+    .home-hero-title {
+        font-size: clamp(3rem, 15vw, 5rem);
+        line-height: 0.96;
+    }
+}
+
+/* =========================================
+   TESTIMONIAL CAROUSEL
+========================================= */
+
+.testimonials-section {
+    width: 100%;
+    padding: 92px 24px 98px;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 85% 8%, rgba(193, 35, 35, 0.07), transparent 31%),
+        linear-gradient(180deg, #f8f6f2 0%, #ffffff 100%);
+    border-top: 1px solid rgba(193, 35, 35, 0.1);
+}
+
+.testimonials-shell {
+    width: 100%;
+    max-width: 1240px;
+    margin: 0 auto;
+}
+
+.testimonials-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 28px;
+    margin-bottom: 40px;
+}
+
+.testimonials-eyebrow {
+    margin-bottom: 13px;
+    color: #c12323;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+}
+
+.testimonials-title {
+    color: #24211f;
+    font-family: "Playfair Display", serif;
+    font-size: clamp(2.4rem, 4.7vw, 4.55rem);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -0.035em;
+}
+
+.testimonials-title span {
+    color: #c12323;
+    font-style: italic;
+}
+
+.testimonials-controls {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    flex-shrink: 0;
+}
+
+.testimonials-control {
+    width: 48px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+    color: #c12323;
+    background: #ffffff;
+    border: 1px solid rgba(193, 35, 35, 0.38);
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 10px 24px rgba(58, 43, 35, 0.08);
+    transition:
+        color 0.28s ease,
+        background-color 0.28s ease,
+        border-color 0.28s ease,
+        transform 0.28s ease;
+}
+
+.testimonials-control:hover:not(:disabled) {
+    color: #ffffff;
+    background: #c12323;
+    border-color: #c12323;
+    transform: translateY(-2px);
+}
+
+.testimonials-control:disabled {
+    opacity: 0.34;
+    cursor: not-allowed;
+}
+
+.testimonials-viewport {
+    width: 100%;
+    overflow: hidden;
+}
+
+.testimonials-track {
+    display: flex;
+    align-items: stretch;
+    gap: 22px;
+    transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform;
+}
+
+.testimonial-card {
+    position: relative;
+    flex: 0 0 calc((100% - 44px) / 3);
+    min-width: 0;
+    min-height: 340px;
+    padding: 31px 30px 29px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.94);
+    border: 1px solid rgba(193, 35, 35, 0.16);
+    border-radius: 24px;
+    box-shadow: 0 18px 45px rgba(50, 40, 35, 0.09);
+}
+
+.testimonial-card::before {
+    content: "“";
+    position: absolute;
+    top: 4px;
+    right: 22px;
+    color: rgba(193, 35, 35, 0.09);
+    font-family: Georgia, serif;
+    font-size: 110px;
+    line-height: 1;
+    pointer-events: none;
+}
+
+.testimonial-rating {
+    position: relative;
+    z-index: 1;
+    color: #d49d31;
+    font-size: 13px;
+    letter-spacing: 0.16em;
+}
+
+.testimonial-quote {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    margin-top: 23px;
+    color: #59534f;
+    font-family: "Playfair Display", serif;
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 1.72;
+}
+
+.testimonial-person {
+    position: relative;
+    z-index: 1;
+    margin-top: 27px;
+    padding-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    border-top: 1px solid rgba(193, 35, 35, 0.12);
+}
+
+.testimonial-avatar {
+    width: 47px;
+    height: 47px;
+    flex: 0 0 auto;
+    display: grid;
+    place-items: center;
+    color: #ffffff;
+    background: linear-gradient(145deg, #c12323, #8e1919);
+    border-radius: 50%;
+    font-family: "Playfair Display", serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+}
+
+.testimonial-name {
+    color: #292522;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.testimonial-project {
+    margin-top: 3px;
+    color: #8b827c;
+    font-size: 9px;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.testimonials-note {
+    margin-top: 22px;
+    color: #8a827d;
+    font-size: 10px;
+    line-height: 1.6;
+    text-align: center;
+}
+
+@media (max-width: 1023px) {
+    .testimonial-card {
+        flex-basis: calc((100% - 22px) / 2);
+    }
+}
+
+@media (max-width: 699px) {
+    .testimonials-section {
+        padding: 68px 17px 74px;
+    }
+
+    .testimonials-header {
+        align-items: flex-start;
+        margin-bottom: 30px;
+    }
+
+    .testimonials-control {
+        width: 43px;
+        height: 43px;
+    }
+
+    .testimonial-card {
+        flex-basis: 100%;
+        min-height: 320px;
+        padding: 27px 24px 25px;
+    }
+
+    .testimonial-quote {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 430px) {
+    .testimonials-header {
+        flex-direction: column;
+    }
+}
+/* =========================================
+   COMPACT ELEGANT TRUST STRIP
+========================================= */
+
+.home-trust-section {
+    width: 100%;
+    margin: 0;
+    padding: 14px 24px 0;
+    background: #ffffff;
+}
+
+.about-trust-strip {
+    display: grid;
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr))
+        minmax(280px, 1.25fr);
+
+    width: 100%;
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 0;
+    gap: 0;
+
+    overflow: hidden;
+
+    background: #ffffff;
+    border: 1px solid rgba(193, 35, 35, 0.35);
+    border-radius: 18px;
+
+    box-shadow: 0 12px 32px rgba(35, 30, 27, 0.07);
+}
+
+/* PROJECTS + EXPERIENCE BOXES */
+
+.about-trust-metric,
+.about-trust-metric:first-child {
+    min-height: 96px;
+    padding: 16px 18px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background: transparent;
+    border: 0;
+    border-right: 1px solid rgba(193, 35, 35, 0.22);
+    border-radius: 0;
+
+    box-shadow: none;
+}
+
+.about-trust-number {
+    margin-bottom: 6px;
+
+    color: #686868;
+
+    font-family: "Playfair Display", serif;
+    font-size: clamp(1.9rem, 2.5vw, 2.55rem);
+    font-weight: 500;
+    line-height: 1;
+}
+
+.about-trust-label {
+    color: #777777;
+
+    font-size: 8px;
+    font-weight: 600;
+    line-height: 1.4;
+
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+/* DELHI NCR BOX */
+
+.about-trust-location {
+    min-height: 96px;
+    padding: 16px 22px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+
+    box-shadow: none;
+}
+
+.about-trust-location-icon {
+    width: 38px;
+    height: 38px;
+
+    color: #c12323;
+    background: rgba(193, 35, 35, 0.05);
+
+    border: 1px solid rgba(193, 35, 35, 0.3);
+    font-size: 18px;
+}
+
+.about-trust-location-label {
+    margin-bottom: 4px;
+
+    color: #888888;
+    font-size: 7px;
+    letter-spacing: 0.18em;
+}
+
+.about-trust-location-title {
+    color: #606060;
+
+    font-size: 20px;
+    line-height: 1.05;
+}
+
+.about-trust-cities {
+    margin-top: 5px;
+
+    color: #8a8a8a;
+    font-size: 7px;
+    letter-spacing: 0.08em;
+}
+
+/* SUBTLE HOVER */
+
+.about-trust-metric:hover,
+.about-trust-location:hover {
+    transform: none;
+
+    background: rgba(193, 35, 35, 0.025);
+    border-color: rgba(193, 35, 35, 0.22);
+
+    box-shadow: none;
+}
+
+/* BEST WE CAN DO SECTION POSITION */
+
+.best-showcase-section {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+.best-showcase-section > div:first-child {
+    transform: translateY(55px) !important;
+}
+
+/* TABLET */
+
+@media (max-width: 900px) {
+    .about-trust-strip {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        max-width: 700px;
+    }
+
+    .about-trust-location {
+        grid-column: 1 / -1;
+
+        border-top: 1px solid rgba(193, 35, 35, 0.22);
+    }
+
+    .about-trust-metric:nth-child(2) {
+        border-right: 0;
+    }
+}
+
+/* MOBILE */
+
+@media (max-width: 520px) {
+    .home-trust-section {
+        padding: 10px 10px 0;
+    }
+
+    .about-trust-strip {
+        border-radius: 14px;
+    }
+
+    .about-trust-metric {
+        min-height: 82px;
+        padding: 13px 8px;
+    }
+
+    .about-trust-number {
+        font-size: 1.85rem;
+    }
+
+    .about-trust-label {
+        font-size: 7px;
+        letter-spacing: 0.08em;
+    }
+
+    .about-trust-location {
+        min-height: 82px;
+        padding: 14px 16px;
+    }
+
+    .best-showcase-section > div:first-child {
+        transform: translateY(32px) !important;
+    }
+}
+
+/* =========================================
+   CENTERED ABOUT US SECTION
+========================================= */
+
+.home-about-section {
+    width: 100%;
+    padding: clamp(58px, 7vw, 96px) 24px clamp(48px, 6vw, 78px);
+    background: #ffffff;
+}
+
+.home-about-shell {
+    width: 100%;
+    max-width: 1120px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.home-about-eyebrow {
+    margin: 0 0 clamp(24px, 3vw, 34px);
+    color: #c12323;
+    font-size: clamp(0.72rem, 0.9vw, 0.88rem);
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+}
+
+.home-about-copy {
+    max-width: 1080px;
+    margin: 0 auto;
+    color: #33343d;
+    font-size: clamp(1.08rem, 1.9vw, 1.72rem);
+    font-weight: 400;
+    line-height: 1.72;
+    letter-spacing: -0.018em;
+}
+
+.home-about-line {
+    display: block;
+}
+
+.home-about-emphasis {
+    display: block;
+    margin-top: 10px;
+    color: #2e2d35;
+    font-family: "Playfair Display", serif;
+    font-size: clamp(1.8rem, 3.25vw, 3rem);
+    font-weight: 600;
+    font-style: italic;
+    line-height: 1.25;
+    letter-spacing: -0.025em;
+}
+
+.home-about-divider {
+    width: min(100%, 840px);
+    height: 3px;
+    margin: clamp(40px, 5vw, 64px) auto 0;
+    background: #c12323;
+    border-radius: 999px;
+}
+
+@media (max-width: 767px) {
+    .home-about-section {
+        padding: 50px 20px 54px;
+    }
+
+    .home-about-eyebrow {
+        letter-spacing: 0.28em;
+    }
+
+    .home-about-copy {
+        font-size: 1rem;
+        line-height: 1.75;
+    }
+
+    .home-about-line {
+        display: inline;
+    }
+
+    .home-about-emphasis {
+        margin-top: 14px;
+        font-size: clamp(1.55rem, 7vw, 2.1rem);
+    }
+
+    .home-about-divider {
+        width: min(88%, 430px);
+        margin-top: 38px;
+    }
+}
+/* =========================================
+   BEST WE CAN DO POSITION FIX
+========================================= */
+
+/* Poori section ko halka sa upar karega,
+   lekin text aur image ka overlap kharab nahi hoga */
+.best-showcase-section {
+    margin-top: -24px !important;
+    padding-top: 0 !important;
+}
+
+/* Mobile position */
+.best-showcase-section > div:first-child {
+    transform: translateY(8.5rem) !important;
+}
+
+/* Tablet position */
+@media (min-width: 768px) {
+    .best-showcase-section > div:first-child {
+        transform: translateY(11.5rem) !important;
+    }
+}
+
+/* Desktop position */
+@media (min-width: 1024px) {
+    .best-showcase-section > div:first-child {
+        transform: translateY(16rem) !important;
+    }
+}
+
+/* Small mobile adjustment */
+@media (max-width: 520px) {
+    .best-showcase-section {
+        margin-top: -12px !important;
+    }
+
+    .best-showcase-section > div:first-child {
+        transform: translateY(7.5rem) !important;
+    }
+}
+
     </style>
 </head>
 <!-- PREMIUM LUXURY HEADER -->
+<body>
+
 <header class="premium-header">
 
-  <div class="max-w-7xl mx-auto px-5 lg:px-12">
+  <div class="premium-header-shell max-w-7xl mx-auto px-5 lg:px-12">
 
     <div class="premium-header-inner">
 
@@ -2604,6 +4020,16 @@ body.festive-popup-open {
 
       </nav>
 
+      <!-- Separate Desktop Consultation Button -->
+      <a
+        href="consultation.html"
+        class="premium-header-cta nav-drop"
+        style="--delay: 1.40s;"
+      >
+        Book Consultation
+        <i class="ph ph-arrow-up-right"></i>
+      </a>
+
       <!-- Mobile Menu Button -->
       <button
         id="menuBtn"
@@ -2662,7 +4088,7 @@ body.festive-popup-open {
         Contact
       </a>
 
-      <a href="contact.html" class="premium-mobile-cta">
+      <a href="consultation.html" class="premium-mobile-cta">
         Book Consultation
         <i class="ph ph-arrow-up-right"></i>
       </a>
@@ -2827,100 +4253,116 @@ body.festive-popup-open {
 </div>
 
         <main>
-            <!-- Hero Wrapper -->
-<section id="home" class="relative w-full max-w-7xl mx-auto px-6 lg:px-12 pt-3 pb-16">
-    <div class="w-full overflow-hidden">
-        <img
-            src="assets/images/home image.png"
-            alt="Space Decor Belle Hero"
-            class="w-full h-auto block"
-        >
-    </div>
-</section>
-
-            <!-- About Us Wrapper -->
-            <section id="about" class="w-full pt-8 pb-10 px-6">
-                <div class="max-w-4xl mx-auto text-center flex flex-col items-center">
-                    <h4 class="text-customRed font-bold text-[13px] uppercase tracking-[0.42em] mb-5">About Us</h4>
-                    
-                    <p class="font-sans text-[17px] sm:text-[18px] md:text-[20px] text-gray-800 leading-[1.65] font-light mb-3 text-balance">
-                        We are a team of passionate designers 
-                        <br class="hidden md:block">committed to crafting unique and impactful interior solutions
-                        <br class="hidden md:block">Our studio focuses on merging aesthetics that are not only 
-                    </p>
-                    <p class="font-serif-chic text-[20px] sm:text-[21px] md:text-[23px] text-gray-900 font-semibold italic leading-[1.45] mb-8">
-                        visually stunning but also practical and efficient.
-                    </p>
-
-                    <div class="line-center-grow w-[280px] md:w-[430px] h-[3px] bg-customRed mx-auto mt-5"></div>
+            <!-- Full-width Home Hero -->
+            <section id="home" class="home-hero" aria-labelledby="homeHeroTitle">
+                <div class="home-hero-media" aria-hidden="true">
+                    <img
+                        src="assets/images/10.jpg"
+                        alt=""
+                    >
                 </div>
-                <div class="about-trust-strip" aria-label="Space Decor Belle achievements">
 
-    <article class="about-trust-metric">
-        <span
-            class="stat-number about-trust-number"
-            data-target="150"
-            data-suffix="+"
-        >
-            0+
-        </span>
-        <p class="about-trust-label">Projects Completed</p>
-    </article>
+                <div class="home-hero-overlay" aria-hidden="true"></div>
 
-    <article class="about-trust-metric">
-        <span
-            class="stat-number about-trust-number"
-            data-target="20"
-            data-suffix="+"
-        >
-            0+
-        </span>
-        <p class="about-trust-label">Years of Experience</p>
-    </article>
+                <div class="home-hero-content">
+                    <div class="home-hero-copy-wrap">
+                        <p class="home-hero-eyebrow">
+                            Interior · Vastu · Bespoke Decor
+                        </p>
 
-    <article class="about-trust-metric">
-        <span
-            class="stat-number about-trust-number"
-            data-target="120"
-            data-suffix="+"
-        >
-            0+
-        </span>
-        <p class="about-trust-label">Decor Elements</p>
-    </article>
+                        <h1 id="homeHeroTitle" class="home-hero-title">
+                            Designing spaces,
+                            <span>defining lifestyles.</span>
+                        </h1>
 
-    <article class="about-trust-metric">
-        <span
-            class="stat-number about-trust-number"
-            data-target="75"
-            data-suffix="+"
-        >
-            0+
-        </span>
-        <p class="about-trust-label">Design Concepts</p>
-    </article>
+                        <p class="home-hero-description">
+                            A Delhi NCR design studio led by Kanchan Jain — homes, offices
+                            and interiors where architectural precision meets the ancient
+                            science of Vastu.
+                        </p>
 
-    <div class="about-trust-location">
-        <div class="about-trust-location-icon" aria-hidden="true">
-            <i class="ph ph-map-pin"></i>
-        </div>
+                        <div class="home-hero-actions">
+                            <a
+                                href="consultation.html"
+                                class="home-hero-btn home-hero-btn-primary"
+                            >
+                                Book Consultation
+                                <i class="ph ph-arrow-up-right"></i>
+                            </a>
 
-        <div class="about-trust-location-content">
-            <p class="about-trust-location-label">Serving Across</p>
-            <h3 class="about-trust-location-title">Delhi NCR</h3>
-            <p class="about-trust-cities">
-                Delhi · Noida · Gurugram
-            </p>
-        </div>
-    </div>
+                            <a
+                                href="portfolio.html"
+                                class="home-hero-btn home-hero-btn-secondary"
+                            >
+                                View Portfolio
+                                <i class="ph ph-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-</div>
+            <!-- Trust Strip: directly below the hero -->
+            <section class="home-trust-section" aria-label="Space Decor Belle achievements">
+                <div class="about-trust-strip">
+                    <article class="about-trust-metric">
+                        <span
+                            class="stat-number about-trust-number"
+                            data-target="125"
+                            data-suffix="+"
+                        >
+                            0+
+                        </span>
+                        <p class="about-trust-label">Projects Completed</p>
+                    </article>
+
+                    <article class="about-trust-metric">
+                        <span
+                            class="stat-number about-trust-number"
+                            data-target="25"
+                            data-suffix="+"
+                        >
+                            0+
+                        </span>
+                        <p class="about-trust-label">Years of Experience</p>
+                    </article>
+
+                    <div class="about-trust-location">
+                        <div class="about-trust-location-icon" aria-hidden="true">
+                            <i class="ph ph-map-pin"></i>
+                        </div>
+
+                        <div class="about-trust-location-content">
+                            <p class="about-trust-location-label">Serving Across</p>
+                            <h2 class="about-trust-location-title">Delhi NCR</h2>
+                            <p class="about-trust-cities">
+                                Delhi · Noida · Gurugram
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Restored Centered About Us Section -->
+            <section id="about" class="home-about-section" aria-labelledby="homeAboutTitle">
+                <div class="home-about-shell services-item services-delay-1">
+                    <p id="homeAboutTitle" class="home-about-eyebrow">About Us</p>
+
+                    <p class="home-about-copy">
+                        <span class="home-about-line">We are a team of passionate designers</span>
+                        <span class="home-about-line">committed to crafting unique and impactful interior solutions</span>
+                        <span class="home-about-line">Our studio focuses on merging aesthetics that are not only</span>
+                        <span class="home-about-emphasis">visually stunning but also practical and efficient.</span>
+                    </p>
+
+                    <div class="home-about-divider" aria-hidden="true"></div>
+                </div>
             </section>
 
 
                 
 <!-- Best We Can Do Wrapper -->
-<section class="w-full relative mt-0 mb-12">
+<section class="best-showcase-section w-full relative mt-0 mb-12">
     <!-- Large overlapping text -->
     <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10 text-center pointer-events-none translate-y-34 md:translate-y-46 lg:translate-y-64">
 <h2 class="best-words cormorant-heading text-[4rem] sm:text-[6rem] md:text-[8rem] lg:text-[10rem] xl:text-[11.5rem] text-white/90 leading-[0.9] lowercase">
@@ -2954,44 +4396,62 @@ body.festive-popup-open {
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-[16px] md:gap-[22px] w-full max-w-[1080px]">
         
-        <!-- Card 1 -->
-        <div class="bg-white px-8 md:px-10 py-8 flex flex-col items-center justify-center min-h-[160px]">
-            <img src="assets/images/interior.png" alt="Interior Icon" class="h-[60px] mb-4 opacity-70">
-
-            <span class="font-serif-chic text-[38px] md:text-[44px] leading-[1.1] text-[#6a6763] font-medium">
-                interior
+        <!-- Card 1: replace the image src below whenever required -->
+        <a href="interior.html" class="expertise-card" aria-label="Explore Interior Designing">
+            <span class="expertise-card-image">
+                <img src="assets/images/05.jpg" alt="Interior designing">
             </span>
 
-            <span class="font-sans text-[15px] md:text-[17px] leading-[1.4] tracking-[0.40em] font-medium text-[#8c8882] uppercase mt-2">
-                designing
-            </span>
-        </div>
+            <span class="expertise-card-copy">
+                <span class="font-serif-chic text-[38px] md:text-[44px] leading-[1.1] text-[#6a6763] font-medium">
+                    interior
+                </span>
 
-        <!-- Card 2 -->
-        <div class="bg-white px-8 md:px-10 py-8 flex flex-col items-center justify-center min-h-[160px]">
-            <img src="assets/images/vastu.png" alt="Vastu Icon" class="h-[60px] mb-4 opacity-70">
-
-            <span class="font-serif-chic text-[38px] md:text-[44px] leading-[1.1] text-[#6a6763] font-medium">
-                vastu
+                <span class="font-sans text-[15px] md:text-[17px] leading-[1.4] tracking-[0.40em] font-medium text-[#8c8882] uppercase mt-2">
+                    designing
+                </span>
             </span>
 
-            <span class="font-sans text-[15px] md:text-[17px] leading-[1.4] tracking-[0.40em] font-medium text-[#8c8882] uppercase mt-2">
-                consultancy
-            </span>
-        </div>
+            <i class="ph ph-arrow-up-right expertise-card-arrow" aria-hidden="true"></i>
+        </a>
 
-        <!-- Card 3 -->
-        <div class="bg-white px-8 md:px-10 py-8 flex flex-col items-center justify-center min-h-[160px]">
-            <img src="assets/images/decor 2.png" alt="Decor Icon" class="h-[60px] mb-4 opacity-70">
-
-            <span class="font-serif-chic text-[36px] md:text-[42px] leading-[1.1] text-[#6a6763] font-medium">
-                decorative
+        <!-- Card 2: replace the image src below whenever required -->
+        <a href="vastu.html" class="expertise-card" aria-label="Explore Vastu Consultancy">
+            <span class="expertise-card-image">
+                <img src="assets/images/07.jpg" alt="Vastu consultancy">
             </span>
 
-            <span class="font-sans text-[14px] md:text-[16px] leading-[1.4] tracking-[0.36em] font-medium text-[#8c8882] uppercase mt-2">
-                designs
+            <span class="expertise-card-copy">
+                <span class="font-serif-chic text-[38px] md:text-[44px] leading-[1.1] text-[#6a6763] font-medium">
+                    vastu
+                </span>
+
+                <span class="font-sans text-[15px] md:text-[17px] leading-[1.4] tracking-[0.40em] font-medium text-[#8c8882] uppercase mt-2">
+                    consultancy
+                </span>
             </span>
-        </div>
+
+            <i class="ph ph-arrow-up-right expertise-card-arrow" aria-hidden="true"></i>
+        </a>
+
+        <!-- Card 3: replace the image src below whenever required -->
+        <a href="decor.html" class="expertise-card" aria-label="Explore Decorative Designs">
+            <span class="expertise-card-image">
+                <img src="assets/images/08.jpg" alt="Decorative designs">
+            </span>
+
+            <span class="expertise-card-copy">
+                <span class="font-serif-chic text-[36px] md:text-[42px] leading-[1.1] text-[#6a6763] font-medium">
+                    decorative
+                </span>
+
+                <span class="font-sans text-[14px] md:text-[16px] leading-[1.4] tracking-[0.36em] font-medium text-[#8c8882] uppercase mt-2">
+                    designs
+                </span>
+            </span>
+
+            <i class="ph ph-arrow-up-right expertise-card-arrow" aria-hidden="true"></i>
+        </a>
 
     </div>
     <p class="mt-6 md:mt-8 text-center font-sans text-[16px] sm:text-[18px] md:text-[20px] font-medium tracking-[0.35em] uppercase text-[#6f6b65]">
@@ -2999,51 +4459,6 @@ body.festive-popup-open {
 </p>
 
 </div>
-</section>
-
-<!-- Interesting Features Section -->
-<section class="interesting-features w-full bg-white py-12 md:py-16">
-  <div class="max-w-[1250px] mx-auto px-4 sm:px-6 lg:px-8">
-
-    <div class="text-center mb-8 md:mb-12">
-      <h2 class="interesting-title font-serif-chic text-[#6e6868] tracking-[-0.03em]">
-        <span class="text-black">Designing</span> <span class="italic">Spaces</span>
-        <span class="text-customRed">•</span>
-        <span class="text-black">Defining</span> <span class="italic">Lifestyles</span>
-      </h2>
-
-      <div class="line-center-grow w-[180px] sm:w-[320px] md:w-[500px] h-[2px] md:h-[3px] bg-customRed mx-auto mt-7 md:mt-12"></div>
-
-      <div class="flex justify-center mt-7 md:mt-10">
-        <img
-          src="assets/images/interesting feature.png"
-          alt="Interesting Features"
-          class="interesting-label object-contain"
-        >
-      </div>
-    </div>
-
-    <div class="feature-gallery">
-      <figure class="feature-picture">
-        <img src="assets/images/2.png" alt="Contemporary luxury interior">
-      </figure>
-
-      <figure class="feature-picture feature-picture-secondary">
-        <img src="assets/images/3.png" alt="Warm premium living room">
-
-        <!-- <button
-          id="featureArrow"
-          type="button"
-          class="feature-arrow"
-          aria-label="Explore our interior design projects"
-        >
-          <i class="ph ph-arrow-up-right text-[23px] md:text-[27px]"></i>
-        </button> -->
-      </figure>
-    </div>
-
-
-  </div>
 </section>
 
 <!-- Compact About Us / Our Story Section -->
@@ -3136,78 +4551,152 @@ body.festive-popup-open {
 </div>
 
       <!-- Card 01 -->
-      <div class="services-item services-delay-2 relative h-[285px] rounded-[22px] overflow-hidden shadow-sm group">
+      <article
+        role="button"
+        tabindex="0"
+        class="services-item services-delay-2 service-preview-card relative h-[285px] rounded-[22px] overflow-hidden shadow-sm group"
+        data-service-image="assets/images/05.jpg"
+        data-service-title="Residential Design"
+        aria-label="View Residential Design image"
+      >
         <img src="assets/images/05.jpg" alt="Residential Design" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
         <div class="absolute inset-0 bg-black/35"></div>
 
         <span class="absolute top-6 left-7 text-white text-[20px] font-bold">01.</span>
+        <span class="service-preview-hint" aria-hidden="true">
+          <i class="ph ph-magnifying-glass-plus"></i>
+        </span>
 
         <div class="absolute bottom-6 left-7 right-7">
           <h3 class="font-serif-chic text-white text-[28px] leading-[1.02]">
             Residential <span class="italic font-light">Design</span>
           </h3>
         </div>
-      </div>
+      </article>
 
       <!-- Card 02 -->
-      <div class="services-item services-delay-3 relative h-[285px] rounded-[22px] overflow-hidden shadow-sm group">
+      <article
+        role="button"
+        tabindex="0"
+        class="services-item services-delay-3 service-preview-card relative h-[285px] rounded-[22px] overflow-hidden shadow-sm group"
+        data-service-image="assets/images/06.jpg"
+        data-service-title="Commercial Design"
+        aria-label="View Commercial Design image"
+      >
         <img src="assets/images/06.jpg" alt="Commercial Design" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
         <div class="absolute inset-0 bg-black/35"></div>
 
         <span class="absolute top-6 left-7 text-white text-[20px] font-bold">02.</span>
+        <span class="service-preview-hint" aria-hidden="true">
+          <i class="ph ph-magnifying-glass-plus"></i>
+        </span>
 
         <div class="absolute bottom-6 left-7 right-7">
           <h3 class="font-serif-chic text-white text-[28px] leading-[1.02]">
             Commercial <span class="italic font-light">Design</span>
           </h3>
         </div>
-      </div>
+      </article>
 
       <!-- Card 03 -->
-      <div class="services-item services-delay-4 relative h-[285px] rounded-[22px] overflow-hidden shadow-sm group">
+      <article
+        role="button"
+        tabindex="0"
+        class="services-item services-delay-4 service-preview-card relative h-[285px] rounded-[22px] overflow-hidden shadow-sm group"
+        data-service-image="assets/images/07.jpg"
+        data-service-title="Space Planning"
+        aria-label="View Space Planning image"
+      >
         <img src="assets/images/07.jpg" alt="Space Planning" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
         <div class="absolute inset-0 bg-black/30"></div>
 
         <span class="absolute top-6 left-7 text-white text-[20px] font-bold">03.</span>
+        <span class="service-preview-hint" aria-hidden="true">
+          <i class="ph ph-magnifying-glass-plus"></i>
+        </span>
 
         <div class="absolute bottom-6 left-7 right-7">
           <h3 class="font-serif-chic text-white text-[24px] leading-[1.05]">
             Space <span class="italic font-light">Planning</span>
           </h3>
         </div>
-      </div>
+      </article>
 
       <!-- Card 04 -->
-      <div class="services-item services-delay-5 relative h-[285px] rounded-[22px] overflow-hidden shadow-sm group">
+      <article
+        role="button"
+        tabindex="0"
+        class="services-item services-delay-5 service-preview-card relative h-[285px] rounded-[22px] overflow-hidden shadow-sm group"
+        data-service-image="assets/images/08.jpg"
+        data-service-title="Custom Furniture"
+        aria-label="View Custom Furniture image"
+      >
         <img src="assets/images/08.jpg" alt="Custom Furniture" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
         <div class="absolute inset-0 bg-black/30"></div>
 
         <span class="absolute top-6 left-7 text-white text-[20px] font-bold">04.</span>
+        <span class="service-preview-hint" aria-hidden="true">
+          <i class="ph ph-magnifying-glass-plus"></i>
+        </span>
 
         <div class="absolute bottom-6 left-7 right-7">
           <h3 class="font-serif-chic text-white text-[24px] leading-[1.05]">
             Custom <span class="italic font-light">Furniture</span>
           </h3>
         </div>
-      </div>
+      </article>
 
       <!-- Card 05 -->
-      <div class="services-item services-delay-6 relative h-[285px] rounded-[22px] overflow-hidden shadow-sm group">
+      <article
+        role="button"
+        tabindex="0"
+        class="services-item services-delay-6 service-preview-card relative h-[285px] rounded-[22px] overflow-hidden shadow-sm group"
+        data-service-image="assets/images/09.jpg"
+        data-service-title="Design Consultation"
+        aria-label="View Design Consultation image"
+      >
         <img src="assets/images/09.jpg" alt="Design Consultation" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
         <div class="absolute inset-0 bg-black/30"></div>
 
         <span class="absolute top-6 left-7 text-white text-[20px] font-bold">05.</span>
+        <span class="service-preview-hint" aria-hidden="true">
+          <i class="ph ph-magnifying-glass-plus"></i>
+        </span>
 
 <div class="absolute bottom-6 left-7 right-7">
   <h3 class="font-serif-chic text-white text-[24px] leading-[1.05]">
     <span class="italic font-light">Design</span> Consultation
   </h3>
 </div>
-      </div>
+      </article>
 
     </div>
   </div>
 </section>
+
+<!-- Services Image Lightbox -->
+<div
+  id="serviceLightbox"
+  class="service-lightbox"
+  role="dialog"
+  aria-modal="true"
+  aria-hidden="true"
+  aria-labelledby="serviceLightboxTitle"
+>
+  <button
+    id="serviceLightboxClose"
+    class="service-lightbox-close"
+    type="button"
+    aria-label="Close image preview"
+  >
+    <i class="ph ph-x"></i>
+  </button>
+
+  <div class="service-lightbox-content">
+    <img id="serviceLightboxImage" src="" alt="">
+    <p id="serviceLightboxTitle" class="service-lightbox-title"></p>
+  </div>
+</div>
 
 <!-- TRUSTED PARTNERS SECTION -->
 <section class="trusted-partners-section py-20 overflow-hidden">
@@ -3259,6 +4748,168 @@ body.festive-popup-open {
   </div>
 </section>
 
+<!-- TESTIMONIALS SECTION -->
+<section class="testimonials-section" aria-labelledby="testimonialsTitle">
+  <div class="testimonials-shell">
+
+    <div class="testimonials-header">
+      <div>
+        <p class="testimonials-eyebrow">Client Experiences</p>
+        <h2 id="testimonialsTitle" class="testimonials-title">
+          Spaces they now <span>love living in.</span>
+        </h2>
+      </div>
+
+      <div class="testimonials-controls" aria-label="Testimonial navigation">
+        <button
+          id="testimonialPrev"
+          class="testimonials-control"
+          type="button"
+          aria-label="View previous testimonials"
+          aria-controls="testimonialsTrack"
+        >
+          <i class="ph ph-arrow-left"></i>
+        </button>
+
+        <button
+          id="testimonialNext"
+          class="testimonials-control"
+          type="button"
+          aria-label="View next testimonials"
+          aria-controls="testimonialsTrack"
+        >
+          <i class="ph ph-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="testimonials-viewport">
+      <div id="testimonialsTrack" class="testimonials-track">
+
+        <article class="testimonial-card">
+          <div class="testimonial-rating" aria-label="5 out of 5 stars">★★★★★</div>
+          <p class="testimonial-quote">
+            The team understood that we wanted a warm home, not something that
+            only looked good in photographs. The storage planning and lighting
+            have made our everyday routine noticeably easier.
+          </p>
+          <div class="testimonial-person">
+            <span class="testimonial-avatar" aria-hidden="true">PM</span>
+            <div>
+              <h3 class="testimonial-name">Priya Malhotra</h3>
+              <p class="testimonial-project">Indirapuram · Home Interiors</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="testimonial-card">
+          <div class="testimonial-rating" aria-label="5 out of 5 stars">★★★★★</div>
+          <p class="testimonial-quote">
+            Our office now feels professional without becoming cold or
+            corporate. They handled the layout, materials and execution with
+            clarity, and kept us informed whenever a decision was needed.
+          </p>
+          <div class="testimonial-person">
+            <span class="testimonial-avatar" aria-hidden="true">RM</span>
+            <div>
+              <h3 class="testimonial-name">Rohan Mehta</h3>
+              <p class="testimonial-project">Noida · Office Design</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="testimonial-card">
+          <div class="testimonial-rating" aria-label="5 out of 5 stars">★★★★★</div>
+          <p class="testimonial-quote">
+            I was worried that following Vastu would make the design feel
+            traditional. Instead, the final home is modern, balanced and
+            practical. Every recommendation was explained patiently.
+          </p>
+          <div class="testimonial-person">
+            <span class="testimonial-avatar" aria-hidden="true">NB</span>
+            <div>
+              <h3 class="testimonial-name">Neha Bansal</h3>
+              <p class="testimonial-project">South Delhi · Vastu & Interiors</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="testimonial-card">
+          <div class="testimonial-rating" aria-label="5 out of 5 stars">★★★★★</div>
+          <p class="testimonial-quote">
+            The space planning for our apartment was thoughtful from the first
+            meeting. They found room for everything we needed without making
+            the rooms feel crowded, and the material options stayed realistic.
+          </p>
+          <div class="testimonial-person">
+            <span class="testimonial-avatar" aria-hidden="true">AS</span>
+            <div>
+              <h3 class="testimonial-name">Arjun Sethi</h3>
+              <p class="testimonial-project">Gurugram · Apartment Design</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="testimonial-card">
+          <div class="testimonial-rating" aria-label="5 out of 5 stars">★★★★★</div>
+          <p class="testimonial-quote">
+            Our kitchen is finally beautiful and comfortable to use as a
+            family. The small details—counter height, accessible storage and
+            easy-to-clean finishes—showed that they genuinely listened.
+          </p>
+          <div class="testimonial-person">
+            <span class="testimonial-avatar" aria-hidden="true">KS</span>
+            <div>
+              <h3 class="testimonial-name">Kavita Sharma</h3>
+              <p class="testimonial-project">Vaishali · Kitchen Renovation</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="testimonial-card">
+          <div class="testimonial-rating" aria-label="5 out of 5 stars">★★★★★</div>
+          <p class="testimonial-quote">
+            The drawings and site instructions were detailed, so execution
+            stayed organised even when we were not present. The finished
+            spaces feel clean, premium and very close to the approved design.
+          </p>
+          <div class="testimonial-person">
+            <span class="testimonial-avatar" aria-hidden="true">AV</span>
+            <div>
+              <h3 class="testimonial-name">Amit Verma</h3>
+              <p class="testimonial-project">Greater Noida · Turnkey Interiors</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="testimonial-card">
+          <div class="testimonial-rating" aria-label="5 out of 5 stars">★★★★★</div>
+          <p class="testimonial-quote">
+            We wanted a refresh without replacing every piece of furniture.
+            Their decor choices brought the entire home together and respected
+            both our budget and the things we already loved.
+          </p>
+          <div class="testimonial-person">
+            <span class="testimonial-avatar" aria-hidden="true">SI</span>
+            <div>
+              <h3 class="testimonial-name">Sneha Iyer</h3>
+              <p class="testimonial-project">Delhi NCR · Decor Styling</p>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+    <!-- <p class="testimonials-note">
+      Sample testimonial copy for layout preview — replace it with verified
+      client feedback before publishing.
+    </p> -->
+
+    <p id="testimonialStatus" class="sr-only" aria-live="polite"></p>
+  </div>
+</section>
+
 <!-- CTA Banner Section -->
 <section class="w-full relative overflow-hidden bg-[#151515]">
 
@@ -3294,7 +4945,7 @@ body.festive-popup-open {
         </main>
 
 <!-- Footer -->
-<footer id="clients" class="w-full bg-[#151515] relative pt-2 pb-0 z-10 border-t border-gray-800 overflow-hidden">
+<footer id="clients" class="site-footer w-full relative pt-2 pb-0 z-10 overflow-hidden">
 
     <div class="max-w-7xl mx-auto px-6 lg:px-12 relative">
         
@@ -3378,14 +5029,14 @@ body.festive-popup-open {
   </h4>
 
   <!-- Phone -->
-<p class="footer-contact-phone">
+<a href="tel:+919654232327" class="footer-contact-phone">
   (+91) 96542 32327
-</p>
+</a>
 
   <!-- Email -->
-  <p class="footer-contact-email">
+  <a href="mailto:info@spacedecorbelle.com" class="footer-contact-email">
     info@spacedecorbelle.com
-  </p>
+  </a>
 
 </div>
             </div>
@@ -3399,20 +5050,36 @@ body.festive-popup-open {
                 <div class="footer-social-rule footer-drop footer-delay-2"></div>
 
                 <div class="footer-social-links">
-        <a href="#" class="footer-social-link footer-drop footer-delay-3" aria-label="WhatsApp">
-            <i class="ph ph-whatsapp-logo text-sm"></i>
+        <a
+            href="https://wa.me/919654232327"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="footer-social-link footer-social-link--whatsapp footer-drop footer-delay-3"
+            aria-label="WhatsApp"
+        >
+            <svg class="footer-social-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12.04 2a9.84 9.84 0 0 0-8.43 14.91L2 22l5.22-1.54A9.95 9.95 0 1 0 12.04 2Zm5.82 14.05c-.25.71-1.47 1.3-2.03 1.39-.52.08-1.18.12-3.8-1-3.2-1.39-5.23-4.66-5.39-4.88-.15-.22-1.28-1.7-1.28-3.25s.81-2.32 1.1-2.64c.29-.32.63-.4.84-.4h.61c.2 0 .46-.07.72.55.26.63.89 2.17.97 2.33.08.16.13.35.03.57-.1.22-.15.35-.3.54-.15.19-.32.42-.46.56-.15.15-.31.31-.13.61.18.3.8 1.32 1.72 2.14 1.18 1.05 2.18 1.38 2.49 1.54.31.16.49.13.67-.08.18-.21.78-.91.99-1.22.2-.31.41-.26.69-.16.28.1 1.79.84 2.1.99.31.16.52.23.59.36.08.13.08.76-.17 1.47Z"/>
+            </svg>
         </a>
 
-        <a href="#" class="footer-social-link footer-drop footer-delay-4" aria-label="Facebook">
-            <i class="ph ph-facebook-logo text-sm"></i>
+        <a href="#" class="footer-social-link footer-social-link--facebook footer-drop footer-delay-4" aria-label="Facebook">
+            <svg class="footer-social-icon" viewBox="0 0 16 16" aria-hidden="true">
+                <path d="M16 8.049C16 3.603 12.418 0 8 0S0 3.603 0 8.049C0 12.066 2.926 15.396 6.75 16v-5.625H4.718V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.994 0-1.304.621-1.304 1.258V8.05h2.219l-.355 2.326H9.25V16C13.074 15.396 16 12.066 16 8.049Z"/>
+            </svg>
         </a>
 
-        <a href="#" class="footer-social-link footer-drop footer-delay-5" aria-label="LinkedIn">
-            <i class="ph ph-linkedin-logo text-sm"></i>
+        <a href="#" class="footer-social-link footer-social-link--linkedin footer-drop footer-delay-5" aria-label="LinkedIn">
+            <svg class="footer-social-icon" viewBox="0 0 16 16" aria-hidden="true">
+                <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708C16 15.487 15.474 16 14.825 16H1.175C.526 16 0 15.487 0 14.854V1.146Zm4.943 12.248V6.169H2.542v7.225h2.401Zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.521-1.248-1.342-1.248-.822 0-1.358.54-1.358 1.248 0 .694.52 1.248 1.327 1.248h.015Zm2.529 8.212h2.4V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.4V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.19h.03v-1.02h-2.4c.03.679 0 7.225 0 7.225Z"/>
+            </svg>
         </a>
 
-        <a href="#" class="footer-social-link footer-drop footer-delay-6" aria-label="Instagram">
-            <i class="ph ph-instagram-logo text-sm"></i>
+        <a href="#" class="footer-social-link footer-social-link--instagram footer-drop footer-delay-6" aria-label="Instagram">
+            <svg class="footer-social-icon footer-social-icon--instagram" viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="3.25" y="3.25" width="17.5" height="17.5" rx="5.25"></rect>
+                <circle cx="12" cy="12" r="4.15"></circle>
+                <circle cx="17.55" cy="6.55" r="1.05" class="instagram-dot"></circle>
+            </svg>
         </a>
                 </div>
             </div>
@@ -3452,7 +5119,6 @@ body.festive-popup-open {
     >
   </a>
 </div>
-    </div>
 
     <script>
         const menuBtn = document.getElementById("menuBtn");
@@ -3633,6 +5299,175 @@ const servicesObserver = new IntersectionObserver((entries, obs) => {
 servicesItems.forEach(item => {
     servicesObserver.observe(item);
 });
+
+/* SERVICES IMAGE LIGHTBOX */
+const servicePreviewCards = document.querySelectorAll(".service-preview-card");
+const serviceLightbox = document.getElementById("serviceLightbox");
+const serviceLightboxImage = document.getElementById("serviceLightboxImage");
+const serviceLightboxTitle = document.getElementById("serviceLightboxTitle");
+const serviceLightboxClose = document.getElementById("serviceLightboxClose");
+let lastServicePreviewTrigger = null;
+
+function openServiceLightbox(card) {
+    if (
+        !serviceLightbox ||
+        !serviceLightboxImage ||
+        !serviceLightboxTitle
+    ) {
+        return;
+    }
+
+    const imageSource = card.dataset.serviceImage;
+    const imageTitle = card.dataset.serviceTitle || "Service image";
+
+    if (!imageSource) return;
+
+    lastServicePreviewTrigger = card;
+    serviceLightboxImage.src = imageSource;
+    serviceLightboxImage.alt = imageTitle;
+    serviceLightboxTitle.textContent = imageTitle;
+    serviceLightbox.setAttribute("aria-hidden", "false");
+    document.body.classList.add("service-lightbox-open");
+
+    window.setTimeout(() => {
+        if (serviceLightboxClose) serviceLightboxClose.focus();
+    }, 50);
+}
+
+function closeServiceLightbox() {
+    if (!serviceLightbox) return;
+
+    serviceLightbox.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("service-lightbox-open");
+
+    if (serviceLightboxImage) {
+        serviceLightboxImage.removeAttribute("src");
+        serviceLightboxImage.alt = "";
+    }
+
+    if (serviceLightboxTitle) {
+        serviceLightboxTitle.textContent = "";
+    }
+
+    if (lastServicePreviewTrigger) {
+        lastServicePreviewTrigger.focus();
+    }
+}
+
+servicePreviewCards.forEach(card => {
+    card.addEventListener("click", () => openServiceLightbox(card));
+
+    card.addEventListener("keydown", event => {
+        if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            openServiceLightbox(card);
+        }
+    });
+});
+
+if (serviceLightboxClose) {
+    serviceLightboxClose.addEventListener("click", closeServiceLightbox);
+}
+
+if (serviceLightbox) {
+    serviceLightbox.addEventListener("click", event => {
+        if (event.target === serviceLightbox) {
+            closeServiceLightbox();
+        }
+    });
+}
+
+document.addEventListener("keydown", event => {
+    if (
+        event.key === "Escape" &&
+        serviceLightbox &&
+        serviceLightbox.getAttribute("aria-hidden") === "false"
+    ) {
+        closeServiceLightbox();
+    }
+});
+
+/* TESTIMONIAL CAROUSEL */
+const testimonialsTrack = document.getElementById("testimonialsTrack");
+const testimonialCards = testimonialsTrack
+    ? Array.from(testimonialsTrack.querySelectorAll(".testimonial-card"))
+    : [];
+const testimonialPrev = document.getElementById("testimonialPrev");
+const testimonialNext = document.getElementById("testimonialNext");
+const testimonialStatus = document.getElementById("testimonialStatus");
+let testimonialIndex = 0;
+let testimonialResizeFrame;
+
+function getVisibleTestimonials() {
+    if (window.innerWidth >= 1024) return 3;
+    if (window.innerWidth >= 700) return 2;
+    return 1;
+}
+
+function updateTestimonialCarousel() {
+    if (!testimonialsTrack || !testimonialCards.length) return;
+
+    const visibleCards = getVisibleTestimonials();
+    const maxIndex = Math.max(0, testimonialCards.length - visibleCards);
+    const trackStyles = window.getComputedStyle(testimonialsTrack);
+    const cardGap = parseFloat(trackStyles.columnGap || trackStyles.gap) || 0;
+    const cardWidth = testimonialCards[0].getBoundingClientRect().width;
+
+    testimonialIndex = Math.min(testimonialIndex, maxIndex);
+    testimonialsTrack.style.transform =
+        `translateX(-${testimonialIndex * (cardWidth + cardGap)}px)`;
+
+    if (testimonialPrev) {
+        testimonialPrev.disabled = testimonialIndex === 0;
+    }
+
+    if (testimonialNext) {
+        testimonialNext.disabled = testimonialIndex === maxIndex;
+    }
+
+    if (testimonialStatus) {
+        const firstVisible = testimonialIndex + 1;
+        const lastVisible = Math.min(
+            testimonialCards.length,
+            testimonialIndex + visibleCards
+        );
+
+        testimonialStatus.textContent =
+            `Showing testimonials ${firstVisible} to ${lastVisible} ` +
+            `of ${testimonialCards.length}.`;
+    }
+}
+
+if (testimonialPrev) {
+    testimonialPrev.addEventListener("click", () => {
+        testimonialIndex = Math.max(0, testimonialIndex - 1);
+        updateTestimonialCarousel();
+    });
+}
+
+if (testimonialNext) {
+    testimonialNext.addEventListener("click", () => {
+        const maxIndex = Math.max(
+            0,
+            testimonialCards.length - getVisibleTestimonials()
+        );
+
+        testimonialIndex = Math.min(maxIndex, testimonialIndex + 1);
+        updateTestimonialCarousel();
+    });
+}
+
+if (testimonialsTrack && testimonialCards.length) {
+    updateTestimonialCarousel();
+
+    window.addEventListener("resize", () => {
+        window.cancelAnimationFrame(testimonialResizeFrame);
+        testimonialResizeFrame = window.requestAnimationFrame(
+            updateTestimonialCarousel
+        );
+    });
+}
+
 const ctaCard = document.querySelector('.cta-card-slide');
 
 if (ctaCard) {
