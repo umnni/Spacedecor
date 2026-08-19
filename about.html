@@ -8,8 +8,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -37,9 +36,20 @@
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
   <style>
+    :root {
+      --font-body: 'Montserrat', sans-serif;
+      --font-heading: 'Playfair Display', serif;
+      --text-heading: #66625f;
+      --text-subheading: #77726f;
+      --text-body: #56524f;
+      --accent-red: #c12323;
+      --accent-gold: #d7b46a;
+    }
+
     body {
-      font-family: 'Montserrat', sans-serif;
-      color: #1a1a1a;
+      margin: 0;
+      font-family: var(--font-body);
+      color: var(--text-body);
       overflow-x: hidden;
       background: #ffffff;
     }
@@ -64,7 +74,7 @@
     }
 
     .cormorant-heading {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: var(--font-heading);
       font-weight: 500;
       letter-spacing: -0.02em;
     }
@@ -335,90 +345,1235 @@
 }
 
 .image-float-btn:hover {
-    transform: translateX(-6px) scale(1.06);
+    transform: translateY(-5px) scale(1.06);
     box-shadow: 0 16px 36px rgba(0, 0, 0, 0.22);
 }
 
-/* PREMIUM LUXURY HEADER */
-.premium-header{width:100%;position:sticky;top:0;z-index:50;background:rgba(255,255,255,.95);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid rgba(207,166,58,.3);box-shadow:0 8px 28px rgba(0,0,0,.045);}
-.premium-header-inner{min-height:112px;display:flex;align-items:center;justify-content:space-between;gap:24px;}
-.premium-header-logo{display:flex;align-items:center;flex-shrink:0;}
-.premium-header-logo img{display:block;width:auto;height:88px;object-fit:contain;}
-.premium-desktop-nav{display:none;align-items:center;}
-.premium-nav-link{position:relative;padding:16px 15px;color: #6b7280;font-size:10px;font-weight:600;line-height:1;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:color .3s ease,transform .3s ease;}
-.premium-nav-link::before{content:"";position:absolute;left:50%;bottom:7px;width:5px;height:5px;border-radius:50%;background:#c12323;opacity:0;transform:translateX(-50%) translateY(6px);transition:opacity .3s ease,transform .3s ease;}
-.premium-nav-link::after{content:"";position:absolute;left:15px;right:15px;bottom:0;height:1px;background:linear-gradient(90deg,transparent,#cfa63a,transparent);opacity:0;transform:scaleX(0);transform-origin:center;transition:opacity .35s ease,transform .35s ease;}
-.premium-nav-link:hover,.premium-nav-link.active{color:#c12323;}
-.premium-nav-link:hover::before,.premium-nav-link.active::before{opacity:1;transform:translateX(-50%) translateY(0);}
-.premium-nav-link:hover::after,.premium-nav-link.active::after{opacity:1;transform:scaleX(1);}
-.premium-menu-btn{width:48px;height:48px;flex-shrink:0;display:flex;align-items:center;justify-content:center;border:1px solid rgba(193,35,35,.2);border-radius:50%;color:#2e2d35;background:#fff;box-shadow:0 8px 22px rgba(0,0,0,.08);cursor:pointer;transition:color .3s ease,background .3s ease,border-color .3s ease;}
-.premium-menu-btn i{font-size:25px;line-height:1;}
-.premium-menu-btn:hover{color:#fff;background:#c12323;border-color:#c12323;}
-.premium-mobile-menu{display:block;background:linear-gradient(145deg,#151515,#24201e);border-top:1px solid rgba(207,166,58,.25);box-shadow:0 20px 50px rgba(0,0,0,.2);}
-#mobileMenu.hidden{display:none!important;}
-.premium-mobile-link{position:relative;display:flex;align-items:center;gap:17px;padding:16px 4px;color:rgba(255,255,255,.78);border-bottom:1px solid rgba(255,255,255,.08);font-family:"Playfair Display",serif;font-size:24px;font-weight:400;text-decoration:none;transition:color .3s ease,padding-left .3s ease;}
-.premium-mobile-link span{min-width:27px;color:#cfa63a;font-family:"Montserrat",sans-serif;font-size:9px;font-weight:700;letter-spacing:.16em;}
-.premium-mobile-link:hover,.premium-mobile-link.active{color:#cfa63a;padding-left:10px;}
-.premium-mobile-link.active::after{content:"";position:absolute;right:4px;width:7px;height:7px;border-radius:50%;background:#c12323;}
-.premium-mobile-cta{min-height:54px;margin-top:24px;display:flex;align-items:center;justify-content:center;gap:12px;background:#c12323;color:#fff;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;}
-.premium-mobile-cta i{font-size:17px;}
-@media(min-width:1024px){.premium-desktop-nav{display:flex}.premium-menu-btn,.premium-mobile-menu{display:none!important}}
-@media(max-width:1023px){.premium-desktop-nav{display:none!important}.premium-menu-btn{display:flex}.premium-header-inner{min-height:92px}.premium-header-logo img{height:74px}}
-@media(max-width:767px){.premium-header-inner{min-height:82px}.premium-header-logo img{height:66px}.premium-menu-btn{width:45px;height:45px}}
-  </style>
+/* SHARED FLOATING HEADER */
+.premium-header {
+  position: fixed;
+  z-index: 90;
+  top: 16px;
+  right: 0;
+  left: 0;
+  width: 100%;
+  padding: 0 22px;
+  pointer-events: none;
+}
+
+.premium-header-shell {
+  position: relative;
+  width: 100%;
+  max-width: 1340px;
+  margin: 0 auto;
+  padding-right: 28px;
+  padding-left: 28px;
+  overflow: visible;
+  pointer-events: auto;
+  background: linear-gradient(115deg, rgba(19, 19, 19, 0.62), rgba(31, 28, 26, 0.42));
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 34px;
+  backdrop-filter: blur(24px) saturate(145%);
+  -webkit-backdrop-filter: blur(24px) saturate(145%);
+  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.16);
+}
+
+.premium-header-inner {
+  min-height: 82px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.premium-header-logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.premium-header-logo img {
+  display: block;
+  width: auto;
+  height: 64px;
+  object-fit: contain;
+}
+
+.premium-desktop-nav {
+  display: none;
+  flex: 1 1 auto;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+
+.premium-nav-link {
+  position: relative;
+  padding: 15px 11px;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 9px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.3s ease;
+}
+
+.premium-nav-link::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 7px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent-red);
+  opacity: 0;
+  transform: translateX(-50%) translateY(6px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.premium-nav-link::after {
+  content: "";
+  position: absolute;
+  right: 11px;
+  bottom: 0;
+  left: 11px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.premium-nav-link:hover,
+.premium-nav-link.active {
+  color: #ffffff;
+}
+
+.premium-nav-link:hover::before,
+.premium-nav-link.active::before,
+.premium-nav-link:hover::after,
+.premium-nav-link.active::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.premium-nav-link:hover::after,
+.premium-nav-link.active::after {
+  transform: scaleX(1);
+}
+
+.premium-header-cta {
+  position: relative;
+  z-index: 1;
+  display: none;
+  min-height: 48px;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 0 20px;
+  color: #ffffff;
+  background: var(--accent-red);
+  border: 1px solid var(--accent-red);
+  border-radius: 999px;
+  box-shadow: 0 10px 24px rgba(193, 35, 35, 0.2);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.premium-header-cta i { font-size: 16px; }
+
+.premium-header-cta:hover {
+  color: #ffffff;
+  background: var(--accent-red);
+  border-color: var(--accent-red);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(193, 35, 35, 0.3);
+}
+
+.premium-menu-btn {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.36);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.premium-menu-btn i { font-size: 25px; line-height: 1; }
+
+.premium-mobile-menu {
+  width: min(calc(100% - 28px), 1280px);
+  margin: 8px auto 0;
+  overflow: hidden;
+  pointer-events: auto;
+  background: rgba(32, 31, 30, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 0 0 28px 28px;
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+}
+
+#mobileMenu.hidden { display: none !important; }
+
+.premium-mobile-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  padding: 16px 4px;
+  color: rgba(255, 255, 255, 0.78);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 400;
+  text-decoration: none;
+}
+
+.premium-mobile-link span {
+  min-width: 27px;
+  color: var(--accent-gold);
+  font-family: var(--font-body);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+.premium-mobile-link:hover,
+.premium-mobile-link.active { color: var(--accent-gold); padding-left: 10px; }
+
+.premium-mobile-link.active::after {
+  content: "";
+  position: absolute;
+  right: 4px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent-red);
+}
+
+.premium-mobile-cta {
+  min-height: 54px;
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: #ffffff;
+  background: var(--accent-red);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.premium-mobile-cta i { font-size: 17px; }
+
+@media (min-width: 1180px) {
+  .premium-desktop-nav { display: flex !important; }
+  .premium-header-cta { display: inline-flex; }
+  .premium-menu-btn,
+  .premium-mobile-menu { display: none !important; }
+}
+
+@media (max-width: 1179px) {
+  .premium-desktop-nav,
+  .premium-header-cta { display: none !important; }
+  .premium-menu-btn { display: flex !important; }
+  .premium-mobile-menu { display: block; }
+}
+
+@media (max-width: 767px) {
+  .premium-header { top: 10px; padding: 0 10px; }
+  .premium-header-shell { padding-right: 18px; padding-left: 18px; border-radius: 25px; overflow: hidden; }
+  .premium-header-inner { min-height: 74px; }
+  .premium-header-logo img { height: 58px; }
+  .premium-menu-btn { width: 45px; height: 45px; }
+}
+
+/* SHARED ABOUT-PAGE TYPOGRAPHY */
+.about-main { padding-top: 112px; }
+
+.section-eyebrow {
+  margin: 0 0 14px;
+  color: var(--accent-red);
+  font-family: var(--font-body);
+  font-size: clamp(0.68rem, 0.85vw, 0.78rem);
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+.section-heading {
+  margin: 0;
+  color: #6a6763;
+  font-family: var(--font-heading);
+  font-size: clamp(2.45rem, 4.5vw, 3.75rem);
+  font-weight: 500;
+  font-style: normal;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+}
+
+.section-subheading {
+  margin: 0;
+  color: #1a1a1a;
+  font-family: var(--font-heading);
+  font-size: clamp(1.35rem, 2.4vw, 1.9rem);
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.35;
+}
+
+.section-copy {
+  color: #333333;
+  font-family: var(--font-body);
+  font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+  font-weight: 500;
+  line-height: 1.85;
+}
+
+.about-quote-heading {
+  max-width: 830px;
+  margin: 0 auto;
+  color: #2a2a2a;
+  text-align: center;
+}
+
+.about-signature {
+  margin-top: 22px;
+  color: #111111;
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.founder-statement-section {
+  width: 100%;
+  padding: clamp(58px, 7vw, 92px) 24px;
+  background: linear-gradient(180deg, #ffffff 0%, #f5f4f2 100%);
+}
+
+.founder-statement-card {
+  position: relative;
+  width: min(100%, 1060px);
+  margin: 0 auto;
+  padding: clamp(42px, 7vw, 82px);
+  overflow: hidden;
+  text-align: center;
+  background: #ffffff;
+  border: 1px solid rgba(102, 98, 95, 0.2);
+  border-radius: 30px;
+  box-shadow: 0 24px 65px rgba(39, 35, 32, 0.08);
+}
+
+.founder-statement-card::before {
+  content: "“";
+  position: absolute;
+  top: -24px;
+  left: 28px;
+  color: rgba(102, 98, 95, 0.08);
+  font-family: var(--font-heading);
+  font-size: clamp(8rem, 17vw, 14rem);
+  line-height: 1;
+  pointer-events: none;
+}
+
+.founder-statement-copy {
+  position: relative;
+  z-index: 1;
+  max-width: 850px;
+  margin: 0 auto;
+  color: #5f5b57;
+  font-family: var(--font-heading);
+  font-size: clamp(1.55rem, 3vw, 2.45rem);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.founder-statement-divider {
+  width: 72px;
+  height: 2px;
+  margin: 34px auto 28px;
+  background: var(--text-subheading);
+}
+
+.founder-statement-name {
+  margin: 0;
+  color: #cfa63a;
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 3vw, 2.45rem);
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+.founder-statement-role {
+  margin-top: 9px;
+  color: #6b7280;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.heading-accent {
+  color: var(--accent-red);
+  font-style: normal;
+}
+
+/* SHARED GREY FOOTER */
+.site-footer {
+  background: radial-gradient(circle at 8% 0%, rgba(255,255,255,0.08), transparent 36%), linear-gradient(145deg, #626262 0%, #505050 46%, #414141 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.footer-main-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: stretch;
+}
+
+.footer-divider-one { left: 33.333%; }
+.footer-divider-two { right: 33.333%; }
+
+.footer-brand-column,
+.footer-center-column,
+.footer-social-column {
+  min-width: 0;
+  padding: 38px 0 42px;
+}
+
+.footer-brand-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.footer-brand-logo img {
+  width: auto;
+  height: 82px;
+  max-width: 230px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+.footer-newsletter {
+  width: 100%;
+  max-width: 360px;
+  margin: 20px auto 0;
+}
+
+.footer-newsletter-eyebrow {
+  margin-bottom: 12px;
+  color: var(--accent-gold);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.footer-newsletter-title {
+  margin: 0;
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 2.5vw, 2.75rem);
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: -0.025em;
+}
+
+.footer-newsletter-title span {
+  display: block;
+  margin-top: 5px;
+  color: var(--accent-red);
+  font-style: normal;
+}
+
+.footer-newsletter-copy {
+  max-width: 350px;
+  margin-top: 20px;
+  color: rgba(255,255,255,0.7);
+  font-size: 12px;
+  line-height: 1.75;
+}
+
+.footer-newsletter-form {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  margin-top: 25px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(215, 180, 106, 0.75);
+}
+
+.footer-newsletter-form input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #ffffff;
+  font-family: var(--font-body);
+  font-size: 12px;
+}
+
+.footer-newsletter-form input::placeholder { color: rgba(255,255,255,0.38); }
+
+.footer-newsletter-form button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  border: 0;
+  background: transparent;
+  color: var(--accent-gold);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.footer-newsletter-status {
+  min-height: 18px;
+  margin-top: 10px;
+  color: var(--accent-gold);
+  font-size: 10px;
+}
+
+.footer-center-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.footer-recent-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  width: 100%;
+  max-width: 320px;
+  margin-bottom: 24px;
+}
+
+.footer-recent-grid img { width: 100%; height: 80px; object-fit: cover; }
+
+.footer-contact-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 18px;
+}
+
+.footer-contact-phone,
+.footer-contact-email {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.footer-contact-phone {
+  font-size: clamp(1rem, 1.45vw, 1.2rem);
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.footer-contact-email {
+  margin-top: 4px;
+  color: rgba(255,255,255,0.82);
+  font-size: clamp(0.88rem, 1.15vw, 1rem);
+  line-height: 1.65;
+}
+
+.footer-social-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.footer-social-label {
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+}
+
+.footer-social-rule {
+  width: 1px;
+  height: 62px;
+  margin: 22px 0;
+  background: rgba(255,255,255,0.28);
+}
+
+.footer-social-links {
+  display: grid;
+  grid-template-columns: repeat(2, 46px);
+  gap: 14px;
+}
+
+.footer-social-link {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  color: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 10px 22px rgba(0,0,0,0.15);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.footer-social-icon { width: 20px; height: 20px; fill: currentColor; }
+.footer-social-icon--instagram { fill: none; stroke: currentColor; stroke-width: 1.8; }
+.footer-social-icon--instagram .instagram-dot { fill: currentColor; stroke: none; }
+.footer-social-link--whatsapp { background: #25d366; }
+.footer-social-link--facebook { background: #1877f2; }
+.footer-social-link--linkedin { background: #0a66c2; }
+.footer-social-link--instagram { background: radial-gradient(circle at 30% 105%, #fdf497 0 9%, #fd5949 31%, #d6249f 58%, #285aeb 88%); }
+.footer-social-link:hover { color: #ffffff; transform: translateY(-4px) scale(1.06); box-shadow: 0 15px 28px rgba(0,0,0,0.22); }
+
+.footer-bottom-line {
+  width: calc(100% - 48px);
+  max-width: 1180px;
+  height: 1px;
+  margin: 0 auto;
+  background: rgba(255,255,255,0.22) !important;
+}
+
+.footer-bottom-bar {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 21px 24px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  color: rgba(255,255,255,0.7);
+  font-size: 10px;
+  line-height: 1.5;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.site-footer .footer-line-vertical { background: rgba(255,255,255,0.22) !important; }
+
+.whatsapp-sticky-wrap {
+  position: fixed;
+  z-index: 999;
+  right: 22px;
+  bottom: 22px;
+}
+
+@media (min-width: 768px) {
+  .footer-main-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .footer-brand-column,
+  .footer-center-column,
+  .footer-social-column { padding: 38px 30px 42px; }
+}
+
+@media (max-width: 767px) {
+  .about-main { padding-top: 94px; }
+  .founder-statement-section { padding-right: 16px; padding-left: 16px; }
+  .founder-statement-card { border-radius: 22px; }
+  .footer-brand-column,
+  .footer-center-column { border-bottom: 1px solid rgba(255,255,255,0.18); }
+  .footer-social-rule { width: 62px; height: 1px; }
+  .footer-social-links { grid-template-columns: repeat(4, 46px); }
+  .footer-bottom-line { width: calc(100% - 32px); }
+  .footer-bottom-bar { padding: 20px 18px 23px; flex-direction: column; justify-content: center; gap: 10px; text-align: center; }
+  .whatsapp-sticky-wrap { right: 14px; bottom: 14px; }
+  .image-float-btn { width: 56px; height: 56px; padding: 6px; border-radius: 16px; }
+}
+
+/* SOLID WHITE HEADER + GREY TYPE SYSTEM */
+:root {
+  --heading-grey: #5e636a;
+  --subheading-grey: #777d84;
+  --body-grey: #686e75;
+  --light-grey: #d7dade;
+  --light-grey-muted: #c5c9ce;
+}
+
+body {
+  color: var(--body-grey);
+}
+
+.premium-header {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.premium-header-shell {
+  overflow: visible !important;
+  background: #ffffff !important;
+  border: 1px solid #e1e3e6 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-shadow: 0 13px 34px rgba(37, 42, 48, 0.14) !important;
+}
+
+.premium-nav-link {
+  color: #6f747b !important;
+}
+
+.premium-nav-link:hover,
+.premium-nav-link.active {
+  color: #454a50 !important;
+}
+
+.premium-nav-link::before {
+  background: var(--accent-red) !important;
+}
+
+.premium-nav-link::after {
+  background: linear-gradient(90deg, transparent, var(--accent-gold), transparent) !important;
+}
+
+.premium-menu-btn {
+  color: #686e75 !important;
+  background: #f5f6f7 !important;
+  border-color: #d7dade !important;
+  box-shadow: none !important;
+}
+
+.premium-menu-btn:hover {
+  color: #ffffff !important;
+  background: #686e75 !important;
+  border-color: #686e75 !important;
+}
+
+.premium-mobile-menu {
+  background: #ffffff !important;
+  border: 1px solid #e1e3e6 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-shadow: 0 18px 38px rgba(37, 42, 48, 0.14) !important;
+}
+
+.premium-mobile-link {
+  color: #6f747b !important;
+  border-bottom-color: #e7e8ea !important;
+}
+
+.premium-mobile-link span {
+  color: #8b9096 !important;
+}
+
+.premium-mobile-link:hover,
+.premium-mobile-link.active {
+  color: #454a50 !important;
+}
+
+.premium-mobile-link.active::after {
+  background: var(--accent-red) !important;
+}
+
+.premium-header-cta,
+.premium-header-cta:hover,
+.premium-mobile-cta,
+.premium-mobile-cta:hover {
+  color: #ffffff !important;
+  background: var(--accent-red) !important;
+  border-color: var(--accent-red) !important;
+}
+
+.about-main h1,
+.about-main h2,
+.about-main h3 {
+  color: var(--heading-grey) !important;
+  font-family: var(--font-heading) !important;
+}
+
+.about-main h1 span,
+.about-main h2 span,
+.about-main h3 span,
+.heading-accent,
+.founder-statement-name {
+  color: var(--heading-grey) !important;
+}
+
+.section-eyebrow,
+.about-signature,
+.founder-statement-role {
+  color: var(--subheading-grey) !important;
+  font-family: var(--font-body) !important;
+}
+
+.section-subheading {
+  color: var(--subheading-grey) !important;
+  font-family: var(--font-heading) !important;
+}
+
+.section-copy,
+.section-copy p,
+.founder-statement-copy {
+  color: var(--body-grey) !important;
+}
+
+.about-main .text-customRed,
+.about-main .text-customGold {
+  color: var(--subheading-grey) !important;
+}
+
+.site-footer h1,
+.site-footer h2,
+.site-footer h3,
+.site-footer h4,
+.site-footer h5,
+.site-footer h6,
+.site-footer p,
+.site-footer a,
+.site-footer span,
+.site-footer button,
+.site-footer .text-customRed,
+.site-footer .text-customGold,
+.site-footer .footer-newsletter-title span,
+.site-footer .footer-newsletter-eyebrow,
+.site-footer .footer-newsletter-form button {
+  color: var(--light-grey) !important;
+}
+
+.site-footer .footer-newsletter-copy,
+.site-footer .footer-contact-email,
+.site-footer .footer-bottom-bar {
+  color: var(--light-grey-muted) !important;
+}
+
+.site-footer input {
+  color: #e1e3e6 !important;
+}
+
+.site-footer input::placeholder {
+  color: #aeb3b9 !important;
+}
+
+@media (max-width: 1179px) {
+  .premium-header-shell {
+    overflow: hidden !important;
+  }
+}
+
+
+/* CANONICAL SITE HEADER — BEGIN */
+:root {
+  --accent-red: #c12323;
+  --accent-gold: #cfa63a;
+  --header-grey: #6f747b;
+  --header-grey-dark: #454a50;
+}
+
+.premium-header {
+  position: fixed !important;
+  z-index: 9999 !important;
+  top: 14px !important;
+  right: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  padding: 0 18px !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  pointer-events: none !important;
+}
+
+.premium-header-shell {
+  position: relative !important;
+  width: 100% !important;
+  max-width: 1340px !important;
+  margin: 0 auto !important;
+  padding: 0 28px !important;
+  overflow: visible !important;
+  box-sizing: border-box !important;
+  pointer-events: auto !important;
+  background: #ffffff !important;
+  background-image: none !important;
+  border: 1px solid #e1e3e6 !important;
+  border-radius: 34px !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  box-shadow: 0 13px 34px rgba(37, 42, 48, 0.14) !important;
+}
+
+.premium-header-shell::before,
+.premium-header-shell::after {
+  content: none !important;
+  display: none !important;
+}
+
+.premium-header-inner {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  min-height: 82px !important;
+  gap: 16px !important;
+}
+
+.premium-header-logo {
+  display: inline-flex !important;
+  flex: 0 0 auto !important;
+  align-items: center !important;
+  text-decoration: none !important;
+}
+
+.premium-header-logo img {
+  display: block !important;
+  width: auto !important;
+  height: 66px !important;
+  max-width: none !important;
+  object-fit: contain !important;
+}
+
+.premium-desktop-nav {
+  display: none !important;
+  flex: 1 1 auto !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 2px !important;
+}
+
+.premium-nav-link {
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 82px !important;
+  padding: 0 12px !important;
+  color: var(--header-grey) !important;
+  font-family: var(--font-body), Montserrat, sans-serif !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  letter-spacing: 0.13em !important;
+  text-transform: uppercase !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+  transition: color .3s ease !important;
+}
+
+.premium-nav-link:hover,
+.premium-nav-link.active {
+  color: var(--header-grey-dark) !important;
+}
+
+.premium-nav-link::before {
+  content: "" !important;
+  position: absolute !important;
+  top: auto !important;
+  right: auto !important;
+  bottom: 17px !important;
+  left: 50% !important;
+  display: block !important;
+  width: 6px !important;
+  height: 6px !important;
+  margin: 0 !important;
+  background: var(--accent-red) !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+  opacity: 0 !important;
+  transform: translateX(-50%) scale(.45) !important;
+  transition: opacity .25s ease, transform .25s ease !important;
+}
+
+.premium-nav-link::after {
+  content: "" !important;
+  position: absolute !important;
+  top: auto !important;
+  right: auto !important;
+  bottom: 10px !important;
+  left: 50% !important;
+  display: block !important;
+  width: 28px !important;
+  height: 1px !important;
+  margin: 0 !important;
+  background: linear-gradient(90deg, transparent, var(--accent-gold), transparent) !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  opacity: 0 !important;
+  transform: translateX(-50%) scaleX(.35) !important;
+  transform-origin: center !important;
+  transition: opacity .25s ease, transform .25s ease !important;
+}
+
+.premium-nav-link:hover::before,
+.premium-nav-link.active::before,
+.premium-nav-link:hover::after,
+.premium-nav-link.active::after {
+  opacity: 1 !important;
+}
+
+.premium-nav-link:hover::before,
+.premium-nav-link.active::before {
+  transform: translateX(-50%) scale(1) !important;
+}
+
+.premium-nav-link:hover::after,
+.premium-nav-link.active::after {
+  transform: translateX(-50%) scaleX(1) !important;
+}
+
+.premium-header-cta {
+  position: relative !important;
+  z-index: 1 !important;
+  display: none !important;
+  flex: 0 0 auto !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 48px !important;
+  gap: 9px !important;
+  padding: 0 20px !important;
+  color: #ffffff !important;
+  background: #c12323 !important;
+  border: 1px solid #c12323 !important;
+  border-radius: 999px !important;
+  box-shadow: 0 10px 24px rgba(193, 35, 35, .20) !important;
+  font-family: var(--font-body), Montserrat, sans-serif !important;
+  font-size: 9px !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  letter-spacing: .17em !important;
+  text-transform: uppercase !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+  transition: transform .3s ease, box-shadow .3s ease !important;
+}
+
+.premium-header-cta:hover {
+  color: #ffffff !important;
+  background: #c12323 !important;
+  border-color: #c12323 !important;
+  box-shadow: 0 14px 30px rgba(193, 35, 35, .28) !important;
+  transform: translateY(-2px) !important;
+}
+
+.premium-menu-btn {
+  display: flex !important;
+  flex: 0 0 auto !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 48px !important;
+  height: 48px !important;
+  padding: 0 !important;
+  color: #686e75 !important;
+  background: #f5f6f7 !important;
+  border: 1px solid #d7dade !important;
+  border-radius: 50% !important;
+  box-shadow: none !important;
+  cursor: pointer !important;
+}
+
+.premium-menu-btn:hover {
+  color: #ffffff !important;
+  background: #686e75 !important;
+  border-color: #686e75 !important;
+}
+
+.premium-menu-btn i {
+  font-size: 22px !important;
+  line-height: 1 !important;
+}
+
+.premium-mobile-menu {
+  position: relative !important;
+  width: calc(100% - 36px) !important;
+  max-width: 1340px !important;
+  max-height: calc(100vh - 110px) !important;
+  margin: 10px auto 0 !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  box-sizing: border-box !important;
+  pointer-events: auto !important;
+  background: #ffffff !important;
+  background-image: none !important;
+  border: 1px solid #e1e3e6 !important;
+  border-radius: 26px !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  box-shadow: 0 18px 38px rgba(37, 42, 48, .14) !important;
+}
+
+.premium-mobile-menu.hidden {
+  display: none !important;
+}
+
+.premium-mobile-menu nav {
+  padding: 20px 24px 24px !important;
+}
+
+.premium-mobile-link {
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 17px !important;
+  padding: 15px 4px !important;
+  color: var(--header-grey) !important;
+  border-bottom: 1px solid #e7e8ea !important;
+  font-family: var(--font-heading), "Playfair Display", serif !important;
+  font-size: 23px !important;
+  font-weight: 500 !important;
+  line-height: 1.2 !important;
+  text-decoration: none !important;
+  transition: color .3s ease, padding-left .3s ease !important;
+}
+
+.premium-mobile-link span {
+  min-width: 27px !important;
+  color: #8b9096 !important;
+  font-family: var(--font-body), Montserrat, sans-serif !important;
+  font-size: 9px !important;
+  font-weight: 700 !important;
+  letter-spacing: .16em !important;
+}
+
+.premium-mobile-link:hover,
+.premium-mobile-link.active {
+  padding-left: 10px !important;
+  color: var(--header-grey-dark) !important;
+}
+
+.premium-mobile-link::after {
+  content: "" !important;
+  position: absolute !important;
+  top: 50% !important;
+  right: 4px !important;
+  bottom: auto !important;
+  left: auto !important;
+  display: block !important;
+  width: 6px !important;
+  height: 6px !important;
+  background: var(--accent-red) !important;
+  border-radius: 999px !important;
+  opacity: 0 !important;
+  transform: translateY(-50%) scale(.5) !important;
+  transition: opacity .25s ease, transform .25s ease !important;
+}
+
+.premium-mobile-link:hover::after,
+.premium-mobile-link.active::after {
+  opacity: 1 !important;
+  transform: translateY(-50%) scale(1) !important;
+}
+
+.premium-mobile-cta {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 50px !important;
+  gap: 9px !important;
+  margin-top: 20px !important;
+  padding: 0 18px !important;
+  color: #ffffff !important;
+  background: #c12323 !important;
+  border: 1px solid #c12323 !important;
+  border-radius: 999px !important;
+  font-family: var(--font-body), Montserrat, sans-serif !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  letter-spacing: .15em !important;
+  text-transform: uppercase !important;
+  text-decoration: none !important;
+}
+
+@media (min-width: 1180px) {
+  .premium-desktop-nav { display: flex !important; }
+  .premium-header-cta { display: inline-flex !important; }
+  .premium-menu-btn,
+  .premium-mobile-menu { display: none !important; }
+}
+
+@media (max-width: 1179px) {
+  .premium-desktop-nav,
+  .premium-header-cta { display: none !important; }
+  .premium-menu-btn { display: flex !important; }
+  .premium-mobile-menu:not(.hidden) { display: block !important; }
+}
+
+@media (max-width: 640px) {
+  .premium-header {
+    top: 10px !important;
+    padding: 0 10px !important;
+  }
+
+  .premium-header-shell {
+    padding: 0 18px !important;
+    overflow: hidden !important;
+    border-radius: 25px !important;
+  }
+
+  .premium-header-inner { min-height: 74px !important; }
+  .premium-header-logo img { height: 58px !important; }
+  .premium-menu-btn { width: 45px !important; height: 45px !important; }
+  .premium-mobile-menu { width: calc(100% - 20px) !important; }
+}
+/* CANONICAL SITE HEADER — END */
+
+/* ABOUT PAGE: SLANTED TYPOGRAPHY DISABLED */
+html body,
+html body * {
+  font-style: normal !important;
+}
+</style>
 </head>
 
 <body>
 
-  <!-- LEFT RED SOCIAL BAR -->
-  <!-- <div class="hidden lg:flex absolute left-0 top-0 z-50 social-bar-wrap">
-    <div class="w-[44px] h-[760px] bg-[#c61f1f] flex flex-col items-center pt-10 pb-10 social-bar-drop">
-
-      <div class="w-px h-80 bg-[#cfa63a] mb-16 mt-4 social-gold-line origin-top"></div>
-
-      <div class="flex flex-col items-center gap-7 text-white text-[19px] mt-14">
-        <a href="#" target="_blank" class="social-icon hover:text-[#cfa63a] transition-colors duration-300">
-          <i class="ph ph-whatsapp-logo"></i>
-        </a>
-
-        <a href="#" target="_blank" class="social-icon hover:text-[#cfa63a] transition-colors duration-300">
-          <i class="ph ph-facebook-logo"></i>
-        </a>
-
-        <a href="#" target="_blank" class="social-icon hover:text-[#cfa63a] transition-colors duration-300">
-          <i class="ph ph-linkedin-logo"></i>
-        </a>
-
-        <a href="#" target="_blank" class="social-icon hover:text-[#cfa63a] transition-colors duration-300">
-          <i class="ph ph-instagram-logo"></i>
-        </a>
-      </div>
-    </div>
-  </div> -->
-
-  <!-- PREMIUM LUXURY HEADER -->
+  <!-- SHARED HEADER -->
   <header class="premium-header">
-    <div class="max-w-7xl mx-auto px-5 lg:px-12">
-      <div class="premium-header-inner">
-        <a href="index.html" class="premium-header-logo header-logo-drop" aria-label="Space Decor Belle Home">
-          <img src="assets/images/logo.png" alt="Space Decor Belle Logo">
-        </a>
-        <nav class="premium-desktop-nav" aria-label="Main navigation">
-          <a href="index.html" class="premium-nav-link nav-drop" style="--delay:.56s;">Home</a>
-          <a href="about.html" class="premium-nav-link nav-drop active" style="--delay:.68s;" aria-current="page">About Us</a>
-          <a href="interior.html" class="premium-nav-link nav-drop" style="--delay:.80s;">Interior</a>
-          <a href="vastu.html" class="premium-nav-link nav-drop" style="--delay:.92s;">Vastu</a>
-          <a href="decor.html" class="premium-nav-link nav-drop" style="--delay:1.04s;">Decor</a>
-          <a href="portfolio.html" class="premium-nav-link nav-drop" style="--delay:1.16s;">Portfolio</a>
-          <a href="contact.html" class="premium-nav-link nav-drop" style="--delay:1.28s;">Contact</a>
-        </nav>
-        <button id="menuBtn" class="premium-menu-btn mobile-menu-drop" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu">
-          <i id="menuIcon" class="ph ph-list"></i>
-        </button>
-      </div>
+  <div class="premium-header-shell">
+    <div class="premium-header-inner">
+      <a href="index.html" class="premium-header-logo header-logo-drop" aria-label="Space Decor Belle Home">
+        <img src="assets/images/logo.png" alt="Space Decor Belle Logo">
+      </a>
+
+      <nav class="premium-desktop-nav" aria-label="Main navigation">
+        <a href="index.html" class="premium-nav-link nav-drop" style="--delay:.56s;">Home</a>
+        <a href="about.html" class="premium-nav-link nav-drop active" aria-current="page" style="--delay:.68s;">About Us</a>
+        <a href="interior.html" class="premium-nav-link nav-drop" style="--delay:.80s;">Interior</a>
+        <a href="vastu.html" class="premium-nav-link nav-drop" style="--delay:.92s;">Vastu</a>
+        <a href="decor.html" class="premium-nav-link nav-drop" style="--delay:1.04s;">Decor</a>
+        <a href="portfolio.html" class="premium-nav-link nav-drop" style="--delay:1.16s;">Portfolio</a>
+        <a href="contact.html" class="premium-nav-link nav-drop" style="--delay:1.28s;">Contact</a>
+      </nav>
+
+      <a href="consultation.html" class="premium-header-cta nav-drop" style="--delay:1.40s;">
+        Book Consultation <i class="ph ph-arrow-up-right"></i>
+      </a>
+
+      <button id="menuBtn" class="premium-menu-btn mobile-menu-drop" type="button"
+        aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu">
+        <i id="menuIcon" class="ph ph-list"></i>
+      </button>
     </div>
-    <div id="mobileMenu" class="hidden lg:hidden premium-mobile-menu">
-      <nav class="max-w-7xl mx-auto px-6 py-7 flex flex-col" aria-label="Mobile navigation">
+  </div>
+
+  <div id="mobileMenu" class="hidden premium-mobile-menu">
+    <nav aria-label="Mobile navigation">
         <a href="index.html" class="premium-mobile-link"><span>01</span>Home</a>
         <a href="about.html" class="premium-mobile-link active" aria-current="page"><span>02</span>About Us</a>
         <a href="interior.html" class="premium-mobile-link"><span>03</span>Interior</a>
@@ -426,13 +1581,15 @@
         <a href="decor.html" class="premium-mobile-link"><span>05</span>Decor</a>
         <a href="portfolio.html" class="premium-mobile-link"><span>06</span>Portfolio</a>
         <a href="contact.html" class="premium-mobile-link"><span>07</span>Contact</a>
-        <a href="contact.html" class="premium-mobile-cta">Book Consultation <i class="ph ph-arrow-up-right"></i></a>
+        <a href="consultation.html" class="premium-mobile-cta">
+          Book Consultation <i class="ph ph-arrow-up-right"></i>
+        </a>
       </nav>
-    </div>
-  </header>
+  </div>
+</header>
 
   <!-- MAIN ABOUT PAGE -->
-  <main>
+  <main class="about-main">
 
     <!-- TOP HERO IMAGE -->
 <section class="w-full max-w-7xl mx-auto px-6 lg:px-12 pt-3">
@@ -449,24 +1606,14 @@
     <section class="w-full bg-white pt-12 pb-12 px-6">
       <div class="max-w-4xl mx-auto text-center about-reveal about-delay-1">
 
-        <p class="text-customRed text-[10px] uppercase tracking-[0.7em] font-bold mb-4">
+        <p class="section-eyebrow">
           About Us
         </p>
 
-<div class="max-w-[620px] mx-auto">
+<div class="max-w-[860px] mx-auto">
 
-  <h1 class="font-serif-chic text-[#2a2a2a] text-center leading-[0.98]">
-
-    <!-- UPPER LINE -->
-    <span class="block text-[42px] md:text-[46px] font-semibold not-italic">
-      “A space is only as beautiful
-    </span>
-
-    <!-- LOWER LINE -->
-    <span class="block text-[52px] md:text-[56px] italic font-bold mt-1">
-      as the peace it provides”
-    </span>
-
+  <h1 class="section-heading about-quote-heading">
+    “A space is only as beautiful as the peace it provides.”
   </h1>
 
   <!-- RED LINE -->
@@ -474,8 +1621,8 @@
 
 </div>
 
-        <p class="mt-5 text-[10px] tracking-[0.45em] uppercase text-black font-semibold">
-          Kanchan Jain - Founder
+        <p class="about-signature">
+          Kanchan Jain — Founder
         </p>
 
       </div>
@@ -487,23 +1634,23 @@
 
         <!-- Text -->
         <div class="about-reveal about-delay-1">
-<p class="text-customRed not-italic text-[12px] font-bold uppercase tracking-[0.35em] mb-3 font-sans">
+<p class="section-eyebrow">
   Who we are?
 </p>
-<h2 class="font-serif-chic italic font-bold text-[42px] md:text-[58px] leading-none text-[#6a6763] mb-6">
+<h2 class="section-heading mb-6">
   Our Story.
 </h2>
 
           <div class="line-center-grow w-full max-w-[460px] h-[2px] bg-customRed mb-8"></div>
 
-          <div class="space-y-5 text-[15px] md:text-[16px] leading-[1.75] text-[#333] text-gray-900 font-semibold max-w-xl">
+          <div class="section-copy space-y-5 max-w-xl">
             <p>
               Every beautiful space begins with a feeling — a dream of comfort, harmony, elegance, and belonging.
             </p>
 
             <p>
               That very belief became the foundation of Space Decor Belle, a design studio envisioned and led by
-              <strong class="font-semibold text-customRed">Kanchan Jain</strong>.
+              <strong class="font-semibold text-gray-600">Kanchan Jain</strong>.
               What started as a passion for transforming ordinary corners into meaningful experiences gradually evolved
               into a creative destination where interiors are not just designed, but thoughtfully curated with emotion,
               energy, and purpose.
@@ -551,83 +1698,39 @@
     </section>
 
 <!-- FOUNDER FEATURE SECTION -->
-<section class="w-full bg-white py-16 px-6 lg:px-12">
+<section class="founder-statement-section">
+  <div class="founder-statement-card about-reveal about-delay-1">
+    <p class="section-eyebrow">Founder’s Perspective</p>
 
-  <div class="max-w-7xl mx-auto">
+    <p class="founder-statement-copy">
+      At Space Decor Belle we design spaces that inspire better living every single day.
+      We don’t just decorate interiors — we design experiences, emotions, and stories
+      that stay for years to come.
+    </p>
 
-    <!-- MAIN IMAGE BG -->
-    <div class="relative overflow-hidden rounded-[34px] h-[520px] md:h-[620px] about-reveal about-delay-1">
+    <div class="founder-statement-divider" aria-hidden="true"></div>
 
-      <!-- BACKGROUND IMAGE -->
-      <img
-        src="assets/images/kj experience 2.png"
-        alt="Kanchan Jain Founder"
-        class="absolute inset-0 w-full h-full object-cover object-center"
-      >
-
-      <!-- DARK OVERLAY -->
-      <div class="absolute inset-0 bg-black/45"></div>
-
-      <!-- RIGHT CONTENT CARD -->
-      <div class="absolute right-0 top-0 h-full w-full md:w-[44%] bg-[#111111]/88 backdrop-blur-[2px] px-8 md:px-12 py-12 md:py-16 flex flex-col justify-center">
-
-        <!-- TOP QUOTE -->
-        <div class="flex items-center gap-4 mb-10">
-
-          <div class="w-14 md:w-20 h-[2px] bg-customGold"></div>
-
-          <span class="font-serif-chic text-customRed text-[70px] md:text-[88px] leading-none">
-            “
-          </span>
-
-          <div class="w-14 md:w-20 h-[2px] bg-customGold"></div>
-
-        </div>
-
-        <!-- TEXT -->
-        <p class="text-[18px] md:text-[24px] leading-[1.6] font-light text-gray-200">
-          At Space Decor Belle we design spaces that inspire better living every single day.
-          We don’t just decorate interiors — we design experiences, emotions, and stories
-          that stay for years to come.
-        </p>
-
-        <!-- NAME -->
-        <div class="mt-10">
-
-          <h3 class="font-serif-chic text-customGold text-[34px] md:text-[42px] leading-none">
-            Kanchan Jain
-          </h3>
-
-          <p class="text-[11px] uppercase tracking-[0.30em] text-gray-400 mt-3">
-            Founder & Director
-          </p>
-
-        </div>
-
-      </div>
-
-    </div>
-
+    <h2 class="founder-statement-name">Kanchan Jain</h2>
+    <p class="founder-statement-role">Founder &amp; Director</p>
   </div>
-
 </section>
 
     <!-- EXCELLENCE SECTION -->
     <section class="w-full bg-white pt-8 pb-20 px-6 lg:px-12">
       <div class="max-w-7xl mx-auto about-reveal about-delay-1">
 
-        <h2 class="font-serif-chic font-bold text-[36px] sm:text-[40px] md:text-[48px] leading-[1.08]">
-  <span class="text-[#4b5558]">25 Years of</span>
-  <span class="italic text-customRed">Excellence.</span>
-</h2>
+        <h2 class="section-heading">
+          <span class="text-[#4b5558]">25 Years of </span>
+          <span class="heading-accent">Excellence.</span>
+        </h2>
 
-        <p class="font-serif-chic italic text-[22px] sm:text-[24px] md:text-[30px] leading-[1.2] text-[#1a1a1a] mt-2">
+        <p class="section-subheading mt-2">
           One Visionary Touch
         </p>
 
         <div class="line-center-grow w-full max-w-[520px] h-[2px] bg-customRed mt-8 mb-10"></div>
 
-        <div class="space-y-6 text-[15px] md:text-[16px] leading-[1.85] text-[#333] font-semibold max-w-6xl">
+        <div class="section-copy space-y-6 max-w-6xl">
           <p>
             With over 25 years of diverse experience in redefining real estate, Kanchan Jain brings a unique
             philosophy to interior design — one that merges ancient Vedic sciences with modern aesthetic innovation.
@@ -643,12 +1746,12 @@
         </div>
 
         <div class="mt-12">
-<h2 class="font-serif-chic font-bold text-[44px] md:text-[38px] leading-[1] mb-8">
-  <span class="text-[#50575b]">Kanchan Jain</span>
-  <span class="italic text-customRed">Philosophy</span>
+<h2 class="section-heading mb-8">
+  <span class="text-[#50575b]">Kanchan Jain </span>
+  <span class="heading-accent">Philosophy</span>
 </h2>
 
-          <p class="text-[16px] md:text-[18px] leading-[1.8] text-[#333] font-semibold max-w-5xl">
+          <p class="section-copy max-w-5xl">
             “I believe that true luxury isn’t found in expensive materials, but in how a room makes you feel.
             A space is only as beautiful as the peace it provides. My mission at Space Decor Belle is to ensure
             every corner of your home resonates with that inner stillness.”
@@ -660,116 +1763,100 @@
 
   </main>
 
-  <!-- FOOTER -->
-  <footer id="clients" class="w-full bg-[#151515] relative pt-6 pb-2 z-10 border-t border-gray-800 overflow-hidden">
-
+  <!-- SHARED FOOTER -->
+  <footer id="clients" class="site-footer w-full relative pt-2 pb-0 z-10 overflow-hidden">
     <div class="max-w-7xl mx-auto px-6 lg:px-12 relative">
+      <div class="footer-line-vertical footer-divider-one hidden md:block absolute top-[38px] bottom-[38px] w-px"></div>
+      <div class="footer-line-vertical footer-divider-two hidden md:block absolute top-[38px] bottom-[38px] w-px"></div>
 
-      <div class="footer-line-vertical hidden md:block absolute top-[38px] bottom-[118px] left-[28%] w-px bg-[#cfa63a]"></div>
-      <div class="footer-line-vertical hidden md:block absolute top-[38px] bottom-[118px] right-[28%] w-px bg-[#cfa63a]"></div>
+      <div class="footer-main-grid relative z-10">
+        <div class="footer-brand-column">
+          <a href="index.html" class="footer-brand-logo footer-drop footer-delay-1" aria-label="Space Decor Belle Home">
+            <img src="assets/images/logo.png" alt="Space Decor Belle">
+          </a>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 relative z-10">
-
-        <!-- Left Column -->
-        <div class="flex flex-col justify-start pt-12 pb-16 md:pb-0 pl-0 md:pl-10">
-          <nav class="flex flex-col gap-6 text-xs font-sans font-bold tracking-widest uppercase text-white">
-            <a href="index.html" class="footer-drop footer-delay-1 hover:text-customGold transition-colors duration-300">home</a>
-            <a href="about.html" class="footer-drop footer-delay-2 hover:text-customGold transition-colors duration-300">about us</a>
-            <a href="index.html#interior" class="footer-drop footer-delay-3 hover:text-customGold transition-colors duration-300">interior</a>
-            <a href="index.html#vastu" class="footer-drop footer-delay-4 hover:text-customGold transition-colors duration-300">vastu</a>
-            <a href="index.html#decor" class="footer-drop footer-delay-5 hover:text-customGold transition-colors duration-300">decor</a>
-            <a href="#contact" class="footer-drop footer-delay-6 hover:text-customGold transition-colors duration-300">contact</a>
-          </nav>
-        </div>
-
-        <!-- Center Column -->
-        <div id="contact" class="flex flex-col items-center text-center pt-8 pb-[118px] px-4 h-full">
-          <h4 class="text-customGold font-sans font-bold text-s uppercase tracking-[0.3em] mb-8">
-            RECENT WORKS
-          </h4>
-
-          <div class="grid grid-cols-3 gap-2 mb-6 w-full max-w-xs">
-            <img src="assets/images/11.jpg" class="w-full h-20 object-cover" alt="Recent work 1">
-            <img src="assets/images/12.jpg" class="w-full h-20 object-cover" alt="Recent work 2">
-            <img src="assets/images/13.jpg" class="w-full h-20 object-cover" alt="Recent work 3">
-            <img src="assets/images/14.jpg" class="w-full h-20 object-cover" alt="Recent work 4">
-            <img src="assets/images/15.jpg" class="w-full h-20 object-cover" alt="Recent work 5">
-            <img src="assets/images/16.jpg" class="w-full h-20 object-cover" alt="Recent work 6">
-          </div>
-
-          <div class="flex flex-col items-center text-center mt-auto pt-8">
-            <h4 class="text-white text-[12px] tracking-[0.35em] uppercase mb-4">
-              TALK TO THE TEAM
-            </h4>
-
-            <p class="text-customGold font-serif-chic text-[24px] md:text-[24px] font-light tracking-[0.04em]">
-              (+91) 96542 32327
+          <div class="footer-newsletter footer-drop footer-delay-2">
+            <p class="footer-newsletter-eyebrow">Space Decor Belle Journal</p>
+            <h3 class="footer-newsletter-title">
+              Subscribe to our
+              <span>design journal.</span>
+            </h3>
+            <p class="footer-newsletter-copy">
+              Rare projects, studio notes and thoughtful material studies—shared seasonally.
             </p>
 
-            <p class="text-customGold text-[18px] md:text-[24px] font-light">
-              info@spacedecorbelle.com
-            </p>
+            <form id="footerNewsletterForm" class="footer-newsletter-form">
+              <label class="sr-only" for="footerNewsletterEmail">Email address</label>
+              <input id="footerNewsletterEmail" type="email" name="email" placeholder="your@email.com" autocomplete="email" required>
+              <button type="submit">
+                Subscribe
+                <span class="footer-newsletter-arrow" aria-hidden="true">→</span>
+              </button>
+            </form>
+            <p id="footerNewsletterStatus" class="footer-newsletter-status" role="status" aria-live="polite"></p>
           </div>
         </div>
 
-        <!-- Right Column -->
-        <div class="flex flex-col items-end md:items-center justify-end pt-8 pb-16 md:pb-[118px] pr-0 md:pr-10 h-full">
-          <div class="flex md:flex-col items-center gap-4 md:gap-3 md:pt-0 mt-auto">
+        <div id="contact" class="footer-center-column">
+          <h4 class="text-gray-200 font-sans font-bold text-xs uppercase tracking-[0.3em] mb-8">RECENT WORKS</h4>
 
-            <div class="footer-drop footer-delay-1 mb-0 md:mb-6">
-              <span class="text-white font-sans font-bold text-[8px] tracking-[0.3em] uppercase md:rotate-90 md:origin-center whitespace-nowrap inline-block">
-                FOLLOW US
-              </span>
-            </div>
+          <div class="footer-recent-grid">
+            <img src="assets/images/11.jpg" alt="Recent work 1">
+            <img src="assets/images/12.jpg" alt="Recent work 2">
+            <img src="assets/images/13.jpg" alt="Recent work 3">
+            <img src="assets/images/14.jpg" alt="Recent work 4">
+            <img src="assets/images/15.jpg" alt="Recent work 5">
+            <img src="assets/images/16.jpg" alt="Recent work 6">
+          </div>
 
-            <div class="footer-drop footer-delay-2 w-px h-16 bg-customGold hidden md:block mt-1 mb-3"></div>
+          <div class="footer-contact-block">
+            <h4 class="text-white text-[12px] tracking-[0.35em] uppercase mb-4">TALK TO THE TEAM</h4>
+            <a href="tel:+919654232327" class="footer-contact-phone">(+91) 96542 32327</a>
+            <a href="mailto:info@spacedecorbelle.com" class="footer-contact-email">info@spacedecorbelle.com</a>
+          </div>
+        </div>
 
-            <a href="#" class="footer-drop footer-delay-3 text-customGold border border-customGold rounded-full p-2 hover:bg-customGold hover:text-black transition-colors duration-300">
-              <i class="ph ph-whatsapp-logo text-sm"></i>
+        <div class="footer-social-column">
+          <p class="footer-social-label footer-drop footer-delay-1">Follow Us</p>
+          <div class="footer-social-rule footer-drop footer-delay-2"></div>
+
+          <div class="footer-social-links">
+            <a href="https://wa.me/919654232327" target="_blank" rel="noopener noreferrer" class="footer-social-link footer-social-link--whatsapp footer-drop footer-delay-3" aria-label="WhatsApp">
+              <svg class="footer-social-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12.04 2a9.84 9.84 0 0 0-8.43 14.91L2 22l5.22-1.54A9.95 9.95 0 1 0 12.04 2Zm5.82 14.05c-.25.71-1.47 1.3-2.03 1.39-.52.08-1.18.12-3.8-1-3.2-1.39-5.23-4.66-5.39-4.88-.15-.22-1.28-1.7-1.28-3.25s.81-2.32 1.1-2.64c.29-.32.63-.4.84-.4h.61c.2 0 .46-.07.72.55.26.63.89 2.17.97 2.33.08.16.13.35.03.57-.1.22-.15.35-.3.54-.15.19-.32.42-.46.56-.15.15-.31.31-.13.61.18.3.8 1.32 1.72 2.14 1.18 1.05 2.18 1.38 2.49 1.54.31.16.49.13.67-.08.18-.21.78-.91.99-1.22.2-.31.41-.26.69-.16.28.1 1.79.84 2.1.99.31.16.52.23.59.36.08.13.08.76-.17 1.47Z"/>
+              </svg>
             </a>
 
-            <a href="#" class="footer-drop footer-delay-4 text-customGold border border-customGold rounded-full p-2 hover:bg-customGold hover:text-black transition-colors duration-300">
-              <i class="ph ph-facebook-logo text-sm"></i>
+            <a href="#" class="footer-social-link footer-social-link--facebook footer-drop footer-delay-4" aria-label="Facebook">
+              <svg class="footer-social-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M16 8.049C16 3.603 12.418 0 8 0S0 3.603 0 8.049C0 12.066 2.926 15.396 6.75 16v-5.625H4.718V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.994 0-1.304.621-1.304 1.258V8.05h2.219l-.355 2.326H9.25V16C13.074 15.396 16 12.066 16 8.049Z"/></svg>
             </a>
 
-            <a href="#" class="footer-drop footer-delay-5 text-customGold border border-customGold rounded-full p-2 hover:bg-customGold hover:text-black transition-colors duration-300">
-              <i class="ph ph-linkedin-logo text-sm"></i>
+            <a href="#" class="footer-social-link footer-social-link--linkedin footer-drop footer-delay-5" aria-label="LinkedIn">
+              <svg class="footer-social-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708C16 15.487 15.474 16 14.825 16H1.175C.526 16 0 15.487 0 14.854V1.146Zm4.943 12.248V6.169H2.542v7.225h2.401Zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.521-1.248-1.342-1.248-.822 0-1.358.54-1.358 1.248 0 .694.52 1.248 1.327 1.248h.015Zm2.529 8.212h2.4V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.4V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.19h.03v-1.02h-2.4c.03.679 0 7.225 0 7.225Z"/></svg>
             </a>
 
-            <a href="#" class="footer-drop footer-delay-6 text-customGold border border-customGold rounded-full p-2 hover:bg-customGold hover:text-black transition-colors duration-300">
-              <i class="ph ph-instagram-logo text-sm"></i>
+            <a href="#" class="footer-social-link footer-social-link--instagram footer-drop footer-delay-6" aria-label="Instagram">
+              <svg class="footer-social-icon footer-social-icon--instagram" viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="3.25" y="3.25" width="17.5" height="17.5" rx="5.25"></rect>
+                <circle cx="12" cy="12" r="4.15"></circle>
+                <circle cx="17.55" cy="6.55" r="1.05" class="instagram-dot"></circle>
+              </svg>
             </a>
-
           </div>
         </div>
       </div>
     </div>
 
-    <div class="footer-line absolute bottom-16 left-10 lg:left-24 right-10 lg:right-24 mb-12 h-px bg-[#cfa63a]"></div>
+    <div class="footer-line footer-bottom-line"></div>
 
-    <div class="max-w-7xl mx-auto px-6 lg:px-12 mb-8 flex flex-col md:flex-row justify-between items-center text-[10px] text-gray-400 font-sans tracking-widest uppercase mt-4 relative z-10">
-      <p>PRIVACY POLICY</p>
+    <div class="footer-bottom-bar relative z-10">
+      <a href="privacy-policy.html" class="hover:text-gray-100 transition-all duration-300 hover:tracking-[0.22em]">PRIVACY POLICY</a>
       <p>&copy; SPACEDECORBELLE ALL RIGHTS RESERVED</p>
     </div>
   </footer>
 
-<!-- RIGHT SIDE FLOATING IMAGE BUTTONS -->
-<div class="fixed right-5 top-1/2 -translate-y-1/2 z-50 hidden md:flex flex-col gap-4">
-
-  <!-- Gmail -->
-  <a
-    href="mailto:info@spacedecorbelle.com"
-    class="image-float-btn"
-    aria-label="Send Email"
-    title="Send Email"
-  >
-    <img
-      src="assets\images\gmail-icon.png"
-      alt="Gmail"
-    >
-  </a>
-
-  <!-- WhatsApp -->
+<!-- STICKY WHATSAPP BUTTON -->
+<div class="whatsapp-sticky-wrap">
   <a
     href="https://wa.me/919654232327?text=Hello%20Space%20Decor%20Belle%2C%20I%20would%20like%20to%20discuss%20an%20interior%20design%20project."
     target="_blank"
@@ -779,11 +1866,10 @@
     title="Chat on WhatsApp"
   >
     <img
-      src="assets\images\whatsaap-icon.png"
+      src="assets/images/whatsaap-icon.png"
       alt="WhatsApp"
     >
   </a>
-
 </div>
 
   <!-- JS -->
@@ -871,6 +1957,21 @@
     aboutReveals.forEach(item => {
       aboutObserver.observe(item);
     });
+
+    const footerNewsletterForm = document.getElementById("footerNewsletterForm");
+    const footerNewsletterStatus = document.getElementById("footerNewsletterStatus");
+
+    if (footerNewsletterForm && footerNewsletterStatus) {
+      footerNewsletterForm.addEventListener("submit", event => {
+        event.preventDefault();
+
+        if (!footerNewsletterForm.reportValidity()) return;
+
+        footerNewsletterStatus.textContent =
+          "Thank you for subscribing to our design journal.";
+        footerNewsletterForm.reset();
+      });
+    }
   </script>
 
 </body>

@@ -7,7 +7,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
@@ -32,14 +32,17 @@
   </script>
 
   <style>
-    body { font-family:'Montserrat',sans-serif; color:#1a1a1a; overflow-x:hidden; background:#fff; }
+    :root {
+      --font-body: 'Montserrat', sans-serif;
+      --font-heading: 'Playfair Display', serif;
+      --accent-red: #c12323;
+      --accent-gold: #d7b46a;
+    }
+
+    body { margin:0; font-family:var(--font-body); color:#1a1a1a; overflow-x:hidden; background:#fff; }
     html { scroll-behavior:smooth; }
     img { max-width:100%; height:auto; }
     .font-serif-chic { font-family:'Playfair Display',serif; }
-    .cormorant-heading { font-family:'Cormorant Garamond',serif; }
-
-    .nav-link { position:relative; transition:.3s ease; }
-    .nav-link:hover, .nav-link.active { color:#c12323; }
     #mobileMenu { transition:.35s ease; }
 
     .header-logo-drop { opacity:0; transform:translateY(-26px); animation:headerDropIn .75s cubic-bezier(.22,1,.36,1) forwards; animation-delay:.28s; }
@@ -48,23 +51,6 @@
 
     @keyframes headerDropIn { to { opacity:1; transform:translateY(0); } }
     @keyframes navDropIn { to { opacity:1; transform:translateY(0); } }
-
-    .social-bar-wrap { overflow:hidden; }
-    .social-bar-drop { transform:translateY(-100%); opacity:0; animation:socialBarDrop 1s cubic-bezier(.22,1,.36,1) forwards; }
-    .social-gold-line { transform:scaleY(0); transform-origin:top; opacity:.6; transition:transform 1.6s cubic-bezier(.22,1,.36,1), opacity 1.6s ease; }
-    .social-gold-line.in-view { transform:scaleY(1); opacity:1; }
-    .social-icon { opacity:0; transform:translateY(-14px) scale(.92); display:inline-flex; animation:socialIconReveal .45s ease forwards; }
-    .social-icon:nth-child(1){animation-delay:1.05s;}
-    .social-icon:nth-child(2){animation-delay:1.18s;}
-    .social-icon:nth-child(3){animation-delay:1.31s;}
-    .social-icon:nth-child(4){animation-delay:1.44s;}
-
-    @keyframes socialBarDrop {
-      0% { transform:translateY(-100%); opacity:0; }
-      70% { transform:translateY(18px); opacity:1; }
-      100% { transform:translateY(0); opacity:1; }
-    }
-    @keyframes socialIconReveal { to { opacity:1; transform:translateY(0) scale(1); } }
 
     .line-center-grow {
       transform:scaleX(0); transform-origin:center; opacity:.6;
@@ -90,16 +76,6 @@
     .footer-delay-4 { transition-delay:.38s; }
     .footer-delay-5 { transition-delay:.48s; }
     .footer-delay-6 { transition-delay:.58s; }
-
-    .glass-float-btn {
-      width:66px; height:58px; border-radius:12px; display:flex; align-items:center; justify-content:center;
-      color:rgba(255,255,255,.92); text-decoration:none; border:1px solid rgba(255,255,255,.28);
-      background:rgba(40,40,40,.55); backdrop-filter:blur(8px); box-shadow:0 8px 22px rgba(0,0,0,.14);
-      transition:.28s ease;
-    }
-    .glass-float-btn:hover { transform:translateX(-4px); border-color:rgba(255,255,255,.4); }
-
-
 
 /* RIGHT SIDE IMAGE FLOATING BUTTONS */
 .image-float-btn {
@@ -750,95 +726,737 @@ body.lightbox-open {
   }
 }
 
-  </style>
+/* SHARED FLOATING HEADER */
+.premium-header {
+    position: fixed;
+    z-index: 90;
+    top: 16px;
+    right: 0;
+    left: 0;
+    width: 100%;
+    padding: 0 22px;
+    pointer-events: none;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+}
+.premium-header-shell {
+    position: relative;
+    width: 100%;
+    max-width: 1340px;
+    margin: 0 auto;
+    padding: 0 28px;
+    overflow: visible;
+    pointer-events: auto;
+    background: linear-gradient(115deg, rgba(19,19,19,.62), rgba(31,28,26,.42));
+    border: 1px solid rgba(255,255,255,.28);
+    border-radius: 34px;
+    backdrop-filter: blur(24px) saturate(145%);
+    -webkit-backdrop-filter: blur(24px) saturate(145%);
+    box-shadow: 0 18px 55px rgba(0,0,0,.3), inset 0 1px 0 rgba(255,255,255,.16);
+}
+.premium-header-inner { min-height: 82px; gap: 16px; }
+.premium-header-logo img { height: 64px; }
+.premium-desktop-nav { flex: 1 1 auto; justify-content: center; gap: 2px; }
+.premium-nav-link {
+    padding: 15px 11px;
+    color: rgba(255,255,255,.88);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: .18em;
+    white-space: nowrap;
+}
+.premium-nav-link::after {
+    right: 11px;
+    left: 11px;
+    background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+}
+.premium-nav-link:hover,
+.premium-nav-link.active { color: #ffffff; }
+.premium-header-cta {
+    position: relative;
+    z-index: 1;
+    display: none;
+    min-height: 48px;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    padding: 0 20px;
+    color: #ffffff;
+    background: var(--accent-red);
+    border: 1px solid var(--accent-red);
+    border-radius: 999px;
+    box-shadow: 0 10px 24px rgba(193,35,35,.2);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .17em;
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: transform .3s ease, box-shadow .3s ease;
+}
+.premium-header-cta i { font-size: 16px; }
+.premium-header-cta:hover {
+    color: #ffffff;
+    background: var(--accent-red);
+    border-color: var(--accent-red);
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px rgba(193,35,35,.3);
+}
+.premium-menu-btn {
+    color: #ffffff;
+    background: rgba(255,255,255,.08);
+    border-color: rgba(255,255,255,.36);
+    box-shadow: none;
+}
+.premium-mobile-menu {
+    width: min(calc(100% - 28px), 1280px);
+    margin: 8px auto 0;
+    overflow: hidden;
+    pointer-events: auto;
+    background: rgba(32,31,30,.96);
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 0 0 28px 28px;
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+}
+@media (min-width:1180px) {
+    .premium-desktop-nav { display: flex !important; }
+    .premium-header-cta { display: inline-flex; }
+    .premium-menu-btn,
+    .premium-mobile-menu { display: none !important; }
+}
+@media (max-width:1179px) {
+    .premium-desktop-nav,
+    .premium-header-cta { display: none !important; }
+    .premium-menu-btn { display: flex !important; }
+    .premium-mobile-menu { display: block; }
+}
+@media (max-width:767px) {
+    .premium-header { top: 10px; padding: 0 10px; }
+    .premium-header-shell { padding: 0 18px; overflow: hidden; border-radius: 25px; }
+    .premium-header-inner { min-height: 74px; }
+    .premium-header-logo img { height: 58px; }
+}
+
+/* SHARED TYPOGRAPHY — PAGE COLOURS REMAIN UNCHANGED */
+.portfolio-main { padding-top: 112px; }
+.section-eyebrow {
+    font-family: var(--font-body);
+    font-size: clamp(.68rem, .85vw, .78rem) !important;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: .3em !important;
+    text-transform: uppercase;
+}
+.section-heading {
+    font-family: var(--font-heading);
+    font-size: clamp(2.45rem, 4.5vw, 3.75rem) !important;
+    font-weight: 500;
+    line-height: 1.08 !important;
+    letter-spacing: -.025em;
+}
+
+/* SHARED GREY FOOTER */
+.site-footer {
+    background: radial-gradient(circle at 8% 0%, rgba(255,255,255,.08), transparent 36%), linear-gradient(145deg, #626262 0%, #505050 46%, #414141 100%);
+    border-top: 1px solid rgba(255,255,255,.16);
+}
+.footer-main-grid { display: grid; grid-template-columns: 1fr; align-items: stretch; }
+.footer-divider-one { left: 33.333%; }
+.footer-divider-two { right: 33.333%; }
+.footer-brand-column,
+.footer-center-column,
+.footer-social-column { min-width: 0; padding: 38px 0 42px; }
+.footer-brand-logo { display: flex; align-items: center; justify-content: center; width: 100%; }
+.footer-brand-logo img { width: auto; height: 82px; max-width: 230px; object-fit: contain; filter: brightness(0) invert(1); }
+.footer-newsletter { width: 100%; max-width: 360px; margin: 20px auto 0; }
+.footer-newsletter-eyebrow { margin-bottom: 12px; color: var(--accent-gold); font-size: 9px; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; }
+.footer-newsletter-title { margin: 0; color: #fff; font-family: var(--font-heading); font-size: clamp(2rem,2.5vw,2.75rem); font-weight: 400; line-height: .98; letter-spacing: -.025em; }
+.footer-newsletter-title span { display: block; margin-top: 5px; color: var(--accent-red); font-style: normal; }
+.footer-newsletter-copy { max-width: 350px; margin-top: 20px; color: rgba(255,255,255,.7); font-size: 12px; line-height: 1.75; }
+.footer-newsletter-form { display: flex; align-items: center; gap: 14px; width: 100%; margin-top: 25px; padding-bottom: 10px; border-bottom: 1px solid rgba(215,180,106,.75); }
+.footer-newsletter-form input { flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; color: #fff; font-family: var(--font-body); font-size: 12px; }
+.footer-newsletter-form input::placeholder { color: rgba(255,255,255,.38); }
+.footer-newsletter-form button { display: inline-flex; align-items: center; gap: 8px; flex-shrink: 0; border: 0; background: transparent; color: var(--accent-gold); font-size: 9px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; cursor: pointer; }
+.footer-newsletter-status { min-height: 18px; margin-top: 10px; color: var(--accent-gold); font-size: 10px; }
+.footer-center-column { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.footer-recent-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 8px; width: 100%; max-width: 320px; margin-bottom: 24px; }
+.footer-recent-grid img { width: 100%; height: 80px; object-fit: cover; }
+.footer-contact-block { display: flex; flex-direction: column; align-items: center; margin-top: 18px; }
+.footer-contact-phone,
+.footer-contact-email { color: #fff; text-decoration: none; }
+.footer-contact-phone { font-size: clamp(1rem,1.45vw,1.2rem); font-weight: 500; line-height: 1.6; }
+.footer-contact-email { margin-top: 4px; color: rgba(255,255,255,.82); font-size: clamp(.88rem,1.15vw,1rem); line-height: 1.65; }
+.footer-social-column { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+.footer-social-label { color: #fff; font-size: 10px; font-weight: 700; letter-spacing: .35em; text-transform: uppercase; }
+.footer-social-rule { width: 1px; height: 62px; margin: 22px 0; background: rgba(255,255,255,.28); }
+.footer-social-links { display: grid; grid-template-columns: repeat(2,46px); gap: 14px; }
+.footer-social-link { display: grid; place-items: center; width: 46px; height: 46px; color: #fff; border-radius: 50%; box-shadow: 0 10px 22px rgba(0,0,0,.15); transition: transform .25s ease, box-shadow .25s ease; }
+.footer-social-icon { width: 20px; height: 20px; fill: currentColor; }
+.footer-social-icon--instagram { fill: none; stroke: currentColor; stroke-width: 1.8; }
+.footer-social-icon--instagram .instagram-dot { fill: currentColor; stroke: none; }
+.footer-social-link--whatsapp { background: #25d366; }
+.footer-social-link--facebook { background: #1877f2; }
+.footer-social-link--linkedin { background: #0a66c2; }
+.footer-social-link--instagram { background: radial-gradient(circle at 30% 105%,#fdf497 0 9%,#fd5949 31%,#d6249f 58%,#285aeb 88%); }
+.footer-social-link:hover { color: #fff; transform: translateY(-4px) scale(1.06); box-shadow: 0 15px 28px rgba(0,0,0,.22); }
+.footer-bottom-line { width: calc(100% - 48px); max-width: 1180px; height: 1px; margin: 0 auto; background: rgba(255,255,255,.22) !important; }
+.footer-bottom-bar { width: 100%; max-width: 1280px; margin: 0 auto; padding: 21px 24px 22px; display: flex; align-items: center; justify-content: space-between; gap: 18px; color: rgba(255,255,255,.7); font-size: 10px; line-height: 1.5; letter-spacing: .16em; text-transform: uppercase; }
+.site-footer .footer-line-vertical { background: rgba(255,255,255,.22) !important; }
+.whatsapp-sticky-wrap { position: fixed; z-index: 999; right: 22px; bottom: 22px; }
+.image-float-btn:hover { transform: translateY(-5px) scale(1.06); }
+@media (min-width:768px) {
+    .footer-main-grid { grid-template-columns: repeat(3,minmax(0,1fr)); }
+    .footer-brand-column,
+    .footer-center-column,
+    .footer-social-column { padding: 38px 30px 42px; }
+}
+@media (max-width:767px) {
+    .portfolio-main { padding-top: 94px; }
+    .footer-brand-column,
+    .footer-center-column { border-bottom: 1px solid rgba(255,255,255,.18); }
+    .footer-social-rule { width: 62px; height: 1px; }
+    .footer-social-links { grid-template-columns: repeat(4,46px); }
+    .footer-bottom-line { width: calc(100% - 32px); }
+    .footer-bottom-bar { padding: 20px 18px 23px; flex-direction: column; justify-content: center; gap: 10px; text-align: center; }
+    .whatsapp-sticky-wrap { right: 14px; bottom: 14px; }
+    .image-float-btn { width: 56px; height: 56px; padding: 6px; border-radius: 16px; }
+}
+  
+
+/* CANONICAL SITE HEADER — BEGIN */
+:root {
+  --accent-red: #c12323;
+  --accent-gold: #cfa63a;
+  --header-grey: #6f747b;
+  --header-grey-dark: #454a50;
+}
+
+.premium-header {
+  position: fixed !important;
+  z-index: 9999 !important;
+  top: 14px !important;
+  right: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  padding: 0 18px !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  pointer-events: none !important;
+}
+
+.premium-header-shell {
+  position: relative !important;
+  width: 100% !important;
+  max-width: 1340px !important;
+  margin: 0 auto !important;
+  padding: 0 28px !important;
+  overflow: visible !important;
+  box-sizing: border-box !important;
+  pointer-events: auto !important;
+  background: #ffffff !important;
+  background-image: none !important;
+  border: 1px solid #e1e3e6 !important;
+  border-radius: 34px !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  box-shadow: 0 13px 34px rgba(37, 42, 48, 0.14) !important;
+}
+
+.premium-header-shell::before,
+.premium-header-shell::after {
+  content: none !important;
+  display: none !important;
+}
+
+.premium-header-inner {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  min-height: 82px !important;
+  gap: 16px !important;
+}
+
+.premium-header-logo {
+  display: inline-flex !important;
+  flex: 0 0 auto !important;
+  align-items: center !important;
+  text-decoration: none !important;
+}
+
+.premium-header-logo img {
+  display: block !important;
+  width: auto !important;
+  height: 66px !important;
+  max-width: none !important;
+  object-fit: contain !important;
+}
+
+.premium-desktop-nav {
+  display: none !important;
+  flex: 1 1 auto !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 2px !important;
+}
+
+.premium-nav-link {
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 82px !important;
+  padding: 0 12px !important;
+  color: var(--header-grey) !important;
+  font-family: var(--font-body), Montserrat, sans-serif !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  letter-spacing: 0.13em !important;
+  text-transform: uppercase !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+  transition: color .3s ease !important;
+}
+
+.premium-nav-link:hover,
+.premium-nav-link.active {
+  color: var(--header-grey-dark) !important;
+}
+
+.premium-nav-link::before {
+  content: "" !important;
+  position: absolute !important;
+  top: auto !important;
+  right: auto !important;
+  bottom: 17px !important;
+  left: 50% !important;
+  display: block !important;
+  width: 6px !important;
+  height: 6px !important;
+  margin: 0 !important;
+  background: var(--accent-red) !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+  opacity: 0 !important;
+  transform: translateX(-50%) scale(.45) !important;
+  transition: opacity .25s ease, transform .25s ease !important;
+}
+
+.premium-nav-link::after {
+  content: "" !important;
+  position: absolute !important;
+  top: auto !important;
+  right: auto !important;
+  bottom: 10px !important;
+  left: 50% !important;
+  display: block !important;
+  width: 28px !important;
+  height: 1px !important;
+  margin: 0 !important;
+  background: linear-gradient(90deg, transparent, var(--accent-gold), transparent) !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  opacity: 0 !important;
+  transform: translateX(-50%) scaleX(.35) !important;
+  transform-origin: center !important;
+  transition: opacity .25s ease, transform .25s ease !important;
+}
+
+.premium-nav-link:hover::before,
+.premium-nav-link.active::before,
+.premium-nav-link:hover::after,
+.premium-nav-link.active::after {
+  opacity: 1 !important;
+}
+
+.premium-nav-link:hover::before,
+.premium-nav-link.active::before {
+  transform: translateX(-50%) scale(1) !important;
+}
+
+.premium-nav-link:hover::after,
+.premium-nav-link.active::after {
+  transform: translateX(-50%) scaleX(1) !important;
+}
+
+.premium-header-cta {
+  position: relative !important;
+  z-index: 1 !important;
+  display: none !important;
+  flex: 0 0 auto !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 48px !important;
+  gap: 9px !important;
+  padding: 0 20px !important;
+  color: #ffffff !important;
+  background: #c12323 !important;
+  border: 1px solid #c12323 !important;
+  border-radius: 999px !important;
+  box-shadow: 0 10px 24px rgba(193, 35, 35, .20) !important;
+  font-family: var(--font-body), Montserrat, sans-serif !important;
+  font-size: 9px !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  letter-spacing: .17em !important;
+  text-transform: uppercase !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+  transition: transform .3s ease, box-shadow .3s ease !important;
+}
+
+.premium-header-cta:hover {
+  color: #ffffff !important;
+  background: #c12323 !important;
+  border-color: #c12323 !important;
+  box-shadow: 0 14px 30px rgba(193, 35, 35, .28) !important;
+  transform: translateY(-2px) !important;
+}
+
+.premium-menu-btn {
+  display: flex !important;
+  flex: 0 0 auto !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 48px !important;
+  height: 48px !important;
+  padding: 0 !important;
+  color: #686e75 !important;
+  background: #f5f6f7 !important;
+  border: 1px solid #d7dade !important;
+  border-radius: 50% !important;
+  box-shadow: none !important;
+  cursor: pointer !important;
+}
+
+.premium-menu-btn:hover {
+  color: #ffffff !important;
+  background: #686e75 !important;
+  border-color: #686e75 !important;
+}
+
+.premium-menu-btn i {
+  font-size: 22px !important;
+  line-height: 1 !important;
+}
+
+.premium-mobile-menu {
+  position: relative !important;
+  width: calc(100% - 36px) !important;
+  max-width: 1340px !important;
+  max-height: calc(100vh - 110px) !important;
+  margin: 10px auto 0 !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  box-sizing: border-box !important;
+  pointer-events: auto !important;
+  background: #ffffff !important;
+  background-image: none !important;
+  border: 1px solid #e1e3e6 !important;
+  border-radius: 26px !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  box-shadow: 0 18px 38px rgba(37, 42, 48, .14) !important;
+}
+
+.premium-mobile-menu.hidden {
+  display: none !important;
+}
+
+.premium-mobile-menu nav {
+  padding: 20px 24px 24px !important;
+}
+
+.premium-mobile-link {
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 17px !important;
+  padding: 15px 4px !important;
+  color: var(--header-grey) !important;
+  border-bottom: 1px solid #e7e8ea !important;
+  font-family: var(--font-heading), "Playfair Display", serif !important;
+  font-size: 23px !important;
+  font-weight: 500 !important;
+  line-height: 1.2 !important;
+  text-decoration: none !important;
+  transition: color .3s ease, padding-left .3s ease !important;
+}
+
+.premium-mobile-link span {
+  min-width: 27px !important;
+  color: #8b9096 !important;
+  font-family: var(--font-body), Montserrat, sans-serif !important;
+  font-size: 9px !important;
+  font-weight: 700 !important;
+  letter-spacing: .16em !important;
+}
+
+.premium-mobile-link:hover,
+.premium-mobile-link.active {
+  padding-left: 10px !important;
+  color: var(--header-grey-dark) !important;
+}
+
+.premium-mobile-link::after {
+  content: "" !important;
+  position: absolute !important;
+  top: 50% !important;
+  right: 4px !important;
+  bottom: auto !important;
+  left: auto !important;
+  display: block !important;
+  width: 6px !important;
+  height: 6px !important;
+  background: var(--accent-red) !important;
+  border-radius: 999px !important;
+  opacity: 0 !important;
+  transform: translateY(-50%) scale(.5) !important;
+  transition: opacity .25s ease, transform .25s ease !important;
+}
+
+.premium-mobile-link:hover::after,
+.premium-mobile-link.active::after {
+  opacity: 1 !important;
+  transform: translateY(-50%) scale(1) !important;
+}
+
+.premium-mobile-cta {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 50px !important;
+  gap: 9px !important;
+  margin-top: 20px !important;
+  padding: 0 18px !important;
+  color: #ffffff !important;
+  background: #c12323 !important;
+  border: 1px solid #c12323 !important;
+  border-radius: 999px !important;
+  font-family: var(--font-body), Montserrat, sans-serif !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  letter-spacing: .15em !important;
+  text-transform: uppercase !important;
+  text-decoration: none !important;
+}
+
+@media (min-width: 1180px) {
+  .premium-desktop-nav { display: flex !important; }
+  .premium-header-cta { display: inline-flex !important; }
+  .premium-menu-btn,
+  .premium-mobile-menu { display: none !important; }
+}
+
+@media (max-width: 1179px) {
+  .premium-desktop-nav,
+  .premium-header-cta { display: none !important; }
+  .premium-menu-btn { display: flex !important; }
+  .premium-mobile-menu:not(.hidden) { display: block !important; }
+}
+
+@media (max-width: 640px) {
+  .premium-header {
+    top: 10px !important;
+    padding: 0 10px !important;
+  }
+
+  .premium-header-shell {
+    padding: 0 18px !important;
+    overflow: hidden !important;
+    border-radius: 25px !important;
+  }
+
+  .premium-header-inner { min-height: 74px !important; }
+  .premium-header-logo img { height: 58px !important; }
+  .premium-menu-btn { width: 45px !important; height: 45px !important; }
+  .premium-mobile-menu { width: calc(100% - 20px) !important; }
+}
+/* CANONICAL SITE HEADER — END */
+
+/* PORTFOLIO PAGE: HOME-MATCHED TYPOGRAPHY — BEGIN */
+:root {
+  --heading-grey: #5e636a;
+  --subheading-grey: #777d84;
+  --body-grey: #686e75;
+  --light-grey: #d7dade;
+  --light-grey-muted: #c5c9ce;
+}
+
+html body,
+html body * {
+  font-style: normal !important;
+}
+
+body {
+  color: var(--body-grey) !important;
+  font-family: var(--font-body) !important;
+}
+
+.font-serif-chic,
+.luxury-heading {
+  font-family: var(--font-heading) !important;
+}
+
+.portfolio-main h1,
+.portfolio-main h2,
+.portfolio-main h3,
+.portfolio-main h4,
+.portfolio-main h5,
+.portfolio-main h6 {
+  color: var(--heading-grey) !important;
+  font-family: var(--font-heading) !important;
+  font-style: normal !important;
+}
+
+.portfolio-main h1 span,
+.portfolio-main h2 span,
+.portfolio-main h3 span,
+.portfolio-main h4 span,
+.portfolio-main h5 span,
+.portfolio-main h6 span,
+.portfolio-main p strong {
+  color: inherit !important;
+  font-style: normal !important;
+}
+
+.portfolio-main p,
+.portfolio-main .section-copy {
+  color: var(--body-grey) !important;
+}
+
+.portfolio-main .section-eyebrow,
+.portfolio-main .section-subheading,
+.portfolio-main .text-gray-500 {
+  color: var(--subheading-grey) !important;
+}
+
+.portfolio-main .section-eyebrow {
+  font-family: var(--font-body) !important;
+}
+
+.portfolio-main [class*="bg-[#151515]"] :is(h1,h2,h3,h4,h5,h6),
+.portfolio-main [class*="bg-[#111]"] :is(h1,h2,h3,h4,h5,h6),
+.portfolio-main [class*="bg-customRed"] :is(h1,h2,h3,h4,h5,h6) {
+  color: var(--light-grey) !important;
+}
+
+.portfolio-main [class*="bg-[#151515]"] p,
+.portfolio-main [class*="bg-[#111]"] p,
+.portfolio-main [class*="bg-customRed"] p,
+.portfolio-main [class*="bg-[#151515]"] .section-eyebrow,
+.portfolio-main [class*="bg-customRed"] .section-eyebrow {
+  color: var(--light-grey-muted) !important;
+}
+
+/* Photography and dark-panel main headings are pure white. */
+.portfolio-main #portfolio-hero .portfolio-hero-title,
+.portfolio-main #portfolio-hero .portfolio-hero-title span,
+.portfolio-main #portfolio-transformations .portfolio-transformations-title,
+.portfolio-main #portfolio-transformations .portfolio-transformations-title span,
+.portfolio-main #portfolio-cta .portfolio-cta-title,
+.portfolio-main #portfolio-cta .portfolio-cta-title span {
+  color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+.site-footer h1,
+.site-footer h2,
+.site-footer h3,
+.site-footer h4,
+.site-footer h5,
+.site-footer h6,
+.site-footer p,
+.site-footer a,
+.site-footer span,
+.site-footer button,
+.site-footer .text-gray-500,
+.site-footer .footer-newsletter-title span,
+.site-footer .footer-newsletter-eyebrow,
+.site-footer .footer-newsletter-form button {
+  color: var(--light-grey) !important;
+  font-style: normal !important;
+}
+
+.site-footer .footer-newsletter-copy,
+.site-footer .footer-contact-email,
+.site-footer .footer-bottom-bar {
+  color: var(--light-grey-muted) !important;
+}
+
+.site-footer input { color: #e1e3e6 !important; }
+.site-footer input::placeholder { color: #aeb3b9 !important; }
+/* PORTFOLIO PAGE: HOME-MATCHED TYPOGRAPHY — END */
+</style>
 </head>
 
 <body>
 
-<!-- <div class="hidden lg:flex absolute left-0 top-0 z-50 social-bar-wrap">
-  <div class="w-[44px] h-[760px] bg-[#c61f1f] flex flex-col items-center pt-10 pb-10 social-bar-drop">
-    <div class="w-px h-80 bg-[#cfa63a] mb-16 mt-4 social-gold-line origin-top"></div>
-    <div class="flex flex-col items-center gap-7 text-white text-[19px] mt-14">
-      <a href="https://wa.me/919654232327" target="_blank" class="social-icon hover:text-[#cfa63a] transition-colors"><i class="ph ph-whatsapp-logo"></i></a>
-      <a href="#" class="social-icon hover:text-[#cfa63a] transition-colors"><i class="ph ph-facebook-logo"></i></a>
-      <a href="#" class="social-icon hover:text-[#cfa63a] transition-colors"><i class="ph ph-linkedin-logo"></i></a>
-      <a href="#" class="social-icon hover:text-[#cfa63a] transition-colors"><i class="ph ph-instagram-logo"></i></a>
-    </div>
-  </div>
-</div> -->
-
 <header class="premium-header">
-
-  <div class="max-w-7xl mx-auto px-5 lg:px-12">
+  <div class="premium-header-shell">
     <div class="premium-header-inner">
-
-      <a
-        href="index.html"
-        class="premium-header-logo header-logo-drop"
-        aria-label="Space Decor Belle Home"
-      >
+      <a href="index.html" class="premium-header-logo header-logo-drop" aria-label="Space Decor Belle Home">
         <img src="assets/images/logo.png" alt="Space Decor Belle Logo">
       </a>
 
       <nav class="premium-desktop-nav" aria-label="Main navigation">
-        <a href="index.html" class="premium-nav-link nav-drop" style="--delay: 0.56s;">Home</a>
-        <a href="about.html" class="premium-nav-link nav-drop" style="--delay: 0.68s;">About Us</a>
-        <a href="interior.html" class="premium-nav-link nav-drop" style="--delay: 0.80s;">Interior</a>
-        <a href="vastu.html" class="premium-nav-link nav-drop" style="--delay: 0.92s;">Vastu</a>
-        <a href="decor.html" class="premium-nav-link nav-drop" style="--delay: 1.04s;">Decor</a>
-        <a href="portfolio.html" class="premium-nav-link nav-drop active" style="--delay: 1.16s;" aria-current="page">Portfolio</a>
-        <a href="contact.html" class="premium-nav-link nav-drop" style="--delay: 1.28s;">Contact</a>
+        <a href="index.html" class="premium-nav-link nav-drop" style="--delay:.56s;">Home</a>
+        <a href="about.html" class="premium-nav-link nav-drop" style="--delay:.68s;">About Us</a>
+        <a href="interior.html" class="premium-nav-link nav-drop" style="--delay:.80s;">Interior</a>
+        <a href="vastu.html" class="premium-nav-link nav-drop" style="--delay:.92s;">Vastu</a>
+        <a href="decor.html" class="premium-nav-link nav-drop" style="--delay:1.04s;">Decor</a>
+        <a href="portfolio.html" class="premium-nav-link nav-drop active" aria-current="page" style="--delay:1.16s;">Portfolio</a>
+        <a href="contact.html" class="premium-nav-link nav-drop" style="--delay:1.28s;">Contact</a>
       </nav>
 
-      <button
-        id="menuBtn"
-        class="premium-menu-btn mobile-menu-drop"
-        type="button"
-        aria-label="Toggle menu"
-        aria-expanded="false"
-        aria-controls="mobileMenu"
-      >
+      <a href="consultation.html" class="premium-header-cta nav-drop" style="--delay:1.40s;">
+        Book Consultation <i class="ph ph-arrow-up-right"></i>
+      </a>
+
+      <button id="menuBtn" class="premium-menu-btn mobile-menu-drop" type="button"
+        aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu">
         <i id="menuIcon" class="ph ph-list"></i>
       </button>
-
     </div>
   </div>
 
-  <div id="mobileMenu" class="hidden lg:hidden premium-mobile-menu">
-    <nav class="max-w-7xl mx-auto px-6 py-7 flex flex-col" aria-label="Mobile navigation">
-      <a href="index.html" class="premium-mobile-link"><span>01</span>Home</a>
-      <a href="about.html" class="premium-mobile-link"><span>02</span>About Us</a>
-      <a href="interior.html" class="premium-mobile-link"><span>03</span>Interior</a>
-      <a href="vastu.html" class="premium-mobile-link"><span>04</span>Vastu</a>
-      <a href="decor.html" class="premium-mobile-link"><span>05</span>Decor</a>
-      <a href="portfolio.html" class="premium-mobile-link active" aria-current="page"><span>06</span>Portfolio</a>
-      <a href="contact.html" class="premium-mobile-link"><span>07</span>Contact</a>
-
-      <a href="contact.html" class="premium-mobile-cta">
-        Book Consultation
-        <i class="ph ph-arrow-up-right"></i>
-      </a>
-    </nav>
+  <div id="mobileMenu" class="hidden premium-mobile-menu">
+    <nav aria-label="Mobile navigation">
+        <a href="index.html" class="premium-mobile-link"><span>01</span>Home</a>
+        <a href="about.html" class="premium-mobile-link"><span>02</span>About Us</a>
+        <a href="interior.html" class="premium-mobile-link"><span>03</span>Interior</a>
+        <a href="vastu.html" class="premium-mobile-link"><span>04</span>Vastu</a>
+        <a href="decor.html" class="premium-mobile-link"><span>05</span>Decor</a>
+        <a href="portfolio.html" class="premium-mobile-link active" aria-current="page"><span>06</span>Portfolio</a>
+        <a href="contact.html" class="premium-mobile-link"><span>07</span>Contact</a>
+        <a href="consultation.html" class="premium-mobile-cta">
+          Book Consultation <i class="ph ph-arrow-up-right"></i>
+        </a>
+      </nav>
   </div>
-
 </header>
 
-<main>
+<main class="portfolio-main">
 
   <!-- PORTFOLIO HERO -->
-  <section class="relative max-w-7xl mx-auto px-6 lg:px-12 pt-6 pb-16">
+  <section id="portfolio-hero" class="relative max-w-7xl mx-auto px-6 lg:px-12 pt-6 pb-16">
     <div class="relative overflow-hidden rounded-[34px] bg-[#151515] min-h-[520px] flex items-center">
-      <img src="assets/images/port-hero.png" class="absolute inset-0 w-full h-full object-cover opacity-60" alt="">
+      <img src="assets/images/port-hero.png" class="absolute inset-0 w-full h-full object-cover opacity-60" alt="Luxury interior design portfolio">
       <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/65 to-black/20"></div>
 
       <div class="relative z-10 max-w-3xl px-8 md:px-16 py-20">
-        <p class="text-customGold text-[11px] uppercase tracking-[0.6em] font-bold mb-6">
+        <p class="text-gray-500 text-[11px] uppercase tracking-[0.6em] font-bold mb-6">
           Our Portfolio
         </p>
 
-        <h1 class="font-serif-chic text-white text-[54px] md:text-[88px] leading-[0.95] tracking-[-0.04em]">
+        <h1 class="portfolio-hero-title font-serif-chic text-white text-[54px] md:text-[88px] leading-[0.95] tracking-[-0.04em]">
           Designed<br>
-          <span class="italic text-customGold">Spaces.</span>
+          <span class="text-white">Spaces.</span>
         </h1>
 
         <div class="w-[220px] md:w-[360px] h-[3px] bg-customRed mt-8 mb-8"></div>
@@ -958,17 +1576,17 @@ body.lightbox-open {
       <button class="portfolio-gallery-item" type="button" aria-label="Open portfolio image 26">
         <img src="assets/images/port-6.jpg" alt="Interior design portfolio project 6" loading="lazy" decoding="async">
       </button>
-            <button class="portfolio-gallery-item" type="button" aria-label="Open portfolio image 26">
-        <img src="assets/images/port-7.jpg" alt="Interior design portfolio project 6" loading="lazy" decoding="async">
+      <button class="portfolio-gallery-item" type="button" aria-label="Open portfolio image 27">
+        <img src="assets/images/port-7.jpg" alt="Interior design portfolio project 7" loading="lazy" decoding="async">
       </button>
-            <button class="portfolio-gallery-item" type="button" aria-label="Open portfolio image 26">
-        <img src="assets/images/port-8.png" alt="Interior design portfolio project 6" loading="lazy" decoding="async">
+      <button class="portfolio-gallery-item" type="button" aria-label="Open portfolio image 28">
+        <img src="assets/images/port-8.png" alt="Interior design portfolio project 8" loading="lazy" decoding="async">
       </button>
-            <button class="portfolio-gallery-item" type="button" aria-label="Open portfolio image 26">
-        <img src="assets/images/port-9.jpg" alt="Interior design portfolio project 6" loading="lazy" decoding="async">
+      <button class="portfolio-gallery-item" type="button" aria-label="Open portfolio image 29">
+        <img src="assets/images/port-9.jpg" alt="Interior design portfolio project 9" loading="lazy" decoding="async">
       </button>
-            <button class="portfolio-gallery-item" type="button" aria-label="Open portfolio image 26">
-        <img src="assets/images/port-10.jpg" alt="Interior design portfolio project 6" loading="lazy" decoding="async">
+      <button class="portfolio-gallery-item" type="button" aria-label="Open portfolio image 30">
+        <img src="assets/images/port-10.jpg" alt="Interior design portfolio project 10" loading="lazy" decoding="async">
       </button>
 
     </div>
@@ -1015,13 +1633,13 @@ body.lightbox-open {
   </div>
 
     <!-- BEFORE AFTER SECTION -->
-  <section class="bg-[#151515] py-24">
+  <section id="portfolio-transformations" class="bg-[#151515] py-24">
     <div class="max-w-7xl mx-auto px-6 lg:px-12">
       <div class="text-center max-w-3xl mx-auto mb-14">
-        <p class="text-customGold text-[11px] uppercase tracking-[0.6em] font-bold mb-5">
+        <p class="section-eyebrow text-gray-500 mb-5">
           Before / After
         </p>
-        <h2 class="font-serif-chic text-white text-[44px] md:text-[70px] leading-tight">
+        <h2 class="portfolio-transformations-title section-heading text-white">
           Transforming Ordinary Spaces
         </h2>
         <p class="text-white/70 text-sm md:text-base leading-8 mt-6">
@@ -1031,13 +1649,13 @@ body.lightbox-open {
 
       <div class="grid lg:grid-cols-2 gap-8">
         <div class="relative rounded-[28px] overflow-hidden group">
-          <img src="assets/images/port-before.png" class="w-full h-[420px] object-cover grayscale group-hover:grayscale-0 transition duration-700" alt="">
+          <img src="assets/images/port-before.png" class="w-full h-[420px] object-cover grayscale group-hover:grayscale-0 transition duration-700" alt="Interior space before redesign">
           <div class="absolute inset-0 bg-black/35"></div>
           <span class="absolute top-6 left-6 bg-white text-black text-xs font-bold tracking-widest uppercase px-5 py-3 rounded-full">Before</span>
         </div>
 
         <div class="relative rounded-[28px] overflow-hidden group">
-          <img src="assets/images/port-after.png" class="w-full h-[420px] object-cover group-hover:scale-105 transition duration-700" alt="">
+          <img src="assets/images/port-after.png" class="w-full h-[420px] object-cover group-hover:scale-105 transition duration-700" alt="Interior space after redesign">
           <div class="absolute inset-0 bg-black/20"></div>
           <span class="absolute top-6 left-6 bg-customGold text-black text-xs font-bold tracking-widest uppercase px-5 py-3 rounded-full">After</span>
         </div>
@@ -1046,14 +1664,14 @@ body.lightbox-open {
   </section>
 
   <!-- CTA -->
-  <section class="max-w-7xl mx-auto px-6 lg:px-12 py-20">
+  <section id="portfolio-cta" class="max-w-7xl mx-auto px-6 lg:px-12 py-20">
     <div class="relative overflow-hidden rounded-[34px] bg-customRed px-8 md:px-16 py-16 text-center">
       <div class="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent"></div>
       <div class="relative z-10">
-        <p class="text-customGold text-[11px] uppercase tracking-[0.5em] font-bold mb-5">
+        <p class="section-eyebrow text-gray-500 mb-5">
           Start Your Project
         </p>
-        <h2 class="font-serif-chic text-white text-[42px] md:text-[68px] leading-tight mb-6">
+        <h2 class="portfolio-cta-title section-heading text-white mb-6">
           Let’s Design Your Dream Space
         </h2>
         <p class="text-white/85 max-w-2xl mx-auto text-sm md:text-base leading-8 mb-9">
@@ -1067,108 +1685,111 @@ body.lightbox-open {
   </section>
 
 </main>
-<footer id="clients" class="w-full bg-[#151515] relative pt-6 pb-2 z-10 border-t border-gray-800 overflow-hidden">
+  <!-- SHARED FOOTER -->
+<footer id="clients" class="site-footer w-full relative pt-2 pb-0 z-10 overflow-hidden">
   <div class="max-w-7xl mx-auto px-6 lg:px-12 relative">
-    <div class="footer-line-vertical hidden md:block absolute top-[38px] bottom-[118px] left-[28%] w-px bg-[#cfa63a]"></div>
-    <div class="footer-line-vertical hidden md:block absolute top-[38px] bottom-[118px] right-[28%] w-px bg-[#cfa63a]"></div>
+    <div class="footer-line-vertical footer-divider-one hidden md:block absolute top-[38px] bottom-[38px] w-px"></div>
+    <div class="footer-line-vertical footer-divider-two hidden md:block absolute top-[38px] bottom-[38px] w-px"></div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 relative z-10">
-      <div class="flex flex-col justify-start pt-12 pb-16 md:pb-0 pl-0 md:pl-10">
-        <nav class="flex flex-col gap-6 text-xs font-sans font-bold tracking-widest uppercase text-white">
-          <a href="index.html" class="footer-drop footer-delay-1 hover:text-customGold">home</a>
-          <a href="about.html" class="footer-drop footer-delay-2 hover:text-customGold">about us</a>
-          <a href="interior.html" class="footer-drop footer-delay-3 hover:text-customGold">interior</a>
-          <a href="vastu.html" class="footer-drop footer-delay-4 hover:text-customGold">vastu</a>
-          <a href="decor.html" class="footer-drop footer-delay-5 hover:text-customGold">decor</a>
-          <a href="contact.html" class="footer-drop footer-delay-6 hover:text-customGold">contact</a>
-        </nav>
-      </div>
+    <div class="footer-main-grid relative z-10">
+      <div class="footer-brand-column">
+        <a href="index.html" class="footer-brand-logo footer-drop footer-delay-1" aria-label="Space Decor Belle Home">
+          <img src="assets/images/logo.png" alt="Space Decor Belle">
+        </a>
 
-      <div id="contact" class="flex flex-col items-center text-center pt-8 pb-[118px] px-4 h-full">
-        <h4 class="text-customGold font-sans font-bold text-sm uppercase tracking-[0.3em] mb-8">RECENT WORKS</h4>
-        <div class="grid grid-cols-3 gap-2 mb-6 w-full max-w-xs">
-          <img src="assets/images/11.jpg" class="w-full h-20 object-cover" alt="">
-          <img src="assets/images/12.jpg" class="w-full h-20 object-cover" alt="">
-          <img src="assets/images/13.jpg" class="w-full h-20 object-cover" alt="">
-          <img src="assets/images/14.jpg" class="w-full h-20 object-cover" alt="">
-          <img src="assets/images/15.jpg" class="w-full h-20 object-cover" alt="">
-          <img src="assets/images/16.jpg" class="w-full h-20 object-cover" alt="">
+        <div class="footer-newsletter footer-drop footer-delay-2">
+          <p class="footer-newsletter-eyebrow">Space Decor Belle Journal</p>
+          <h3 class="footer-newsletter-title">
+            Subscribe to our
+            <span>design journal.</span>
+          </h3>
+          <p class="footer-newsletter-copy">Rare projects, studio notes and thoughtful material studies—shared seasonally.</p>
+
+          <form id="footerNewsletterForm" class="footer-newsletter-form">
+            <label class="sr-only" for="footerNewsletterEmail">Email address</label>
+            <input id="footerNewsletterEmail" type="email" name="email" placeholder="your@email.com" autocomplete="email" required>
+            <button type="submit">Subscribe <span class="footer-newsletter-arrow" aria-hidden="true">→</span></button>
+          </form>
+          <p id="footerNewsletterStatus" class="footer-newsletter-status" role="status" aria-live="polite"></p>
         </div>
-        <h4 class="text-white text-[12px] tracking-[0.35em] uppercase mb-4">TALK TO THE TEAM</h4>
-        <p class="text-customGold font-serif-chic text-[24px] font-light">(+91) 96542 32327</p>
-        <p class="text-customGold text-[18px] md:text-[24px] font-light">info@spacedecorbelle.com</p>
       </div>
 
-      <div class="flex flex-col items-end md:items-center justify-end pt-8 pb-16 md:pb-[118px] pr-0 md:pr-10 h-full">
-        <div class="flex md:flex-col items-center gap-4 md:gap-3 md:pt-0 mt-auto">
-          <span class="footer-drop footer-delay-1 text-white font-bold text-[8px] tracking-[0.3em] uppercase md:rotate-90 whitespace-nowrap">FOLLOW US</span>
-          <div class="footer-drop footer-delay-2 w-px h-16 bg-customGold hidden md:block"></div>
-          <a href="#" class="footer-drop footer-delay-3 text-customGold border border-customGold rounded-full p-2 hover:bg-customGold hover:text-black"><i class="ph ph-whatsapp-logo text-sm"></i></a>
-          <a href="#" class="footer-drop footer-delay-4 text-customGold border border-customGold rounded-full p-2 hover:bg-customGold hover:text-black"><i class="ph ph-facebook-logo text-sm"></i></a>
-          <a href="#" class="footer-drop footer-delay-5 text-customGold border border-customGold rounded-full p-2 hover:bg-customGold hover:text-black"><i class="ph ph-linkedin-logo text-sm"></i></a>
-          <a href="#" class="footer-drop footer-delay-6 text-customGold border border-customGold rounded-full p-2 hover:bg-customGold hover:text-black"><i class="ph ph-instagram-logo text-sm"></i></a>
+      <div id="contact" class="footer-center-column">
+        <h4 class="text-gray-500 font-sans font-bold text-s uppercase tracking-[0.3em] mb-8">RECENT WORKS</h4>
+
+        <div class="footer-recent-grid">
+          <img src="assets/images/11.jpg" alt="Recent work 1">
+          <img src="assets/images/12.jpg" alt="Recent work 2">
+          <img src="assets/images/13.jpg" alt="Recent work 3">
+          <img src="assets/images/14.jpg" alt="Recent work 4">
+          <img src="assets/images/15.jpg" alt="Recent work 5">
+          <img src="assets/images/16.jpg" alt="Recent work 6">
+        </div>
+
+        <div class="footer-contact-block">
+          <h4 class="text-white text-[12px] tracking-[0.35em] uppercase mb-4">TALK TO THE TEAM</h4>
+          <a href="tel:+919654232327" class="footer-contact-phone">(+91) 96542 32327</a>
+          <a href="mailto:info@spacedecorbelle.com" class="footer-contact-email">info@spacedecorbelle.com</a>
+        </div>
+      </div>
+
+      <div class="footer-social-column">
+        <p class="footer-social-label footer-drop footer-delay-1">Follow Us</p>
+        <div class="footer-social-rule footer-drop footer-delay-2"></div>
+
+        <div class="footer-social-links">
+          <a href="https://wa.me/919654232327" target="_blank" rel="noopener noreferrer" class="footer-social-link footer-social-link--whatsapp footer-drop footer-delay-3" aria-label="WhatsApp">
+            <svg class="footer-social-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2a9.84 9.84 0 0 0-8.43 14.91L2 22l5.22-1.54A9.95 9.95 0 1 0 12.04 2Zm5.82 14.05c-.25.71-1.47 1.3-2.03 1.39-.52.08-1.18.12-3.8-1-3.2-1.39-5.23-4.66-5.39-4.88-.15-.22-1.28-1.7-1.28-3.25s.81-2.32 1.1-2.64c.29-.32.63-.4.84-.4h.61c.2 0 .46-.07.72.55.26.63.89 2.17.97 2.33.08.16.13.35.03.57-.1.22-.15.35-.3.54-.15.19-.32.42-.46.56-.15.15-.31.31-.13.61.18.3.8 1.32 1.72 2.14 1.18 1.05 2.18 1.38 2.49 1.54.31.16.49.13.67-.08.18-.21.78-.91.99-1.22.2-.31.41-.26.69-.16.28.1 1.79.84 2.1.99.31.16.52.23.59.36.08.13.08.76-.17 1.47Z"/></svg>
+          </a>
+          <a href="#" class="footer-social-link footer-social-link--facebook footer-drop footer-delay-4" aria-label="Facebook">
+            <svg class="footer-social-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M16 8.049C16 3.603 12.418 0 8 0S0 3.603 0 8.049C0 12.066 2.926 15.396 6.75 16v-5.625H4.718V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.994 0-1.304.621-1.304 1.258V8.05h2.219l-.355 2.326H9.25V16C13.074 15.396 16 12.066 16 8.049Z"/></svg>
+          </a>
+          <a href="#" class="footer-social-link footer-social-link--linkedin footer-drop footer-delay-5" aria-label="LinkedIn">
+            <svg class="footer-social-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708C16 15.487 15.474 16 14.825 16H1.175C.526 16 0 15.487 0 14.854V1.146Zm4.943 12.248V6.169H2.542v7.225h2.401Zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.521-1.248-1.342-1.248-.822 0-1.358.54-1.358 1.248 0 .694.52 1.248 1.327 1.248h.015Zm2.529 8.212h2.4V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.4V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.19h.03v-1.02h-2.4c.03.679 0 7.225 0 7.225Z"/></svg>
+          </a>
+          <a href="#" class="footer-social-link footer-social-link--instagram footer-drop footer-delay-6" aria-label="Instagram">
+            <svg class="footer-social-icon footer-social-icon--instagram" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.25" y="3.25" width="17.5" height="17.5" rx="5.25"></rect><circle cx="12" cy="12" r="4.15"></circle><circle cx="17.55" cy="6.55" r="1.05" class="instagram-dot"></circle></svg>
+          </a>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="footer-line absolute bottom-16 left-10 lg:left-24 right-10 lg:right-24 mb-12 h-px bg-[#cfa63a]"></div>
+  <div class="footer-line footer-bottom-line"></div>
 
-    <!-- Footer Bottom Bar -->
-<div class="max-w-7xl mx-auto px-6 lg:px-12 mb-8 flex flex-col md:flex-row justify-between items-center text-[10px] text-gray-400 font-sans tracking-widest uppercase mt-4 relative z-10">
-
-<a href="privacy-policy.html"
-   class="hover:text-customGold transition-all duration-300 hover:tracking-[0.22em]">
-   PRIVACY POLICY
-</a>
-
+  <div class="footer-bottom-bar relative z-10">
+    <a href="privacy-policy.html" class="hover:text-gray-500 transition-all duration-300 hover:tracking-[0.22em]">PRIVACY POLICY</a>
     <p>&copy; SPACEDECORBELLE ALL RIGHTS RESERVED</p>
-
-</div>
+  </div>
 </footer>
 
-<!-- RIGHT SIDE FLOATING IMAGE BUTTONS -->
-<div class="fixed right-5 top-1/2 -translate-y-1/2 z-50 hidden md:flex flex-col gap-4">
-
-  <!-- Gmail -->
+<!-- STICKY WHATSAPP BUTTON -->
+<div class="whatsapp-sticky-wrap">
   <a
-    href="mailto:info@spacedecorbelle.com"
-    class="image-float-btn"
-    aria-label="Send Email"
-    title="Send Email"
-  >
-    <img
-      src="assets\images\gmail-icon.png"
-      alt="Gmail"
-    >
-  </a>
-
-  <!-- WhatsApp -->
-  <a
-    href="https://wa.me/919654232327?text=Hello%20Space%20Decor%20Belle%2C%20I%20would%20like%20to%20discuss%20an%20interior%20design%20project."
+    href="https://wa.me/919654232327?text=Hello%20Space%20Decor%20Belle%2C%20I%20would%20like%20to%20discuss%20a%20portfolio%20design%20project."
     target="_blank"
     rel="noopener noreferrer"
     class="image-float-btn"
     aria-label="Chat on WhatsApp"
     title="Chat on WhatsApp"
   >
-    <img
-      src="assets\images\whatsaap-icon.png"
-      alt="WhatsApp"
-    >
+    <img src="assets/images/whatsaap-icon.png" alt="WhatsApp">
   </a>
-
 </div>
 
+  <!-- JS -->
 <script>
   const menuBtn = document.getElementById("menuBtn");
   const mobileMenu = document.getElementById("mobileMenu");
   const menuIcon = document.getElementById("menuIcon");
 
   menuBtn.addEventListener("click", () => {
-    mobileMenu.classList.toggle("hidden");
-    menuIcon.classList.toggle("ph-list");
-    menuIcon.classList.toggle("ph-x");
+    const isOpen = !mobileMenu.classList.toggle("hidden");
+
+    menuIcon.classList.toggle("ph-list", !isOpen);
+    menuIcon.classList.toggle("ph-x", isOpen);
+    menuBtn.setAttribute("aria-expanded", String(isOpen));
+    menuBtn.setAttribute("aria-label", isOpen ? "Close navigation menu" : "Open navigation menu");
   });
 
   document.querySelectorAll("#mobileMenu a").forEach(link => {
@@ -1176,6 +1797,8 @@ body.lightbox-open {
       mobileMenu.classList.add("hidden");
       menuIcon.classList.add("ph-list");
       menuIcon.classList.remove("ph-x");
+      menuBtn.setAttribute("aria-expanded", "false");
+      menuBtn.setAttribute("aria-label", "Open navigation menu");
     });
   });
 
@@ -1188,7 +1811,7 @@ body.lightbox-open {
     });
   }, { threshold: 0.22 });
 
-  document.querySelectorAll(".portfolio-gallery-item,.portfolio-reveal,.line-center-grow,.footer-line,.footer-line-vertical,.footer-drop,.social-gold-line").forEach(el => observer.observe(el));
+  document.querySelectorAll(".portfolio-gallery-item,.portfolio-reveal,.line-center-grow,.footer-line,.footer-line-vertical,.footer-drop").forEach(el => observer.observe(el));
   const galleryItems = Array.from(
     document.querySelectorAll(".portfolio-gallery-item")
   );
@@ -1296,6 +1919,18 @@ body.lightbox-open {
     },
     { passive: true }
   );
+
+  const footerNewsletterForm = document.getElementById("footerNewsletterForm");
+  const footerNewsletterStatus = document.getElementById("footerNewsletterStatus");
+
+  footerNewsletterForm.addEventListener("submit", event => {
+    event.preventDefault();
+
+    if (!footerNewsletterForm.reportValidity()) return;
+
+    footerNewsletterStatus.textContent = "Thank you for subscribing to our design journal.";
+    footerNewsletterForm.reset();
+  });
 </script>
 
 </body>
