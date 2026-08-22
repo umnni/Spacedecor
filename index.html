@@ -3322,8 +3322,105 @@ body.service-lightbox-open {
 }
 
 .site-footer .footer-brand-logo img {
-    filter: brightness(0) invert(1);
+    filter: none;
     opacity: 1;
+}
+/* FOOTER LOGO WHITE BACKGROUND */
+
+.site-footer .footer-logo-white-box {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 24px;
+    background-color: #ffffff !important;
+    border-radius: 16px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.14);
+}
+
+.site-footer .footer-logo-white-box img {
+    display: block;
+    width: auto;
+    height: 82px;
+    max-width: 230px;
+    object-fit: contain;
+    filter: none !important;
+}
+
+
+/* FOOTER ADDRESS BELOW SOCIAL ICONS */
+
+.footer-social-address {
+    display: grid;
+    grid-template-columns: 42px minmax(0, 1fr);
+    align-items: start;
+    gap: 13px;
+
+    width: min(100%, 310px);
+    margin: 26px auto 0;
+    padding: 16px 17px;
+
+    color: rgba(255, 255, 255, 0.88) !important;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 14px;
+
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.82rem;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 1.65;
+    letter-spacing: 0.01em;
+    text-align: left;
+}
+
+.footer-social-address-icon {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+
+    color: #ffffff !important;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 50%;
+}
+
+.footer-social-address-icon svg {
+    width: 21px;
+    height: 21px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.footer-social-address-text {
+    color: rgba(255, 255, 255, 0.88) !important;
+}
+
+.footer-social-address-text strong {
+    display: block;
+    margin-bottom: 4px;
+
+    color: #ffffff !important;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+@media (max-width: 767px) {
+    .site-footer .footer-logo-white-box {
+        padding: 12px 18px;
+    }
+
+    .site-footer .footer-logo-white-box img {
+        height: 70px;
+    }
+
+    .footer-social-address {
+        width: min(100%, 290px);
+    }
 }
 
 @media (max-width: 1179px) {
@@ -4735,7 +4832,7 @@ html body * {
             <section id="home" class="home-hero" aria-labelledby="homeHeroTitle">
                 <div class="home-hero-media" aria-hidden="true">
                     <img
-                        src="assets/images/10.jpg"
+                        src="assets/images/01.jpg"
                         alt=""
                     >
                 </div>
@@ -5436,13 +5533,15 @@ html body * {
 
             <!-- Logo + Newsletter -->
             <div class="footer-brand-column">
-                <a
-                    href="index.html"
-                    class="footer-brand-logo footer-drop footer-delay-1"
-                    aria-label="Space Decor Belle Home"
-                >
-                    <img src="assets/images/logo.png" alt="Space Decor Belle">
-                </a>
+<a
+    href="index.html"
+    class="footer-brand-logo footer-drop footer-delay-1"
+    aria-label="Space Decor Belle Home"
+>
+    <span class="footer-logo-white-box">
+        <img src="assets/images/logo.png" alt="Space Decor Belle">
+    </span>
+</a>
 
                 <div class="footer-newsletter footer-drop footer-delay-2">
                     <p class="footer-newsletter-eyebrow">Space Decor Belle Journal</p>
@@ -5516,6 +5615,7 @@ html body * {
     info@spacedecorbelle.com
   </a>
 
+
 </div>
             </div>
 
@@ -5560,6 +5660,22 @@ html body * {
             </svg>
         </a>
                 </div>
+                <address class="footer-social-address footer-drop footer-delay-6">
+        <span class="footer-social-address-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+                <path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"></path>
+                <circle cx="12" cy="10" r="2.5"></circle>
+            </svg>
+        </span>
+
+        <span class="footer-social-address-text">
+            <strong>Visit Our Studio</strong>
+            K1, Green Park Extension<br>
+            New Delhi – 110016<br>
+            Opposite MCD Nursery Office
+        </span>
+    </address>
+
             </div>
         </div>
     </div>
