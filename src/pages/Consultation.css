@@ -1,0 +1,76 @@
+:root{--c-red:#c92327;--c-gold:#d7b46a;--c-ink:#2f3947;--c-muted:#716d67;--c-paper:#f6f4ef;--c-serif:"Cormorant Garamond",serif;--c-sans:"Montserrat",sans-serif}
+.consultationPage,.consultationPage *{box-sizing:border-box}
+.consultationPage{width:100%;overflow-x:clip;color:var(--c-ink);background:#fff;font-family:var(--c-sans)}
+.consultationPage img{display:block;max-width:100%}.consultationPage a{color:inherit;text-decoration:none}
+.consultationPage button,.consultationPage input,.consultationPage select,.consultationPage textarea{font:inherit}
+.consultationPage .consultation-main{width:100%;padding-top:112px;overflow:hidden}
+
+/* Hero */
+.consultationPage #consultation-hero{width:min(1240px,calc(100% - 48px));margin:0 auto;padding:12px 0 58px}
+.consultationPage .consultation-hero-card{position:relative;min-height:570px;overflow:hidden;border-radius:32px;background:#151515;box-shadow:0 28px 70px rgba(28,25,22,.16)}
+.consultationPage .consultation-hero-card>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.64}
+.consultationPage .consultation-hero-card>.absolute{position:absolute;inset:0}
+.consultationPage .consultation-hero-card>.bg-gradient-to-r{background:linear-gradient(90deg,rgba(0,0,0,.92),rgba(0,0,0,.66),rgba(0,0,0,.3))}
+.consultationPage .consultation-hero-card>.bg-gradient-to-t{background:linear-gradient(0deg,rgba(0,0,0,.62),transparent 62%)}
+.consultationPage .consultation-hero-card>.relative.z-10{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(300px,.75fr);align-items:center;gap:54px;min-height:570px;padding:62px 66px}
+.consultationPage .consultation-hero-card>.relative.z-10>div:first-child{max-width:690px}
+.consultationPage .section-eyebrow{margin:0 0 18px;color:#777d85;font-size:10px;font-weight:600;letter-spacing:.28em;text-transform:uppercase}
+.consultationPage .consultation-hero-title{margin:0;color:#fff;font-family:var(--c-serif);font-size:clamp(60px,6vw,88px);font-weight:400;line-height:.92;letter-spacing:-.035em}
+.consultationPage .line-grow{width:min(420px,80%);height:3px;margin:32px 0 28px;background:var(--c-red)}
+.consultationPage #consultation-hero .max-w-2xl{max-width:620px;margin:0;color:rgba(255,255,255,.76);font-size:16px;font-weight:300;line-height:1.8}
+.consultationPage #consultation-hero a[href="#consultation-form"]{display:inline-flex;align-items:center;gap:10px;margin-top:30px;padding:15px 25px;color:#fff;background:var(--c-red);border-radius:999px;font-size:10px;font-weight:700;letter-spacing:.19em;text-transform:uppercase}
+.consultationPage .consultation-hero-card>.relative.z-10>div:last-child{width:100%;max-width:380px;justify-self:end;padding:28px;color:#fff;background:rgba(10,10,10,.5);border:1px solid rgba(255,255,255,.22);border-radius:25px;backdrop-filter:blur(12px)}
+.consultationPage .hero-note{display:grid;grid-template-columns:42px 1fr;align-items:center;gap:13px;padding:17px 0;border-bottom:1px solid rgba(255,255,255,.12)}
+.consultationPage .hero-note:last-child{border-bottom:0;padding-bottom:0}.consultationPage .hero-note-icon{display:grid;width:42px;height:42px;place-items:center;color:#fff;background:var(--c-red);border-radius:50%}
+.consultationPage .hero-note h3{margin:0;color:#fff;font-family:var(--c-serif);font-size:20px;font-weight:500;line-height:1.15}.consultationPage .hero-note p{margin:4px 0 0;color:rgba(255,255,255,.62);font-size:10px;line-height:1.6}
+
+/* Centered form layout */
+.consultationPage #consultation-form{width:100%;padding:84px 24px 110px;background:var(--c-paper)}
+.consultationPage #consultation-form>.max-w-7xl{width:min(1180px,100%);max-width:1180px!important;margin:0 auto!important}
+.consultationPage #consultation-form>.max-w-7xl>.max-w-3xl{max-width:720px!important;margin:0 0 46px!important}
+.consultationPage .section-heading{margin:0;color:var(--c-ink);font-family:var(--c-serif);font-size:clamp(42px,4.2vw,60px);font-weight:400;line-height:1.02}
+.consultationPage #consultation-form>.max-w-7xl>.max-w-3xl>p:last-child{max-width:650px;margin:18px 0 0;color:var(--c-muted);font-size:14px;line-height:1.8}
+.consultationPage .consultation-layout{display:grid!important;grid-template-columns:minmax(0,1fr) 340px!important;align-items:start;gap:36px!important;width:100%;max-width:1180px;margin:0 auto}
+.consultationPage .form-shell{width:100%;min-width:0;padding:0!important;overflow:hidden;background:#fff;border:1px solid rgba(207,166,58,.28);border-radius:28px;box-shadow:0 24px 65px rgba(42,38,33,.08)}
+.consultationPage #consultationForm{width:100%;max-width:100%}
+.consultationPage .form-section{width:100%;margin:0;padding:38px 40px!important;border-bottom:1px solid #ebe6dc}
+.consultationPage .form-section-head{display:flex;align-items:flex-start;gap:16px;margin-bottom:28px}.consultationPage .form-step{display:grid;width:42px;height:42px;flex:0 0 42px;place-items:center;color:#fff;background:var(--c-red);border-radius:50%;font-size:11px;font-weight:700}
+.consultationPage .form-section-title{margin:-3px 0 3px;color:#5b5350;font-family:var(--c-serif);font-size:31px;font-weight:400;line-height:1.1}.consultationPage .form-section-copy{margin:0;color:#817c75;font-size:12px;line-height:1.6}
+.consultationPage .field-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:21px 20px}.consultationPage .field-group{min-width:0}.consultationPage .field-span-2{grid-column:span 2}
+.consultationPage .field-label{display:block;margin-bottom:9px;color:#59616c;font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase}.consultationPage .required{color:var(--c-red)}
+.consultationPage .form-field{width:100%;min-width:0;min-height:58px;padding:0 17px;color:#4d5259;background:#fdfcf9;border:1px solid #ded8cd;border-radius:14px;outline:0;font-size:13px}.consultationPage .form-field:focus{border-color:var(--c-gold);box-shadow:0 0 0 3px rgba(215,180,106,.13)}
+.consultationPage .form-field::placeholder{color:#9a9da2}.consultationPage textarea.form-field{min-height:150px;padding-top:16px;resize:vertical}
+.consultationPage .choice-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.consultationPage .choice-card{position:relative;min-width:0;cursor:pointer}.consultationPage .choice-card input{position:absolute;opacity:0;pointer-events:none}
+.consultationPage .choice-card-content{display:flex;min-height:100px;flex-direction:column;align-items:flex-start;justify-content:space-between;padding:16px;color:#585b60;background:#fdfcf9;border:1px solid #ded8cd;border-radius:14px;font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase}.consultationPage .choice-card-content i{color:var(--c-red);font-size:25px}
+.consultationPage .choice-card input:checked+.choice-card-content{color:var(--c-red);background:#fff7f7;border-color:var(--c-red);box-shadow:0 8px 18px rgba(201,35,39,.09)}
+.consultationPage .choice-error,.consultationPage .form-status{min-height:18px;color:var(--c-red);font-size:11px}
+.consultationPage .consent-row{display:flex;width:auto;align-items:flex-start;gap:12px;margin:32px 40px 0;color:#696b70;font-size:12px;line-height:1.65}.consultationPage .consent-row input{width:18px;height:18px;flex:0 0 18px;margin-top:1px;accent-color:var(--c-red)}
+.consultationPage .submit-button{display:flex;width:calc(100% - 80px);min-height:60px;align-items:center;justify-content:center;gap:10px;margin:23px 40px 0;padding:0 24px;color:#fff;background:var(--c-red);border:0;border-radius:999px;box-shadow:0 15px 28px rgba(201,35,39,.2);font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;cursor:pointer}
+.consultationPage .form-status{margin:12px 40px 28px}
+
+/* Sidebar */
+.consultationPage .consultation-sidebar{position:sticky;top:116px;width:100%;min-width:0;padding:34px 32px!important;color:#fff;background:#292827;border-radius:27px;box-shadow:0 25px 55px rgba(31,29,27,.15)}
+.consultationPage .consultation-sidebar>h3{margin:0;font-family:var(--c-serif);font-size:34px;font-weight:400;line-height:1.04}.consultationPage .sidebar-list{margin-top:30px}
+.consultationPage .sidebar-item{display:grid;grid-template-columns:43px 1fr;gap:14px;padding:21px 0;border-bottom:1px solid rgba(255,255,255,.12)}.consultationPage .sidebar-item>i{display:grid;width:43px;height:43px;place-items:center;color:#e4b826;background:rgba(255,255,255,.07);border-radius:50%;font-size:19px}
+.consultationPage .sidebar-item h4{margin:1px 0 7px;font-family:var(--c-serif);font-size:21px;font-weight:500}.consultationPage .sidebar-item p{margin:0;color:rgba(255,255,255,.7);font-size:10px;line-height:1.65}
+.consultationPage .sidebar-contact{margin-top:26px;padding:20px;border:1px solid rgba(255,255,255,.18);border-radius:17px}.consultationPage .sidebar-contact p{margin:0 0 10px;color:rgba(255,255,255,.55);font-size:8px;text-transform:uppercase;letter-spacing:.2em}
+.consultationPage .sidebar-contact a{display:block;overflow-wrap:anywhere}.consultationPage .sidebar-contact a:first-of-type{margin-bottom:5px;font-family:var(--c-serif);font-size:22px}.consultationPage .sidebar-contact a:last-child{color:rgba(255,255,255,.72);font-size:10px}
+.consultationPage .reveal-up{opacity:1;transform:none}
+
+@media(max-width:1020px){.consultationPage .consultation-hero-card>.relative.z-10{gap:30px;padding:48px 40px}.consultationPage .consultation-layout{grid-template-columns:minmax(0,1fr) 300px!important;gap:26px!important}.consultationPage .form-section{padding:34px 30px!important}.consultationPage .consent-row{margin-inline:30px}.consultationPage .submit-button{width:calc(100% - 60px);margin-inline:30px}.consultationPage .form-status{margin-inline:30px}}
+@media(max-width:820px){.consultationPage .consultation-main{padding-top:98px}.consultationPage #consultation-hero{width:calc(100% - 28px)}.consultationPage .consultation-hero-card>.relative.z-10{grid-template-columns:1fr;min-height:auto;padding:48px 30px 30px}.consultationPage .consultation-hero-card>.relative.z-10>div:last-child{max-width:none;justify-self:stretch}.consultationPage .consultation-layout{grid-template-columns:1fr!important}.consultationPage .consultation-sidebar{position:static}.consultationPage #consultation-form{padding:68px 18px 86px}}
+@media(max-width:560px){.consultationPage .consultation-main{padding-top:88px}.consultationPage #consultation-hero{width:calc(100% - 20px);padding-bottom:42px}.consultationPage .consultation-hero-card{min-height:auto;border-radius:23px}.consultationPage .consultation-hero-card>.relative.z-10{padding:40px 20px 20px}.consultationPage .consultation-hero-title{font-size:clamp(48px,15vw,64px)}.consultationPage #consultation-hero .max-w-2xl{font-size:13px;line-height:1.7}.consultationPage .consultation-hero-card>.relative.z-10>div:last-child{padding:21px 18px;border-radius:19px}.consultationPage #consultation-form{padding:54px 12px 72px}.consultationPage .section-heading{font-size:39px}.consultationPage .form-shell{border-radius:21px}.consultationPage .form-section{padding:29px 19px!important}.consultationPage .form-section-head{gap:12px;margin-bottom:23px}.consultationPage .form-step{width:36px;height:36px;flex-basis:36px}.consultationPage .form-section-title{font-size:26px}.consultationPage .field-grid{grid-template-columns:1fr}.consultationPage .field-span-2{grid-column:auto}.consultationPage .choice-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.consultationPage .choice-card-content{min-height:94px;padding:13px;font-size:8px}.consultationPage .consent-row{margin:27px 19px 0}.consultationPage .submit-button{width:calc(100% - 38px);margin:20px 19px 0;padding:0 16px;letter-spacing:.13em}.consultationPage .form-status{margin:10px 19px 24px}.consultationPage .consultation-sidebar{padding:28px 22px!important;border-radius:22px}}
+
+/* Keep every heading readable inside the dark consultation hero */
+.consultationPage #consultation-hero .consultation-hero-title,
+.consultationPage #consultation-hero .consultation-hero-title *,
+.consultationPage #consultation-hero .hero-note h3,
+.consultationPage #consultation-hero .hero-note h3 * {
+  color: #f1f2f3 !important;
+  opacity: 1 !important;
+}
+
+.consultationPage #consultation-hero .max-w-2xl,
+.consultationPage #consultation-hero .hero-note p {
+  color: rgba(245, 246, 247, .82) !important;
+}
